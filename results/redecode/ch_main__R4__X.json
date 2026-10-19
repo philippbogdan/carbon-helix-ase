@@ -1,0 +1,268 @@
+{
+ "campaign": "ch_main",
+ "tag": "R4",
+ "basis": "X",
+ "rule": "l2=on_event,l3=ambiguous,rot=4",
+ "noise": "uniform",
+ "rounds": 4,
+ "strong_decoder": {
+  "K": 2048,
+  "Delta": 20.0,
+  "committee": true,
+  "final_stage": [
+   4096,
+   24
+  ]
+ },
+ "per_w": {
+  "1": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 1,
+   "ok_strong_fail": 0
+  },
+  "4": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 1,
+   "ok_strong_fail": 0
+  },
+  "6": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 1,
+   "ok_strong_fail": 0
+  },
+  "7": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 4,
+   "ok_strong_fail": 0
+  },
+  "8": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 4,
+   "ok_strong_fail": 0
+  },
+  "9": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 11,
+   "ok_strong_fail": 0
+  },
+  "10": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 10,
+   "ok_strong_fail": 0
+  },
+  "11": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 23,
+   "ok_strong_fail": 0
+  },
+  "12": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 18,
+   "ok_strong_fail": 0
+  },
+  "13": {
+   "fail": 2,
+   "fail_strong": 2,
+   "ok_sampled": 21,
+   "ok_strong_fail": 0
+  },
+  "14": {
+   "fail": 0,
+   "fail_strong": 0,
+   "ok_sampled": 29,
+   "ok_strong_fail": 0
+  },
+  "15": {
+   "fail": 3,
+   "fail_strong": 2,
+   "ok_sampled": 24,
+   "ok_strong_fail": 0
+  },
+  "16": {
+   "fail": 3,
+   "fail_strong": 2,
+   "ok_sampled": 26,
+   "ok_strong_fail": 0
+  },
+  "17": {
+   "fail": 7,
+   "fail_strong": 5,
+   "ok_sampled": 23,
+   "ok_strong_fail": 0
+  },
+  "18": {
+   "fail": 8,
+   "fail_strong": 6,
+   "ok_sampled": 23,
+   "ok_strong_fail": 0
+  },
+  "19": {
+   "fail": 3,
+   "fail_strong": 3,
+   "ok_sampled": 15,
+   "ok_strong_fail": 0
+  },
+  "20": {
+   "fail": 13,
+   "fail_strong": 10,
+   "ok_sampled": 12,
+   "ok_strong_fail": 0
+  },
+  "21": {
+   "fail": 12,
+   "fail_strong": 8,
+   "ok_sampled": 16,
+   "ok_strong_fail": 0
+  },
+  "22": {
+   "fail": 9,
+   "fail_strong": 9,
+   "ok_sampled": 9,
+   "ok_strong_fail": 0
+  },
+  "23": {
+   "fail": 18,
+   "fail_strong": 16,
+   "ok_sampled": 7,
+   "ok_strong_fail": 0
+  },
+  "24": {
+   "fail": 16,
+   "fail_strong": 12,
+   "ok_sampled": 13,
+   "ok_strong_fail": 0
+  },
+  "25": {
+   "fail": 14,
+   "fail_strong": 14,
+   "ok_sampled": 1,
+   "ok_strong_fail": 0
+  },
+  "26": {
+   "fail": 18,
+   "fail_strong": 18,
+   "ok_sampled": 5,
+   "ok_strong_fail": 0
+  },
+  "27": {
+   "fail": 12,
+   "fail_strong": 9,
+   "ok_sampled": 3,
+   "ok_strong_fail": 0
+  },
+  "28": {
+   "fail": 13,
+   "fail_strong": 9,
+   "ok_sampled": 3,
+   "ok_strong_fail": 0
+  },
+  "29": {
+   "fail": 15,
+   "fail_strong": 14,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "30": {
+   "fail": 12,
+   "fail_strong": 11,
+   "ok_sampled": 1,
+   "ok_strong_fail": 0
+  },
+  "31": {
+   "fail": 8,
+   "fail_strong": 6,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "32": {
+   "fail": 5,
+   "fail_strong": 4,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "33": {
+   "fail": 7,
+   "fail_strong": 7,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "34": {
+   "fail": 4,
+   "fail_strong": 4,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "35": {
+   "fail": 2,
+   "fail_strong": 2,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "37": {
+   "fail": 1,
+   "fail_strong": 1,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "38": {
+   "fail": 1,
+   "fail_strong": 0,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  },
+  "39": {
+   "fail": 1,
+   "fail_strong": 1,
+   "ok_sampled": 0,
+   "ok_strong_fail": 0
+  }
+ },
+ "totals": {
+  "fail": 207,
+  "genuine": 175,
+  "ok_sampled": 304,
+  "ok_strong_fail": 0
+ },
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "analysis/redecode.py": "8cb45836afb8e2b905c91bcc1fba1f0314487695",
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "src/hase/c4helix.py": "55438a01bc6b571ca64f1448bc49c57dda063b1e",
+   "src/hase/carbonhelix.py": "4665a8a9da46f09944a791363ba817e8068ec7c8",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/decoding.py": "ec10f7c2019461327a1ad4fcb069b6cc2dd6b440",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/native.py": "7a547409ea5ede3d8be519ce66ff567846599f91",
+   "src/hase/protocols.py": "4583c89245e8f59b17640341e26ad8ad8562c811",
+   "src/hase/runner.py": "defaf381351f5619f9e25b856bb2ac06534ca6f4",
+   "src/hase/variants.py": "c8a8a28acf286aee9e7e511401dab509f04b0aea",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "5d5a60968182eb17cdc12c5ac1949732ead0905b"
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+  "environment": {
+    "python": "3.14.7",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "stim": "1.16.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.1",
+      "pillow": "12.2.0"
+    },
+    "freetype": "2.14.3",
+    "font": "Arial.ttf",
+    "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+  },
+  "scope": "Fresh virtual environment and build directory in validation/repo; supplied originals kept unchanged.",
+  "files": {
+    "fig1_error.png": {
+      "supplied_sha256": "3f95855aace889b549fa2285763b8bed4c796ce3f4f616a8ea8de37a5d216261",
+      "regenerated_sha256": "3f95855aace889b549fa2285763b8bed4c796ce3f4f616a8ea8de37a5d216261",
+      "byte_identical": true,
+      "dimensions": [
+        2000,
+        1320
+      ],
+      "pixel_identical": true,
+      "different_pixels": 0,
+      "max_channel_difference": 0
+    },
+    "fig1_error.svg": {
+      "supplied_sha256": "6ec5c6c5036507d515c8cff9107757c703edf679695a8221491a7c9040782197",
+      "regenerated_sha256": "9ac92d57dd01a4868e4e25da8e18f425e111e6467edd4dc71949f6a47ccc9555",
+      "byte_identical": false,
+      "identical_after_date_and_id_normalisation": true
+    },
+    "fig2_cost.png": {
+      "supplied_sha256": "13f7e9215a938845dd0c0cf915ed861ab41d30ade2cfc5933359e968efa6cede",
+      "regenerated_sha256": "13f7e9215a938845dd0c0cf915ed861ab41d30ade2cfc5933359e968efa6cede",
+      "byte_identical": true,
+      "dimensions": [
+        2000,
+        1360
+      ],
+      "pixel_identical": true,
+      "different_pixels": 0,
+      "max_channel_difference": 0
+    },
+    "fig2_cost.svg": {
+      "supplied_sha256": "4a5324f78c1839382f2c21d59d5f2cb34715ffc735e89ce2c005f2677ae2d92e",
+      "regenerated_sha256": "75386605bb8c536ecba0e9f0eb700d39c07b555d6993a6601d9beb465ed6048c",
+      "byte_identical": false,
+      "identical_after_date_and_id_normalisation": true
+    },
+    "fig3_distance.png": {
+      "supplied_sha256": "6801990d02107f0704b9060ca67244dea10dc975ab6dc62ac54d5fa26de4d66c",
+      "regenerated_sha256": "6801990d02107f0704b9060ca67244dea10dc975ab6dc62ac54d5fa26de4d66c",
+      "byte_identical": true,
+      "dimensions": [
+        2000,
+        1380
+      ],
+      "pixel_identical": true,
+      "different_pixels": 0,
+      "max_channel_difference": 0
+    },
+    "fig3_distance.svg": {
+      "supplied_sha256": "f6412b58c6e911ee5f79d6aba8a92bd4179d4ffa516ff9ff5e05d98275a7ed39",
+      "regenerated_sha256": "c99d82a0c9af77d0e11bff1559d0af701fb87add9c702a351f42461fde325299",
+      "byte_identical": false,
+      "identical_after_date_and_id_normalisation": true
+    },
+    "fig4_escalation.png": {
+      "supplied_sha256": "9a82c4eaa0bc9624f1f628844e0cd10542db3a565687805521221143bad2aac0",
+      "regenerated_sha256": "9a82c4eaa0bc9624f1f628844e0cd10542db3a565687805521221143bad2aac0",
+      "byte_identical": true,
+      "dimensions": [
+        2000,
+        1200
+      ],
+      "pixel_identical": true,
+      "different_pixels": 0,
+      "max_channel_difference": 0
+    },
+    "fig4_escalation.svg": {
+      "supplied_sha256": "0ba8f88dccfb58096e952a018b69ca786dbdc05bcd2b53090b4c47c75fcd45a9",
+      "regenerated_sha256": "e410050785bcd2ef4930c036a6034e1f1dbf9d5a4736ab276763e5ce3ff4bfa1",
+      "byte_identical": false,
+      "identical_after_date_and_id_normalisation": true
+    },
+    "fig5_schedule.png": {
+      "supplied_sha256": "c3c84a4f8641688439b0ad39a1ce3ffdf4268f9a3dc213ef2a6992582299e9ef",
+      "regenerated_sha256": "c3c84a4f8641688439b0ad39a1ce3ffdf4268f9a3dc213ef2a6992582299e9ef",
+      "byte_identical": true,
+      "dimensions": [
+        2000,
+        2400
+      ],
+      "pixel_identical": true,
+      "different_pixels": 0,
+      "max_channel_difference": 0
+    },
+    "fig5_schedule.svg": {
+      "supplied_sha256": "ef42c1915e2f535fbbbd7f06e64fbe2de18c2298f29401928b2a39b51109ea89",
+      "regenerated_sha256": "58e34374501c016b964d9341546d1a3e65fd303d1ba91204666d34988b8c8996",
+      "byte_identical": false,
+      "identical_after_date_and_id_normalisation": true
+    }
+  }
+}

@@ -1,0 +1,353 @@
+{
+ "carbonhelix": {
+  "parts": {
+   "L1_a": {
+    "two_qubit_gates": 120,
+    "layers": 6,
+    "ancillas": 30,
+    "measurements": 30,
+    "checks": [
+     "('c4', 0, 0, 'X')",
+     "('c4', 0, 0, 'Z')",
+     "('c4', 0, 1, 'X')",
+     "('c4', 0, 1, 'Z')",
+     "('c4', 0, 2, 'X')",
+     "('c4', 0, 2, 'Z')",
+     "('c4', 1, 0, 'X')",
+     "('c4', 1, 0, 'Z')",
+     "('c4', 1, 1, 'X')",
+     "('c4', 1, 1, 'Z')",
+     "('c4', 1, 2, 'X')",
+     "('c4', 1, 2, 'Z')",
+     "('c4', 2, 0, 'X')",
+     "('c4', 2, 0, 'Z')",
+     "('c4', 2, 1, 'X')",
+     "('c4', 2, 1, 'Z')",
+     "('c4', 2, 2, 'X')",
+     "('c4', 2, 2, 'Z')",
+     "('c4', 3, 0, 'X')",
+     "('c4', 3, 0, 'Z')",
+     "('c4', 3, 1, 'X')",
+     "('c4', 3, 1, 'Z')",
+     "('c4', 3, 2, 'X')",
+     "('c4', 3, 2, 'Z')",
+     "('c4', 4, 0, 'X')",
+     "('c4', 4, 0, 'Z')",
+     "('c4', 4, 1, 'X')",
+     "('c4', 4, 1, 'Z')",
+     "('c4', 4, 2, 'X')",
+     "('c4', 4, 2, 'Z')"
+    ]
+   },
+   "L1_b": {
+    "two_qubit_gates": 120,
+    "layers": 6,
+    "ancillas": 30,
+    "measurements": 30,
+    "checks": [
+     "('c4', 0, 0, 'X')",
+     "('c4', 0, 0, 'Z')",
+     "('c4', 0, 1, 'X')",
+     "('c4', 0, 1, 'Z')",
+     "('c4', 0, 2, 'X')",
+     "('c4', 0, 2, 'Z')",
+     "('c4', 1, 0, 'X')",
+     "('c4', 1, 0, 'Z')",
+     "('c4', 1, 1, 'X')",
+     "('c4', 1, 1, 'Z')",
+     "('c4', 1, 2, 'X')",
+     "('c4', 1, 2, 'Z')",
+     "('c4', 2, 0, 'X')",
+     "('c4', 2, 0, 'Z')",
+     "('c4', 2, 1, 'X')",
+     "('c4', 2, 1, 'Z')",
+     "('c4', 2, 2, 'X')",
+     "('c4', 2, 2, 'Z')",
+     "('c4', 3, 0, 'X')",
+     "('c4', 3, 0, 'Z')",
+     "('c4', 3, 1, 'X')",
+     "('c4', 3, 1, 'Z')",
+     "('c4', 3, 2, 'X')",
+     "('c4', 3, 2, 'Z')",
+     "('c4', 4, 0, 'X')",
+     "('c4', 4, 0, 'Z')",
+     "('c4', 4, 1, 'X')",
+     "('c4', 4, 1, 'Z')",
+     "('c4', 4, 2, 'X')",
+     "('c4', 4, 2, 'Z')"
+    ]
+   },
+   "L2_all": {
+    "two_qubit_gates": 200,
+    "layers": 16,
+    "ancillas": 30,
+    "measurements": 60,
+    "checks": [
+     "('c6', 0, 'X', 0)",
+     "('c6', 0, 'X', 1)",
+     "('c6', 0, 'Z', 0)",
+     "('c6', 0, 'Z', 1)",
+     "('c6', 1, 'X', 0)",
+     "('c6', 1, 'X', 1)",
+     "('c6', 1, 'Z', 0)",
+     "('c6', 1, 'Z', 1)",
+     "('c6', 2, 'X', 0)",
+     "('c6', 2, 'X', 1)",
+     "('c6', 2, 'Z', 0)",
+     "('c6', 2, 'Z', 1)",
+     "('c6', 3, 'X', 0)",
+     "('c6', 3, 'X', 1)",
+     "('c6', 3, 'Z', 0)",
+     "('c6', 3, 'Z', 1)",
+     "('c6', 4, 'X', 0)",
+     "('c6', 4, 'X', 1)",
+     "('c6', 4, 'Z', 0)",
+     "('c6', 4, 'Z', 1)"
+    ]
+   },
+   "L3": {
+    "two_qubit_gates": 240,
+    "layers": 24,
+    "ancillas": 32,
+    "measurements": 64,
+    "checks": [
+     "('out', 'X', 0)",
+     "('out', 'X', 1)",
+     "('out', 'X', 2)",
+     "('out', 'X', 3)",
+     "('out', 'Z', 0)",
+     "('out', 'Z', 1)",
+     "('out', 'Z', 2)",
+     "('out', 'Z', 3)"
+    ]
+   },
+   "L2_0": {
+    "two_qubit_gates": 40,
+    "layers": 16,
+    "ancillas": 6,
+    "measurements": 12,
+    "checks": [
+     "('c6', 0, 'X', 0)",
+     "('c6', 0, 'X', 1)",
+     "('c6', 0, 'Z', 0)",
+     "('c6', 0, 'Z', 1)"
+    ]
+   },
+   "L3r_0": {
+    "two_qubit_gates": 60,
+    "layers": 24,
+    "ancillas": 8,
+    "measurements": 16,
+    "checks": [
+     "('out', 'X', 0)",
+     "('out', 'Z', 0)"
+    ]
+   },
+   "L3r_1": {
+    "two_qubit_gates": 60,
+    "layers": 24,
+    "ancillas": 8,
+    "measurements": 16,
+    "checks": [
+     "('out', 'X', 1)",
+     "('out', 'Z', 1)"
+    ]
+   },
+   "L3r_2": {
+    "two_qubit_gates": 60,
+    "layers": 24,
+    "ancillas": 8,
+    "measurements": 16,
+    "checks": [
+     "('out', 'X', 2)",
+     "('out', 'Z', 2)"
+    ]
+   },
+   "L3r_3": {
+    "two_qubit_gates": 60,
+    "layers": 24,
+    "ancillas": 8,
+    "measurements": 16,
+    "checks": [
+     "('out', 'X', 3)",
+     "('out', 'Z', 3)"
+    ]
+   },
+   "R8F_L3r_0": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'X', 0)"
+    ]
+   },
+   "R8F_L3r_1": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'Z', 0)"
+    ]
+   },
+   "R8F_L3r_2": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'X', 1)"
+    ]
+   },
+   "R8F_L3r_3": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'Z', 1)"
+    ]
+   },
+   "R8F_L3r_4": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'X', 2)"
+    ]
+   },
+   "R8F_L3r_5": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'Z', 2)"
+    ]
+   },
+   "R8F_L3r_6": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'X', 3)"
+    ]
+   },
+   "R8F_L3r_7": {
+    "two_qubit_gates": 30,
+    "layers": 12,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('out', 'Z', 3)"
+    ]
+   },
+   "R8F_L2f_0": {
+    "two_qubit_gates": 40,
+    "layers": 10,
+    "ancillas": 12,
+    "measurements": 12,
+    "checks": [
+     "('c6', 0, 'X', 0)",
+     "('c6', 0, 'X', 1)",
+     "('c6', 0, 'Z', 0)",
+     "('c6', 0, 'Z', 1)"
+    ]
+   }
+  },
+  "memory_example": {
+   "qubits": 92,
+   "detectors": 462,
+   "rounds": 3
+  }
+ },
+ "c4helix": {
+  "parts": {
+   "inner_a": {
+    "two_qubit_gates": 40,
+    "layers": 6,
+    "ancillas": 10,
+    "measurements": 10,
+    "checks": [
+     "('in', 0, 'X')",
+     "('in', 0, 'Z')",
+     "('in', 1, 'X')",
+     "('in', 1, 'Z')",
+     "('in', 2, 'X')",
+     "('in', 2, 'Z')",
+     "('in', 3, 'X')",
+     "('in', 3, 'Z')",
+     "('in', 4, 'X')",
+     "('in', 4, 'Z')"
+    ]
+   },
+   "inner_b": {
+    "two_qubit_gates": 40,
+    "layers": 6,
+    "ancillas": 10,
+    "measurements": 10,
+    "checks": [
+     "('in', 0, 'X')",
+     "('in', 0, 'Z')",
+     "('in', 1, 'X')",
+     "('in', 1, 'Z')",
+     "('in', 2, 'X')",
+     "('in', 2, 'Z')",
+     "('in', 3, 'X')",
+     "('in', 3, 'Z')",
+     "('in', 4, 'X')",
+     "('in', 4, 'Z')"
+    ]
+   },
+   "outer": {
+    "two_qubit_gates": 112,
+    "layers": 10,
+    "ancillas": 32,
+    "measurements": 32,
+    "checks": [
+     "('out', 'X', 0)",
+     "('out', 'X', 1)",
+     "('out', 'X', 2)",
+     "('out', 'X', 3)",
+     "('out', 'Z', 0)",
+     "('out', 'Z', 1)",
+     "('out', 'Z', 2)",
+     "('out', 'Z', 3)"
+    ]
+   }
+  },
+  "memory_example": {
+   "qubits": 52,
+   "detectors": 126,
+   "rounds": 3
+  }
+ },
+ "toric10": {
+  "parts": {
+   "round": {
+    "two_qubit_gates": 32,
+    "layers": 18,
+    "ancillas": 8,
+    "measurements": 8,
+    "checks": [
+     "('X', 0)",
+     "('X', 1)",
+     "('X', 2)",
+     "('X', 3)",
+     "('Z', 0)",
+     "('Z', 1)",
+     "('Z', 2)",
+     "('Z', 3)"
+    ]
+   }
+  },
+  "memory_example": {
+   "qubits": 18,
+   "detectors": 24,
+   "rounds": 3
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "tqrb_m3_nonadaptive": {
+  "engine_columns": 6904,
+  "stim_columns": 6904,
+  "common": 6904,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 378
+ },
+ "tqrb_m3_adaptive_quiet": {
+  "engine_columns": 3980,
+  "stim_columns": 3980,
+  "common": 3980,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 234
+ },
+ "tqrb_m3_adaptive_full": {
+  "engine_columns": 6904,
+  "stim_columns": 6904,
+  "common": 6904,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 378
+ },
+ "tqrb_m5_nonadaptive": {
+  "engine_columns": 7070,
+  "stim_columns": 7070,
+  "common": 7070,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 378
+ },
+ "tqrb_m5_adaptive_quiet": {
+  "engine_columns": 3869,
+  "stim_columns": 3869,
+  "common": 3869,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 234
+ },
+ "tqrb_m5_adaptive_full": {
+  "engine_columns": 7070,
+  "stim_columns": 7070,
+  "common": 7070,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 378
+ },
+ "cnot2_X": {
+  "engine_columns": 5096,
+  "stim_columns": 5096,
+  "common": 5096,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 252
+ },
+ "cnot2_Z": {
+  "engine_columns": 4796,
+  "stim_columns": 4796,
+  "common": 4796,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 252
+ },
+ "chainmap_X": {
+  "engine_columns": 3769,
+  "stim_columns": 3769,
+  "common": 3769,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 198
+ },
+ "ghz_measX": {
+  "engine_columns": 691,
+  "stim_columns": 691,
+  "common": 691,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 66
+ },
+ "chainmap_Z": {
+  "engine_columns": 3625,
+  "stim_columns": 3625,
+  "common": 3625,
+  "max_rel_prob_diff": 0.0004667600494637401,
+  "detectors": 198
+ },
+ "ghz_measZ": {
+  "engine_columns": 366,
+  "stim_columns": 366,
+  "common": 366,
+  "max_rel_prob_diff": 0.00046672893005153814,
+  "detectors": 66
+ },
+ "all_identical": true
+}

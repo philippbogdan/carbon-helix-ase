@@ -1,0 +1,211 @@
+{
+ "commit": "unknown",
+ "quick": false,
+ "codes": {
+  "[[10,2,3]]": {
+   "n": 10,
+   "k": 2,
+   "d": [
+    3,
+    3
+   ]
+  },
+  "C4": {
+   "n": 4,
+   "k": 2,
+   "d": [
+    2,
+    2
+   ]
+  },
+  "Carbon": {
+   "n": 12,
+   "k": 2,
+   "d": [
+    4,
+    4
+   ]
+  },
+  "C4-Helix": {
+   "n": 20,
+   "k": 2,
+   "d": [
+    6,
+    6
+   ],
+   "equals_paper_table": true
+  },
+  "Carbon-Helix": {
+   "n": 60,
+   "k": 2,
+   "d": [
+    12,
+    12
+   ],
+   "outer_check_weights": [
+    16,
+    16,
+    16,
+    16,
+    16
+   ],
+   "inner_check_weights": [
+    4,
+    6
+   ]
+  }
+ },
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/checks.py": "5f7ff425c557854c2c934a7175e5e934001ecb74",
+   "src/hase/c4helix.py": "55438a01bc6b571ca64f1448bc49c57dda063b1e",
+   "src/hase/carbonhelix.py": "4665a8a9da46f09944a791363ba817e8068ec7c8",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/general_dem.py": "6e8d1609d9d26dd3b68c43641b7fe39221eac5e3",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/logical.py": "7f35cbaa2b3e4474063f5bb3ef3238439ef5ca5a",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/protocols.py": "4583c89245e8f59b17640341e26ad8ad8562c811",
+   "src/hase/toric10.py": "7fbd7d79eaebc3894c204ea67ac2d6a0189e8ab2",
+   "src/hase/tqrb.py": "2a1fc4c77c75cce62cff666db47059777896026f",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "5d5a60968182eb17cdc12c5ac1949732ead0905b"
+  }
+ },
+ "compiler": {
+  "group_size": 720,
+  "automorphism_group_size": 36,
+  "c4helix_S0S1_distribution": {
+   "0": 36,
+   "1": 324,
+   "2": 324,
+   "3": 36
+  },
+  "c4helix_mean_S0S1_per_Clifford": 1.5,
+  "carbonhelix_cycle_distribution": {
+   "0": 12,
+   "1": 96,
+   "2": 252,
+   "3": 324,
+   "4": 36
+  },
+  "carbonhelix_mean_cycles_per_Clifford": 2.3833333333333333,
+  "carbonhelix_free_group_size": 12,
+  "paper": {
+   "c4helix": {
+    "0": 36,
+    "1": 324,
+    "2": 324,
+    "3": 36
+   },
+   "carbonhelix": {
+    "0": 12,
+    "1": 96,
+    "2": 252,
+    "3": 324,
+    "4": 36
+   },
+   "automorphisms": 36
+  }
+ },
+ "dem_equality": {
+  "c4helix_X": {
+   "engine_columns": 3268,
+   "stim_columns": 3268,
+   "common": 3268,
+   "max_rel_prob_diff": 0.0004667600494637401
+  },
+  "c4helix_Z": {
+   "engine_columns": 3116,
+   "stim_columns": 3116,
+   "common": 3116,
+   "max_rel_prob_diff": 0.0004667600494637401
+  },
+  "carbonhelix_X": {
+   "engine_columns": 5601,
+   "stim_columns": 5601,
+   "common": 5601,
+   "max_rel_prob_diff": 0.0004667600494637401
+  },
+  "carbonhelix_Z": {
+   "engine_columns": 5145,
+   "stim_columns": 5145,
+   "common": 5145,
+   "max_rel_prob_diff": 0.0004667600494637401
+  },
+  "toric10_X": {
+   "engine_columns": 581,
+   "stim_columns": 581,
+   "common": 581,
+   "max_rel_prob_diff": 0.0004667600494637401
+  },
+  "toric10_Z": {
+   "engine_columns": 566,
+   "stim_columns": 566,
+   "common": 566,
+   "max_rel_prob_diff": 0.0004667600494637401
+  }
+ },
+ "circuit_distance": {
+  "toric10_X_3rounds": {
+   "distance": 3,
+   "seconds": 2.4716765880584717
+  },
+  "toric10_Z_3rounds": {
+   "distance": 3,
+   "seconds": 2.9895455837249756
+  },
+  "carbon_block_X_4rounds": {
+   "distance": 4,
+   "seconds": 23.101358890533447
+  },
+  "carbon_block_Z_4rounds": {
+   "distance": 4,
+   "seconds": 22.07974100112915
+  },
+  "c4helix_X_2rounds": {
+   "distance": 6,
+   "seconds": 657.1817507743835
+  },
+  "c4helix_Z_2rounds": {
+   "distance": 6,
+   "seconds": 680.5031552314758
+  },
+  "c4helix_paired_X_2rounds": {
+   "distance": 5,
+   "seconds": 122.44618916511536
+  },
+  "c4helix_paired_Z_2rounds": {
+   "distance": 5,
+   "seconds": 117.3227264881134
+  },
+  "c4helix_shifted_X_2rounds": {
+   "distance": 5,
+   "seconds": 333.44645142555237
+  },
+  "c4helix_shifted_Z_2rounds": {
+   "distance": 5,
+   "seconds": 315.5284149646759
+  },
+  "c4helix_S0S1_plus_extraction_Z": {
+   "distance": 6,
+   "seconds": 723.7256295681
+  }
+ },
+ "complete": true
+}

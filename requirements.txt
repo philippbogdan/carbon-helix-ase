@@ -1,0 +1,5 @@
+stim==1.16.0
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.1
+pillow==12.2.0

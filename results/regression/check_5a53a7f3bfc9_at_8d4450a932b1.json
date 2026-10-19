@@ -1,0 +1,8 @@
+{
+ "protocol_c4_helios": "identical",
+ "protocol_t10_helios": "identical",
+ "strat_c4_gs1": "identical",
+ "strat_ch_ambiguous": "identical",
+ "strat_ch_any": "identical",
+ "strat_ch_full": "identical"
+}

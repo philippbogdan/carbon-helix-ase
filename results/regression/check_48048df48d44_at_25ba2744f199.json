@@ -1,0 +1,8 @@
+{
+ "chainmap": "identical",
+ "distance": "identical",
+ "strat_ch_helios": "identical",
+ "strat_ch_rotating16f": "identical",
+ "strat_ch_rotating8f": "identical",
+ "tqrb_eps": "identical"
+}

@@ -1,0 +1,3428 @@
+{
+ "T": 8,
+ "basis": "Z",
+ "block": "Carbon [[12,2,4]] block, L1 every round, L2 at rounds 0, T and the listed rounds",
+ "paths": {
+  "quiet": {
+   "l2_rounds": [],
+   "detectors": 78,
+   "mechanisms": 1435,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 41.542612075805664
+  },
+  "1": {
+   "l2_rounds": [
+    1
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 49.95105457305908
+  },
+  "2": {
+   "l2_rounds": [
+    2
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 39.947057247161865
+  },
+  "3": {
+   "l2_rounds": [
+    3
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 40.99235486984253
+  },
+  "4": {
+   "l2_rounds": [
+    4
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 41.814659118652344
+  },
+  "5": {
+   "l2_rounds": [
+    5
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 50.19614243507385
+  },
+  "6": {
+   "l2_rounds": [
+    6
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 49.857951164245605
+  },
+  "7": {
+   "l2_rounds": [
+    7
+   ],
+   "detectors": 90,
+   "mechanisms": 1681,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 51.24419379234314
+  },
+  "1,2": {
+   "l2_rounds": [
+    1,
+    2
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 47.739208698272705
+  },
+  "1,3": {
+   "l2_rounds": [
+    1,
+    3
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 53.686192989349365
+  },
+  "1,4": {
+   "l2_rounds": [
+    1,
+    4
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 98.01661682128906
+  },
+  "1,5": {
+   "l2_rounds": [
+    1,
+    5
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.68656086921692
+  },
+  "1,6": {
+   "l2_rounds": [
+    1,
+    6
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 53.04520392417908
+  },
+  "1,7": {
+   "l2_rounds": [
+    1,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 54.65010905265808
+  },
+  "2,3": {
+   "l2_rounds": [
+    2,
+    3
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 58.98262667655945
+  },
+  "2,4": {
+   "l2_rounds": [
+    2,
+    4
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 51.265881299972534
+  },
+  "2,5": {
+   "l2_rounds": [
+    2,
+    5
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 54.607919216156006
+  },
+  "2,6": {
+   "l2_rounds": [
+    2,
+    6
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 55.91385746002197
+  },
+  "2,7": {
+   "l2_rounds": [
+    2,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 97.23654842376709
+  },
+  "3,4": {
+   "l2_rounds": [
+    3,
+    4
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 52.20339775085449
+  },
+  "3,5": {
+   "l2_rounds": [
+    3,
+    5
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 49.08841156959534
+  },
+  "3,6": {
+   "l2_rounds": [
+    3,
+    6
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 60.72993016242981
+  },
+  "3,7": {
+   "l2_rounds": [
+    3,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 52.580628871917725
+  },
+  "4,5": {
+   "l2_rounds": [
+    4,
+    5
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 58.81675100326538
+  },
+  "4,6": {
+   "l2_rounds": [
+    4,
+    6
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 56.21149563789368
+  },
+  "4,7": {
+   "l2_rounds": [
+    4,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 55.073832511901855
+  },
+  "5,6": {
+   "l2_rounds": [
+    5,
+    6
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.95557761192322
+  },
+  "5,7": {
+   "l2_rounds": [
+    5,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.51364827156067
+  },
+  "6,7": {
+   "l2_rounds": [
+    6,
+    7
+   ],
+   "detectors": 102,
+   "mechanisms": 1925,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.98406791687012
+  },
+  "1,2,3": {
+   "l2_rounds": [
+    1,
+    2,
+    3
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 56.88242983818054
+  },
+  "1,2,4": {
+   "l2_rounds": [
+    1,
+    2,
+    4
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 78.09323215484619
+  },
+  "1,2,5": {
+   "l2_rounds": [
+    1,
+    2,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 76.71686792373657
+  },
+  "1,2,6": {
+   "l2_rounds": [
+    1,
+    2,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 77.72063302993774
+  },
+  "1,2,7": {
+   "l2_rounds": [
+    1,
+    2,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.80303382873535
+  },
+  "1,3,4": {
+   "l2_rounds": [
+    1,
+    3,
+    4
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 69.77731966972351
+  },
+  "1,3,5": {
+   "l2_rounds": [
+    1,
+    3,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 62.80983018875122
+  },
+  "1,3,6": {
+   "l2_rounds": [
+    1,
+    3,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 129.58296084403992
+  },
+  "1,3,7": {
+   "l2_rounds": [
+    1,
+    3,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 67.8104248046875
+  },
+  "1,4,5": {
+   "l2_rounds": [
+    1,
+    4,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.91456604003906
+  },
+  "1,4,6": {
+   "l2_rounds": [
+    1,
+    4,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 70.31960701942444
+  },
+  "1,4,7": {
+   "l2_rounds": [
+    1,
+    4,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 79.99893045425415
+  },
+  "1,5,6": {
+   "l2_rounds": [
+    1,
+    5,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 72.794748544693
+  },
+  "1,5,7": {
+   "l2_rounds": [
+    1,
+    5,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 67.0869779586792
+  },
+  "1,6,7": {
+   "l2_rounds": [
+    1,
+    6,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 66.27923774719238
+  },
+  "2,3,4": {
+   "l2_rounds": [
+    2,
+    3,
+    4
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.82549166679382
+  },
+  "2,3,5": {
+   "l2_rounds": [
+    2,
+    3,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 83.31623077392578
+  },
+  "2,3,6": {
+   "l2_rounds": [
+    2,
+    3,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 66.36271119117737
+  },
+  "2,3,7": {
+   "l2_rounds": [
+    2,
+    3,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 51.523879051208496
+  },
+  "2,4,5": {
+   "l2_rounds": [
+    2,
+    4,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 76.5213212966919
+  },
+  "2,4,6": {
+   "l2_rounds": [
+    2,
+    4,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.5642204284668
+  },
+  "2,4,7": {
+   "l2_rounds": [
+    2,
+    4,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.163912773132324
+  },
+  "2,5,6": {
+   "l2_rounds": [
+    2,
+    5,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 62.793292760849
+  },
+  "2,5,7": {
+   "l2_rounds": [
+    2,
+    5,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 62.908695220947266
+  },
+  "2,6,7": {
+   "l2_rounds": [
+    2,
+    6,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.14551854133606
+  },
+  "3,4,5": {
+   "l2_rounds": [
+    3,
+    4,
+    5
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 76.29049468040466
+  },
+  "3,4,6": {
+   "l2_rounds": [
+    3,
+    4,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 53.519288063049316
+  },
+  "3,4,7": {
+   "l2_rounds": [
+    3,
+    4,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 54.31329536437988
+  },
+  "3,5,6": {
+   "l2_rounds": [
+    3,
+    5,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 80.2249436378479
+  },
+  "3,5,7": {
+   "l2_rounds": [
+    3,
+    5,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 61.7760169506073
+  },
+  "3,6,7": {
+   "l2_rounds": [
+    3,
+    6,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.33868169784546
+  },
+  "4,5,6": {
+   "l2_rounds": [
+    4,
+    5,
+    6
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 67.30610132217407
+  },
+  "4,5,7": {
+   "l2_rounds": [
+    4,
+    5,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 71.12735939025879
+  },
+  "4,6,7": {
+   "l2_rounds": [
+    4,
+    6,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 65.57561588287354
+  },
+  "5,6,7": {
+   "l2_rounds": [
+    5,
+    6,
+    7
+   ],
+   "detectors": 114,
+   "mechanisms": 2169,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 60.75058650970459
+  },
+  "1,2,3,4": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 79.6246440410614
+  },
+  "1,2,3,5": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 64.47152280807495
+  },
+  "1,2,3,6": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 71.06472134590149
+  },
+  "1,2,3,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 72.31226873397827
+  },
+  "1,2,4,5": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    5
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.5531222820282
+  },
+  "1,2,4,6": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 66.30918884277344
+  },
+  "1,2,4,7": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 81.4911150932312
+  },
+  "1,2,5,6": {
+   "l2_rounds": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 77.8442153930664
+  },
+  "1,2,5,7": {
+   "l2_rounds": [
+    1,
+    2,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 75.26952600479126
+  },
+  "1,2,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 68.87719440460205
+  },
+  "1,3,4,5": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    5
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 67.18545818328857
+  },
+  "1,3,4,6": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 89.41811394691467
+  },
+  "1,3,4,7": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 83.3507149219513
+  },
+  "1,3,5,6": {
+   "l2_rounds": [
+    1,
+    3,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 63.26359176635742
+  },
+  "1,3,5,7": {
+   "l2_rounds": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 75.73550915718079
+  },
+  "1,3,6,7": {
+   "l2_rounds": [
+    1,
+    3,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 68.31792688369751
+  },
+  "1,4,5,6": {
+   "l2_rounds": [
+    1,
+    4,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 80.60359120368958
+  },
+  "1,4,5,7": {
+   "l2_rounds": [
+    1,
+    4,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 70.97033143043518
+  },
+  "1,4,6,7": {
+   "l2_rounds": [
+    1,
+    4,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 68.94211173057556
+  },
+  "1,5,6,7": {
+   "l2_rounds": [
+    1,
+    5,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 70.77850723266602
+  },
+  "2,3,4,5": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 72.11909699440002
+  },
+  "2,3,4,6": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 92.75881218910217
+  },
+  "2,3,4,7": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 85.14960098266602
+  },
+  "2,3,5,6": {
+   "l2_rounds": [
+    2,
+    3,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 74.58457612991333
+  },
+  "2,3,5,7": {
+   "l2_rounds": [
+    2,
+    3,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 67.73376679420471
+  },
+  "2,3,6,7": {
+   "l2_rounds": [
+    2,
+    3,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 87.75857377052307
+  },
+  "2,4,5,6": {
+   "l2_rounds": [
+    2,
+    4,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 84.39632534980774
+  },
+  "2,4,5,7": {
+   "l2_rounds": [
+    2,
+    4,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 77.93229579925537
+  },
+  "2,4,6,7": {
+   "l2_rounds": [
+    2,
+    4,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 78.88187146186829
+  },
+  "2,5,6,7": {
+   "l2_rounds": [
+    2,
+    5,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 76.76300740242004
+  },
+  "3,4,5,6": {
+   "l2_rounds": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 85.07893371582031
+  },
+  "3,4,5,7": {
+   "l2_rounds": [
+    3,
+    4,
+    5,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 77.95257639884949
+  },
+  "3,4,6,7": {
+   "l2_rounds": [
+    3,
+    4,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 89.21980166435242
+  },
+  "3,5,6,7": {
+   "l2_rounds": [
+    3,
+    5,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 93.20022320747375
+  },
+  "4,5,6,7": {
+   "l2_rounds": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 126,
+   "mechanisms": 2413,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 69.56693172454834
+  },
+  "1,2,3,4,5": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 99.29129886627197
+  },
+  "1,2,3,4,6": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    6
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 89.27553629875183
+  },
+  "1,2,3,4,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 87.91968703269958
+  },
+  "1,2,3,5,6": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 85.89837408065796
+  },
+  "1,2,3,5,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    5,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 93.91351652145386
+  },
+  "1,2,3,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 107.67618870735168
+  },
+  "1,2,4,5,6": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    5,
+    6
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 74.70633673667908
+  },
+  "1,2,4,5,7": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    5,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 74.95587253570557
+  },
+  "1,2,4,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 87.34704494476318
+  },
+  "1,2,5,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 94.55567336082458
+  },
+  "1,3,4,5,6": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    5,
+    6
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 91.2600998878479
+  },
+  "1,3,4,5,7": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    5,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 103.47877979278564
+  },
+  "1,3,4,6,7": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 90.99085021018982
+  },
+  "1,3,5,6,7": {
+   "l2_rounds": [
+    1,
+    3,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 83.52128767967224
+  },
+  "1,4,5,6,7": {
+   "l2_rounds": [
+    1,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 94.05179047584534
+  },
+  "2,3,4,5,6": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 89.99251675605774
+  },
+  "2,3,4,5,7": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    5,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 101.98115682601929
+  },
+  "2,3,4,6,7": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 92.3996376991272
+  },
+  "2,3,5,6,7": {
+   "l2_rounds": [
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 88.72367334365845
+  },
+  "2,4,5,6,7": {
+   "l2_rounds": [
+    2,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 97.71558356285095
+  },
+  "3,4,5,6,7": {
+   "l2_rounds": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 138,
+   "mechanisms": 2657,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 96.94355201721191
+  },
+  "1,2,3,4,5,6": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 105.10137724876404
+  },
+  "1,2,3,4,5,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 90.77155256271362
+  },
+  "1,2,3,4,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 78.28640127182007
+  },
+  "1,2,3,5,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 89.65337419509888
+  },
+  "1,2,4,5,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 106.3732430934906
+  },
+  "1,3,4,5,6,7": {
+   "l2_rounds": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 98.1159348487854
+  },
+  "2,3,4,5,6,7": {
+   "l2_rounds": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 150,
+   "mechanisms": 2901,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 105.66384387016296
+  },
+  "1,2,3,4,5,6,7": {
+   "l2_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "detectors": 162,
+   "mechanisms": 3145,
+   "classes": {
+    "0": {
+     "weight": 4,
+     "optimal": true
+    },
+    "1": {
+     "weight": 4,
+     "optimal": true
+    },
+    "01": {
+     "weight": 4,
+     "optimal": true
+    }
+   },
+   "distance": 4,
+   "all_optimal": true,
+   "seconds": 101.93468642234802
+  }
+ },
+ "min_distance": 4,
+ "all_optimal": true,
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/inner_window_distance.py": "4931923b5992b3bba41ddd5f0f2630b363407b51",
+   "src/hase/c4helix.py": "168c9916b532a2fa8ea0e7edad85d40e1a53910e",
+   "src/hase/carbonhelix.py": "c8fe1c55ea6a0c7dfdfa696ca922c46eeb1f9e01",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "unknown"
+  }
+ }
+}

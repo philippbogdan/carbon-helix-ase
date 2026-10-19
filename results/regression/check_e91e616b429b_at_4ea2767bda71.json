@@ -1,0 +1,12 @@
+{
+ "audit_minimal": "identical",
+ "audit_redecode": "identical",
+ "distance": "identical",
+ "protocol_t10_helios": "identical",
+ "strat_ch_ambiguous": "identical",
+ "strat_ch_any": "identical",
+ "strat_ch_full": "identical",
+ "strat_ch_helios": "identical",
+ "strat_ch_rotating": "identical",
+ "strat_ch_rotating16f": "identical"
+}

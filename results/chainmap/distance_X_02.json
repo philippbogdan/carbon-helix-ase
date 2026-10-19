@@ -1,0 +1,45 @@
+{
+ "basis": "X",
+ "combo": [
+  0,
+  2
+ ],
+ "cnots": 30,
+ "weight": 5,
+ "optimal": true,
+ "lower_bound": 4.999999999999999,
+ "mechanisms": 2177,
+ "detectors": 132,
+ "seconds": 82.37911438941956,
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/chainmap_search.py": "4c4d1baee7db157dea8e219ba9c907a480083a73",
+   "src/hase/c4helix.py": "168c9916b532a2fa8ea0e7edad85d40e1a53910e",
+   "src/hase/chainmap.py": "0d564e03d14ccc91b74a99c419f25ff896cae34b",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/general_dem.py": "eb7f6d61ea12393d62a906c478558319a860e756",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/logical.py": "17777a3023f2a1bd7daa76719a50fda2fdc9cc69",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/surface.py": "4d737bf2833f460781f201119605e1c7a31e1908",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "unknown"
+  }
+ }
+}

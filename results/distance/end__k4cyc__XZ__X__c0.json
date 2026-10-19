@@ -1,0 +1,90 @@
+{
+ "rule": "g3=k4cyc,g3order=XZ",
+ "basis": "X",
+ "rounds": 1,
+ "path_kind": "full",
+ "path": [
+  [
+   0,
+   "L1_a"
+  ],
+  [
+   0,
+   "L2_all"
+  ],
+  [
+   0,
+   "L3"
+  ],
+  [
+   1,
+   "L1_b"
+  ],
+  [
+   1,
+   "L2_all"
+  ],
+  [
+   1,
+   "L3"
+  ]
+ ],
+ "W": 10,
+ "combo": [
+  0
+ ],
+ "method": "restricted",
+ "detectors": 308,
+ "mechanisms": 5601,
+ "result": "unsat",
+ "weight": 11,
+ "solution": [
+  3218,
+  3767,
+  3879,
+  3904,
+  3935,
+  5006,
+  5014,
+  5041,
+  5458,
+  5460,
+  5598
+ ],
+ "seconds": 433.5060589313507,
+ "time_limit": 40000.0,
+ "commit": "052a4d74f1a2ccff55e01817c09f29305ede4d9a",
+ "provenance": {
+  "commit": "052a4d74f1a2ccff55e01817c09f29305ede4d9a",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/job_distance.py": "0c407c34235eec6c8afc9718e3d1e5363c70c04f",
+   "src/hase/c4helix.py": "55438a01bc6b571ca64f1448bc49c57dda063b1e",
+   "src/hase/carbonhelix.py": "4665a8a9da46f09944a791363ba817e8068ec7c8",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/protocols.py": "4583c89245e8f59b17640341e26ad8ad8562c811",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "5d5a60968182eb17cdc12c5ac1949732ead0905b"
+  }
+ },
+ "ilp_best": 11,
+ "ilp_lower_bound": 10.999999999999934,
+ "ilp_status": 0,
+ "ilp_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+ "restricted_mechanisms": 488
+}

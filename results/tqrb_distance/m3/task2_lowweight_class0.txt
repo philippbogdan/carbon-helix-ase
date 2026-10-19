@@ -1,0 +1,14 @@
+sequence [['aut_H', 'aut_HS', 'aut_HH', 'aut_CZ', 'aut_HH', 'S0S1', 'aut_HS', 'aut_HS', 'aut_HH', 'aut_CZ'], ['aut_HS', 'aut_CZ', 'aut_HH', 'S0S1', 'aut_HS', 'aut_H', 'aut_HH'], ['aut_HS', 'aut_HS', 'aut_CZ', 'aut_HH']]; path nonadaptive; class 0: minimum weight 4 (status 0)
+mechanism 1968: detectors [np.int32(0), np.int32(0), np.int32(0), np.int32(0), np.int32(0), np.int32(0), np.int32(0)] observables [np.int32(0)]; 1 fault terms, e.g.:
+    round 1, part outer: site ('dep2', 17, 51), term 1306, prob 6.67e-05
+mechanism 2066: detectors [np.int32(0), np.int32(0), np.int32(0), np.int32(0)] observables [np.int32(0), np.int32(0)]; 5 fault terms, e.g.:
+    round 1, part outer: site ('dep2', 18, 46), term 1533, prob 6.67e-05
+    round 2, part S0S1: site ('dep2', 29, 18), term 169, prob 6.67e-05
+    round 2, part S0S1: site ('dep2', 29, 18), term 172, prob 6.67e-05
+    round 2, part S0S1: site ('dep2', 10, 18), term 322, prob 6.67e-05
+mechanism 2112: detectors [np.int32(0), np.int32(0), np.int32(0), np.int32(0), np.int32(0), np.int32(0)] observables [np.int32(0)]; 1 fault terms, e.g.:
+    round 1, part outer: site ('dep2', 13, 51), term 1610, prob 6.67e-05
+mechanism 2540: detectors [np.int32(0), np.int32(0), np.int32(0)] observables [np.int32(0)]; 3 fault terms, e.g.:
+    round 2, part inner_a: site ('dep2', 14, 27), term 441, prob 6.67e-05
+    round 2, part inner_a: site ('dep2', 27, 15), term 608, prob 6.67e-05
+    round 2, part inner_a: site ('dep2', 27, 15), term 609, prob 6.67e-05

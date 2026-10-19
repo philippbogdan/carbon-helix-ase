@@ -1,0 +1,45 @@
+{
+ "kappa2_K256": {
+  "seconds_per_shot": 0.1105936348438263,
+  "mean_W": 11.47,
+  "stage_use": [
+   191,
+   8,
+   1
+  ],
+  "failures": 0
+ },
+ "kappa2_K512": {
+  "seconds_per_shot": 0.14768311023712158,
+  "mean_W": 11.47,
+  "stage_use": [
+   196,
+   3,
+   1
+  ],
+  "failures": 0
+ },
+ "kappa2_decisions_differ": 0,
+ "kappa3_K256": {
+  "seconds_per_shot": 0.5843768703937531,
+  "mean_W": 17.135,
+  "stage_use": [
+   163,
+   30,
+   7
+  ],
+  "failures": 0
+ },
+ "kappa3_K512": {
+  "seconds_per_shot": 0.6357437551021576,
+  "mean_W": 17.135,
+  "stage_use": [
+   183,
+   9,
+   8
+  ],
+  "failures": 0
+ },
+ "kappa3_decisions_differ": 0,
+ "shots": 200
+}

@@ -1,0 +1,96 @@
+{
+ "carbonhelix": {
+  "L1_a": {
+   "two_q": 120,
+   "layers": 6,
+   "ancillas": 30,
+   "peak_qubits": 90,
+   "helios_ms": 145.2,
+   "faults_uniform_1e3": 0.20400000000000007,
+   "faults_helios": 0.30103920000000006
+  },
+  "L1_b": {
+   "two_q": 120,
+   "layers": 6,
+   "ancillas": 30,
+   "peak_qubits": 90,
+   "helios_ms": 145.2,
+   "faults_uniform_1e3": 0.20400000000000007,
+   "faults_helios": 0.30103920000000006
+  },
+  "L2_all": {
+   "two_q": 200,
+   "layers": 16,
+   "ancillas": 30,
+   "peak_qubits": 90,
+   "helios_ms": 306.00000000000006,
+   "faults_uniform_1e3": 0.41200000000000003,
+   "faults_helios": 0.5798260000000001
+  },
+  "L3": {
+   "two_q": 240,
+   "layers": 24,
+   "ancillas": 32,
+   "peak_qubits": 92,
+   "helios_ms": 337.2,
+   "faults_uniform_1e3": 0.5024,
+   "faults_helios": 0.6409400000000001
+  },
+  "L2_0": {
+   "two_q": 40,
+   "layers": 16,
+   "ancillas": 6,
+   "peak_qubits": 66,
+   "helios_ms": 146.0,
+   "faults_uniform_1e3": 0.0824,
+   "faults_helios": 0.07305320000000001
+  },
+  "W2_0": {
+   "two_q": 0,
+   "layers": 16,
+   "ancillas": 0,
+   "peak_qubits": 60,
+   "helios_ms": 146.0,
+   "faults_uniform_1e3": 0.019200000000000005,
+   "faults_helios": 0.0190968
+  },
+  "L3r_0": {
+   "two_q": 60,
+   "layers": 24,
+   "ancillas": 8,
+   "peak_qubits": 68,
+   "helios_ms": 246.0,
+   "faults_uniform_1e3": 0.23360000000000003,
+   "faults_helios": 0.25743960000000005
+  }
+ },
+ "c4helix": {
+  "inner_a": {
+   "two_q": 40,
+   "layers": 6,
+   "ancillas": 10,
+   "peak_qubits": 30,
+   "helios_ms": 80.39999999999999,
+   "faults_uniform_1e3": 0.06800000000000002,
+   "faults_helios": 0.0711568
+  },
+  "inner_b": {
+   "two_q": 40,
+   "layers": 6,
+   "ancillas": 10,
+   "peak_qubits": 30,
+   "helios_ms": 80.39999999999999,
+   "faults_uniform_1e3": 0.06800000000000002,
+   "faults_helios": 0.0711568
+  },
+  "outer": {
+   "two_q": 112,
+   "layers": 10,
+   "ancillas": 32,
+   "peak_qubits": 52,
+   "helios_ms": 160.79999999999998,
+   "faults_uniform_1e3": 0.1928,
+   "faults_helios": 0.22010144
+  }
+ }
+}

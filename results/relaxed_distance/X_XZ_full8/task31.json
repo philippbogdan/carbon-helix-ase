@@ -1,0 +1,285 @@
+{
+ "basis": "X",
+ "order": "XZ",
+ "kind": "full8",
+ "path": [
+  [
+   0,
+   "L1_a"
+  ],
+  [
+   0,
+   "L2_all"
+  ],
+  [
+   0,
+   "L3"
+  ],
+  [
+   1,
+   "L1_b"
+  ],
+  [
+   1,
+   "L2_all"
+  ],
+  [
+   1,
+   "L3"
+  ],
+  [
+   2,
+   "L1_a"
+  ],
+  [
+   2,
+   "L2_all"
+  ],
+  [
+   2,
+   "L3"
+  ],
+  [
+   3,
+   "L1_b"
+  ],
+  [
+   3,
+   "L2_all"
+  ],
+  [
+   3,
+   "L3"
+  ],
+  [
+   4,
+   "L1_a"
+  ],
+  [
+   4,
+   "L2_all"
+  ],
+  [
+   4,
+   "L3"
+  ],
+  [
+   5,
+   "L1_b"
+  ],
+  [
+   5,
+   "L2_all"
+  ],
+  [
+   5,
+   "L3"
+  ],
+  [
+   6,
+   "L1_a"
+  ],
+  [
+   6,
+   "L2_all"
+  ],
+  [
+   6,
+   "L3"
+  ],
+  [
+   7,
+   "L1_b"
+  ],
+  [
+   7,
+   "L2_all"
+  ],
+  [
+   7,
+   "L3"
+  ],
+  [
+   8,
+   "L1_a"
+  ],
+  [
+   8,
+   "L2_all"
+  ],
+  [
+   8,
+   "L3"
+  ]
+ ],
+ "optional": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+ ],
+ "instances": 9,
+ "W": 10,
+ "n_subsets": 255,
+ "task": 31,
+ "ntasks": 32,
+ "subsets": [
+  31,
+  63,
+  95,
+  127,
+  159,
+  191,
+  223
+ ],
+ "cheapest_pure_class": 7,
+ "instance_table_entries": 1917518,
+ "results": {
+  "[3, 5]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    7027,
+    7027
+   ],
+   "seconds": 46.7
+  },
+  "[0, 4, 5]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    497,
+    748,
+    673
+   ],
+   "seconds": 97.9
+  },
+  "[2, 3, 5]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    748,
+    673,
+    497
+   ],
+   "seconds": 97.6
+  },
+  "[5, 7, 8]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    497,
+    748,
+    673
+   ],
+   "seconds": 98.4
+  },
+  "[0, 2, 5, 6]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    88,
+    88,
+    88,
+    88
+   ],
+   "seconds": 34.9
+  },
+  "[1, 2, 4, 6]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    88,
+    88,
+    88,
+    88
+   ],
+   "seconds": 34.7
+  },
+  "[2, 3, 4, 8]": {
+   "min": {
+    "(0,)": "> 10",
+    "(1,)": "> 10",
+    "(0, 1)": "> 10"
+   },
+   "candidates": [
+    88,
+    88,
+    88,
+    88
+   ],
+   "seconds": 34.7
+  }
+ },
+ "seconds": 498.5020716190338,
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/relaxed_distance.py": "e5a6ec51b3ec25dce892775a83727b93de433150",
+   "src/hase/c4helix.py": "168c9916b532a2fa8ea0e7edad85d40e1a53910e",
+   "src/hase/carbonhelix.py": "c8fe1c55ea6a0c7dfdfa696ca922c46eeb1f9e01",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/protocols.py": "460a8b46d37c41c4e191fbc28fe6ccd4a84adf83",
+   "src/hase/relaxed_distance.py": "1563a22e37e6050e7aecdd152b75be2cbcf0a0f4",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "unknown"
+  }
+ }
+}

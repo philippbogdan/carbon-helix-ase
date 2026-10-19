@@ -1,0 +1,427 @@
+{
+ "six_fault_ties": {
+  "pairs": 20,
+  "at_least_one_fails": 20,
+  "both_fail": 1,
+  "five_fault_fails": 0,
+  "five_fault_trials": 20
+ },
+ "window": {
+  "full": {
+   "1,1": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,2": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "1,2": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "1,3": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,3": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "5,7": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,6": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "4,5": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   }
+  },
+  "B4": {
+   "1,1": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "2,2": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "1,2": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "1,3": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "2,3": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "5,7": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "2,6": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   },
+   "4,5": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     4,
+     8
+    ]
+   }
+  },
+  "B8": {
+   "1,1": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "2,2": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "1,2": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "1,3": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "2,3": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "5,7": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "2,6": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   },
+   "4,5": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     8
+    ]
+   }
+  },
+  "C": {
+   "1,1": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     2
+    ]
+   },
+   "2,2": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     3
+    ]
+   },
+   "1,2": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     2,
+     3
+    ]
+   },
+   "1,3": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     2,
+     4
+    ]
+   },
+   "2,3": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     3,
+     4
+    ]
+   },
+   "5,7": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     6,
+     8
+    ]
+   },
+   "2,6": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     3,
+     7
+    ]
+   },
+   "4,5": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     5,
+     6
+    ]
+   }
+  },
+  "R4": {
+   "1,1": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,2": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "1,2": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "1,3": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,3": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "5,7": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "2,6": {
+    "fails": false,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "4,5": {
+    "fails": true,
+    "outer_rounds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   }
+  }
+ }
+}

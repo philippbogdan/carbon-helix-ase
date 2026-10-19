@@ -1,0 +1,294 @@
+{
+ "campaign": "ch_interval",
+ "proto": "carbonhelix",
+ "rule": "l2=on_event,l3=ambiguous,T2=4,T3=4",
+ "basis": "X",
+ "rounds": 8,
+ "noise": "uniform",
+ "p_dec": 0.001,
+ "n": 5,
+ "rows": [
+  {
+   "W": 26,
+   "size": 7,
+   "mle_fails": false,
+   "strong_fails": false,
+   "faults": {
+    "(0, 'L3')": [
+     2602,
+     772
+    ],
+    "(4, 'L2_all')": [
+     910
+    ],
+    "(1, 'L1_b')": [
+     263
+    ],
+    "(1, 'L2_2')": [
+     293
+    ],
+    "(1, 'L3')": [
+     4454,
+     4963
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 29,
+   "size": 7,
+   "mle_fails": true,
+   "strong_fails": true,
+   "faults": {
+    "(0, 'L2_all')": [
+     1369,
+     2747,
+     1886,
+     9
+    ],
+    "init": [
+     18,
+     47
+    ],
+    "(0, 'L3')": [
+     4068
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 30,
+   "size": 11,
+   "mle_fails": null,
+   "strong_fails": null,
+   "faults": {
+    "(6, 'L1_a')": [
+     1830
+    ],
+    "(6, 'L3')": [
+     1863,
+     435,
+     2420,
+     1110
+    ],
+    "(7, 'L1_b')": [
+     1292
+    ],
+    "(5, 'L3')": [
+     4966
+    ],
+    "(7, 'L2_3')": [
+     263
+    ],
+    "(4, 'L1_a')": [
+     1628
+    ],
+    "(6, 'W2_4')": [
+     86
+    ],
+    "(7, 'L2_1')": [
+     386
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 31,
+   "size": 7,
+   "mle_fails": false,
+   "strong_fails": false,
+   "faults": {
+    "(0, 'L2_all')": [
+     536
+    ],
+    "(1, 'L3')": [
+     4085,
+     1637
+    ],
+    "(2, 'L3')": [
+     50
+    ],
+    "(1, 'L2_0')": [
+     395,
+     711
+    ],
+    "(2, 'L1_a')": [
+     1403
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 32,
+   "size": 7,
+   "mle_fails": null,
+   "strong_fails": true,
+   "faults": {
+    "(5, 'L1_b')": [
+     954
+    ],
+    "(7, 'L3')": [
+     51
+    ],
+    "(7, 'L1_b')": [
+     1588
+    ],
+    "(4, 'L3')": [
+     1853,
+     4402,
+     3975
+    ],
+    "(8, 'L1_a')": [
+     1261
+    ]
+   },
+   "counted": true
+  }
+ ],
+ "selection": "lowest_w",
+ "part": 1,
+ "nparts": 4,
+ "sizes_all": {
+  "7": 4,
+  "11": 1
+ },
+ "sizes_genuine": {
+  "7": 2
+ },
+ "min_genuine": 7,
+ "examples": [
+  {
+   "W": 26,
+   "size": 7,
+   "mle_fails": false,
+   "strong_fails": false,
+   "faults": {
+    "(0, 'L3')": [
+     2602,
+     772
+    ],
+    "(4, 'L2_all')": [
+     910
+    ],
+    "(1, 'L1_b')": [
+     263
+    ],
+    "(1, 'L2_2')": [
+     293
+    ],
+    "(1, 'L3')": [
+     4454,
+     4963
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 29,
+   "size": 7,
+   "mle_fails": true,
+   "strong_fails": true,
+   "faults": {
+    "(0, 'L2_all')": [
+     1369,
+     2747,
+     1886,
+     9
+    ],
+    "init": [
+     18,
+     47
+    ],
+    "(0, 'L3')": [
+     4068
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 31,
+   "size": 7,
+   "mle_fails": false,
+   "strong_fails": false,
+   "faults": {
+    "(0, 'L2_all')": [
+     536
+    ],
+    "(1, 'L3')": [
+     4085,
+     1637
+    ],
+    "(2, 'L3')": [
+     50
+    ],
+    "(1, 'L2_0')": [
+     395,
+     711
+    ],
+    "(2, 'L1_a')": [
+     1403
+    ]
+   },
+   "counted": true
+  },
+  {
+   "W": 32,
+   "size": 7,
+   "mle_fails": null,
+   "strong_fails": true,
+   "faults": {
+    "(5, 'L1_b')": [
+     954
+    ],
+    "(7, 'L3')": [
+     51
+    ],
+    "(7, 'L1_b')": [
+     1588
+    ],
+    "(4, 'L3')": [
+     1853,
+     4402,
+     3975
+    ],
+    "(8, 'L1_a')": [
+     1261
+    ]
+   },
+   "counted": true
+  }
+ ],
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "analysis/decoder_audit.py": "6749491a29b2ea210de52fc34b6938dae44e2c0d",
+   "analysis/minimal_fails.py": "66c6b338b01d848cf32f9650a21efc7a1cf70e67",
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "src/hase/c4helix.py": "55438a01bc6b571ca64f1448bc49c57dda063b1e",
+   "src/hase/carbonhelix.py": "4665a8a9da46f09944a791363ba817e8068ec7c8",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/decoding.py": "ec10f7c2019461327a1ad4fcb069b6cc2dd6b440",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/native.py": "7a547409ea5ede3d8be519ce66ff567846599f91",
+   "src/hase/protocols.py": "4583c89245e8f59b17640341e26ad8ad8562c811",
+   "src/hase/runner.py": "defaf381351f5619f9e25b856bb2ac06534ca6f4",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "5d5a60968182eb17cdc12c5ac1949732ead0905b"
+  }
+ }
+}

@@ -1,0 +1,6 @@
+stim
+numpy
+scipy
+matplotlib
+ldpc
+highspy

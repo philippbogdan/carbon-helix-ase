@@ -1,0 +1,48 @@
+{
+ "L1_ms": 145.2,
+ "checks": {
+  "L3r_0": {
+   "separate_ms": 268.2,
+   "packed_ms": 256.7,
+   "full_merge_possible": false
+  },
+  "L3r_1": {
+   "separate_ms": 268.2,
+   "packed_ms": 256.7,
+   "full_merge_possible": false
+  },
+  "L3r_2": {
+   "separate_ms": 268.2,
+   "packed_ms": 256.7,
+   "full_merge_possible": false
+  },
+  "L3r_3": {
+   "separate_ms": 268.2,
+   "packed_ms": 256.7,
+   "full_merge_possible": false
+  },
+  "L3r_4": {
+   "separate_ms": 268.2,
+   "packed_ms": 245.2,
+   "full_merge_possible": false
+  },
+  "L3r_5": {
+   "separate_ms": 268.2,
+   "packed_ms": 270.2,
+   "full_merge_possible": false
+  },
+  "L3r_6": {
+   "separate_ms": 268.2,
+   "packed_ms": 245.2,
+   "full_merge_possible": false
+  },
+  "L3r_7": {
+   "separate_ms": 268.2,
+   "packed_ms": 270.2,
+   "full_merge_possible": false
+  }
+ },
+ "saving_ms_max": 23.0,
+ "saving_ms_min": -2.0,
+ "full_merge_possible_any": false
+}

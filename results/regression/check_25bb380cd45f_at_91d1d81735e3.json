@@ -1,0 +1,8 @@
+{
+ "audit_redecode": "identical",
+ "chainmap": "identical",
+ "chainmap_ghz": "identical",
+ "protocol_c4_helios": "identical",
+ "strat_ch_helios": "identical",
+ "strat_ch_rotating16f": "identical"
+}

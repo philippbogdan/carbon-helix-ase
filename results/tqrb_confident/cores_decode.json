@@ -1,0 +1,1537 @@
+{
+ "rows": [
+  {
+   "p": 0.0007,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 10.079752606564398,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 9.53122625716875,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 9.14990686179452,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 9.526966103931802,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 5.869658141155398,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.9413617130759917,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.9412488785849291,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.9443425083064021,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 15.358526984529856,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 15.345554460080304,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 15.345554460080304,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.842306805009876,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 18.52661272538645,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 18.52661272538645,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 16.84997964903444,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 6.919033550548466,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 14.680043391434207,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 14.680043391434207,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.352762694717736,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 9.469566691239315,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 14.94191367268995,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 14.94191367268995,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.391200414924054,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 15.82202390734713,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 15.55460662274064,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 18.36324308157108,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 13.270117871498648,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 12.867136913418975,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 12.86713760435805,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 12.860774512121953,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 12.90133570113855,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 5.414793325924954,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 1.6918895730083712,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 5.4101370615134385,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 6,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 3.687155617543432,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 1.3473456813771207,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 1.3472275853330515,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 1.3463055265231674,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 5,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 1.9662677647626339,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 1.9662677647626339,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 6.705820123059226,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 6.692957455788566,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 3.780970966844741,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 6.692985787170215,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 17.866220704844856,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 17.866219727248573,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.970769964652867,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0007,
+   "core_size": 4,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 8.354239260752827,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 7.551818997945887,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 6.0696322462464565,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 7.550722363279483,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 14.449644596182342,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 14.445924849156544,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 14.445924849156544,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.434604540619194,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 2.459792914268945,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 2.459792914268945,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 2.473197184119055,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 2.472878459128527,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 2.46888981203389,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 1.086443424947518,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 4.978608040038246,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 4.32521229432103,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 4.954912003520068,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 4.356706722006031,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 1.1689336724978254,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 1.1689336724978254,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 1.1674431523549345,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 1.1674075780132114,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 1.1674401646380304,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 1.1674061762151489,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 1.4237960961848515,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 1.4237960961848515,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 1.6839669106391568,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 5.17673351215706,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.13868779407845722,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 5.171810297576759,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 0.3580975042889527,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 0.36327123440484854,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 0.36522905997163946,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 0.3632712258336248,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 17.357734379035303,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 17.3577345194168,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 16.07338158683949,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.8598989923167686,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.862603523507655,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.862437973893968,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.8626035729889807,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 8.072675690890364,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 8.072675690890364,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.7874403746829728,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 3.5140655923796515,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 0.1286287713668557,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 3.514065614392095,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 9.121562130597567,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 9.121562130597624,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 0.9646930244528917,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 0.9632621290255088,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 0.9815423129638461,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 0.9632616450299807,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.918276050113036,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.9197038107632132,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.9257729302786082,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.9197149557873558,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 9.079898979107767,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 9.079898979107767,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 5.225363710514273,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 0.3627665638929898,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 0.39932492254817475,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 0.3627799654627708,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 12.096040687170984,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 12.076182967942866,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 12.076182967942866,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 12.05696221493126,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 5,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 4.775569053353131,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 4.506098544380798,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 4.504215649691666,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 4.499928815201699,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 14.791639434417846,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 14.791639434417839,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 13.875332663126699,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 3.4204439143146104,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 3.42132611138274,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 1.5179274819968285,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.7162826409077212,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.6663553396068238,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.7163160418243422,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 0.32812927319558227,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 0.32812927319558227,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.066160666499119,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.06897388917959191,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.06709219990423776,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.06905390035428738,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 14.046121613665477,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 14.0444970197934,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 14.0444970197934,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 14.062418418772353,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 4,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 4.411047465273491,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 4.41061000721114,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 4.382605385062021,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 4.410609491061379,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 2,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 13.788701818305299,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 13.788701819799453,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 13.628099702974978,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": 1.4139081838058942,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": 1.4139081838058942,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.71701666243316,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.036296441399272794,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.036200002116782315,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.03627234482621944,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": false,
+     "gap": 0.1878296459850759,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": false,
+     "gap": 0.1878296459850759,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": 0.47445185118517585,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 0.48194189612057414,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 0.4776644330318369,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 0.4820082634258931,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 7,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 4.851685006027601,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 2.8198040011225984,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 4.851666114538929,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": true,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": true,
+     "gap": 2.2912582019198844,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": true,
+     "gap": 2.292126914840118,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": true,
+     "gap": 2.291758099526863,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 6,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 2.8484885290745225,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 2.846330908390911,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 2.8484882148622432,
+     "status": "ok"
+    }
+   }
+  },
+  {
+   "p": 0.0011,
+   "core_size": 3,
+   "exact_mle_fails": false,
+   "decoders": {
+    "K512_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K4096_D12": {
+     "fails": true,
+     "gap": Infinity,
+     "status": "ok"
+    },
+    "K512_D18": {
+     "fails": false,
+     "gap": 4.083062582753186,
+     "status": "ok"
+    },
+    "K512_D24": {
+     "fails": false,
+     "gap": 4.096619554582787,
+     "status": "ok"
+    },
+    "K4096_D24": {
+     "fails": false,
+     "gap": 4.092542282756352,
+     "status": "ok"
+    },
+    "K512_D36": {
+     "fails": false,
+     "gap": 4.096402500786002,
+     "status": "ok"
+    }
+   }
+  }
+ ],
+ "summary": {
+  "K512_D12": {
+   "cores": 39,
+   "fail": 38,
+   "fail_where_exact_mle_succeeds": 28
+  },
+  "K4096_D12": {
+   "cores": 39,
+   "fail": 38,
+   "fail_where_exact_mle_succeeds": 28
+  },
+  "K512_D18": {
+   "cores": 39,
+   "fail": 18,
+   "fail_where_exact_mle_succeeds": 8
+  },
+  "K512_D24": {
+   "cores": 39,
+   "fail": 13,
+   "fail_where_exact_mle_succeeds": 3
+  },
+  "K4096_D24": {
+   "cores": 39,
+   "fail": 12,
+   "fail_where_exact_mle_succeeds": 2
+  },
+  "K512_D36": {
+   "cores": 39,
+   "fail": 13,
+   "fail_where_exact_mle_succeeds": 3
+  }
+ },
+ "settings": [
+  [
+   512,
+   12.0
+  ],
+  [
+   4096,
+   12.0
+  ],
+  [
+   512,
+   18.0
+  ],
+  [
+   512,
+   24.0
+  ],
+  [
+   4096,
+   24.0
+  ],
+  [
+   512,
+   36.0
+  ]
+ ],
+ "commit": "unknown",
+ "provenance": {
+  "commit": "unknown",
+  "files": {
+   "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+   "scripts/tqrb_cores_decode.py": "c9f3bc0b4c96e8359a06cdd8ff787a7a50073397",
+   "src/hase/c4helix.py": "168c9916b532a2fa8ea0e7edad85d40e1a53910e",
+   "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+   "src/hase/decoding.py": "ec10f7c2019461327a1ad4fcb069b6cc2dd6b440",
+   "src/hase/distance.py": "ebc945e5f84d9aea7c7fcc0fdc12aadaa08f3d5f",
+   "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+   "src/hase/general_dem.py": "eb7f6d61ea12393d62a906c478558319a860e756",
+   "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+   "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+   "src/hase/logical.py": "17777a3023f2a1bd7daa76719a50fda2fdc9cc69",
+   "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+   "src/hase/native.py": "7a547409ea5ede3d8be519ce66ff567846599f91",
+   "src/hase/tqrb.py": "788879b196cb359e67c2914d1ac136108dcfcc3d",
+   "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+   "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+   "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+   "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+   "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+  },
+  "packages": {
+   "frontier": "0.1.0",
+   "stim": "1.16.0",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "frontier_commit": "unknown"
+  }
+ }
+}

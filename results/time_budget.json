@@ -1,0 +1,136 @@
+{
+ "R32F": {
+  "rule": "l2=on_event,l3=ambiguous,rot=32,l2fast=1",
+  "rounds": 32,
+  "shots": 400,
+  "noise": "helios",
+  "p": 0.00079,
+  "ms_per_round": {
+   "full outer measurement (escalation)": 33.93075000000076,
+   "inner checks (L1)": 145.1999999999689,
+   "rotating outer checks": 27.88640625,
+   "waits": 0.0,
+   "weight-6 checks, both types": 48.4771875
+  },
+  "instances_per_round": {
+   "full outer measurement (escalation)": 0.100625,
+   "inner checks (L1)": 1.0,
+   "rotating outer checks": 0.22671875,
+   "waits": 1.35890625,
+   "weight-6 checks, both types": 0.475859375
+  },
+  "total_ms_per_round": 255.49434374996963
+ },
+ "R32FT": {
+  "rule": "l2=on_event,l3=ambiguous,rot=32,l2fast=1,l2type=1",
+  "rounds": 32,
+  "shots": 400,
+  "noise": "helios",
+  "p": 0.00079,
+  "ms_per_round": {
+   "full outer measurement (escalation)": 21.259406250000314,
+   "inner checks (L1)": 145.1999999999689,
+   "rotating outer checks": 29.135625,
+   "waits": 0.0,
+   "weight-6 checks, both types": 11.38734375,
+   "weight-6 checks, one type": 26.319921875
+  },
+  "instances_per_round": {
+   "full outer measurement (escalation)": 0.063046875,
+   "inner checks (L1)": 1.0,
+   "rotating outer checks": 0.236875,
+   "waits": 1.39234375,
+   "weight-6 checks, both types": 0.10765625,
+   "weight-6 checks, one type": 0.360546875
+  },
+  "total_ms_per_round": 233.30229687496922
+ },
+ "R16F": {
+  "rule": "l2=on_event,l3=ambiguous,rot=16,l2fast=1",
+  "rounds": 32,
+  "shots": 400,
+  "noise": "helios",
+  "p": 0.00079,
+  "ms_per_round": {
+   "full outer measurement (escalation)": 37.11834375000086,
+   "inner checks (L1)": 145.1999999999689,
+   "rotating outer checks": 55.50375,
+   "waits": 0.0,
+   "weight-6 checks, both types": 53.96921875
+  },
+  "instances_per_round": {
+   "full outer measurement (escalation)": 0.110078125,
+   "inner checks (L1)": 1.0,
+   "rotating outer checks": 0.45125,
+   "waits": 1.4890625,
+   "weight-6 checks, both types": 0.528515625
+  },
+  "total_ms_per_round": 291.79131249996976
+ },
+ "P8": {
+  "rule": "l2=on_event,l3=never,T2=8,T3=8",
+  "rounds": 8,
+  "shots": 400,
+  "noise": "uniform",
+  "p": 0.001,
+  "ms_per_round": {
+   "full outer measurement (periodic)": 42.14999999999979,
+   "inner checks (L1)": 145.20000000000778,
+   "waits": 0.0,
+   "weight-6 checks, both types": 52.3775,
+   "weight-6 checks, periodic (all blocks)": 38.25000000000001
+  },
+  "instances_per_round": {
+   "full outer measurement (periodic)": 0.125,
+   "inner checks (L1)": 1.0,
+   "waits": 1.031875,
+   "weight-6 checks, both types": 0.35875,
+   "weight-6 checks, periodic (all blocks)": 0.125
+  },
+  "total_ms_per_round": 277.9775000000076
+ },
+ "P16": {
+  "rule": "l2=on_event,l3=never,T2=16,T3=16",
+  "rounds": 16,
+  "shots": 400,
+  "noise": "uniform",
+  "p": 0.001,
+  "ms_per_round": {
+   "full outer measurement (periodic)": 21.074999999999896,
+   "inner checks (L1)": 145.19999999998433,
+   "waits": 0.0,
+   "weight-6 checks, both types": 48.9328125,
+   "weight-6 checks, periodic (all blocks)": 19.125000000000004
+  },
+  "instances_per_round": {
+   "full outer measurement (periodic)": 0.0625,
+   "inner checks (L1)": 1.0,
+   "waits": 1.03515625,
+   "weight-6 checks, both types": 0.33515625,
+   "weight-6 checks, periodic (all blocks)": 0.0625
+  },
+  "total_ms_per_round": 234.33281249998424
+ },
+ "P8F": {
+  "rule": "l2=on_event,l3=never,T2=8,T3=8,l2fast=1",
+  "rounds": 8,
+  "shots": 400,
+  "noise": "uniform",
+  "p": 0.001,
+  "ms_per_round": {
+   "full outer measurement (periodic)": 42.14999999999979,
+   "inner checks (L1)": 145.20000000000778,
+   "waits": 0.0,
+   "weight-6 checks, both types": 35.039375,
+   "weight-6 checks, periodic (all blocks)": 38.25000000000001
+  },
+  "instances_per_round": {
+   "full outer measurement (periodic)": 0.125,
+   "inner checks (L1)": 1.0,
+   "waits": 0.98625,
+   "weight-6 checks, both types": 0.33875,
+   "weight-6 checks, periodic (all blocks)": 0.125
+  },
+  "total_ms_per_round": 260.6393750000076
+ }
+}

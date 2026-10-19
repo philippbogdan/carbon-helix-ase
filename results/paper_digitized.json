@@ -1,0 +1,783 @@
+{
+ "source": "arXiv:2609.03194 v1 (data/papers/2609.03194-source/figures)",
+ "method": "analysis/digitize_paper.py: gridline and colorbar calibration, template-matched or colour-scanned marker centres; +-3 % reading",
+ "fig11": {
+  "figure": "Fig. 11 (frontier_extrapolation_memory.png): C4-Helix memory, r = 12, error per round 1 - (1 - p_L)^(1/12) (a) and rejection per round (b), mean of X and Z bases, forced-gap threshold gamma (nats)",
+  "panels": {
+   "a": {
+    "calibration": {
+     "x_1e-4": 896.5,
+     "x_1e-3": 3758.5,
+     "y_top_major": 780.5,
+     "top_decade": -5,
+     "px_per_decade_y": 536.4
+    },
+    "points": {
+     "0.0007": {
+      "0": {
+       "value": 7.54900363687405e-06,
+       "y_px": 846.0,
+       "x_px": 3315.0,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 4.809945924621485e-06,
+       "y_px": 951.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 2.8368325812299165e-06,
+       "y_px": 1074.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 1.433550922492999e-06,
+       "y_px": 1233.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 8.901803461732957e-07,
+       "y_px": 1344.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 5.250147608247087e-07,
+       "y_px": 1467.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     },
+     "0.0009": {
+      "0": {
+       "value": 1.7064867017674413e-05,
+       "y_px": 656.0,
+       "x_px": 3627.8,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 1.050604422097907e-05,
+       "y_px": 769.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 7.017733439348238e-06,
+       "y_px": 863.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 3.847668197442819e-06,
+       "y_px": 1003.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 2.202120923076293e-06,
+       "y_px": 1133.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 1.4459114115340183e-06,
+       "y_px": 1231.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     },
+     "0.0011": {
+      "0": {
+       "value": 3.4650473389975584e-05,
+       "y_px": 491.0,
+       "x_px": 3877.0,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 2.1983429812050056e-05,
+       "y_px": 597.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 1.4558764932741614e-05,
+       "y_px": 693.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 7.779283474352003e-06,
+       "y_px": 839.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 4.8514186640661175e-06,
+       "y_px": 949.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 3.4119115407452677e-06,
+       "y_px": 1031.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     }
+    }
+   },
+   "b": {
+    "calibration": {
+     "x_1e-4": 896.5,
+     "x_1e-3": 3758.5,
+     "y_top_major": 4356.5,
+     "top_decade": -4,
+     "px_per_decade_y": 666.75
+    },
+    "points": {
+     "0.0007": {
+      "4": {
+       "value": 2.849824709612187e-05,
+       "y_px": 4720.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 2.1919588456725044e-05,
+       "y_px": 4796.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 1.6287278364725857e-05,
+       "y_px": 4882.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 9.905479774725581e-06,
+       "y_px": 5026.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 5.265138790235582e-06,
+       "y_px": 5209.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      }
+     },
+     "0.0009": {
+      "4": {
+       "value": 6.710759170575149e-05,
+       "y_px": 4472.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 5.108418443287933e-05,
+       "y_px": 4551.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 3.705133831116471e-05,
+       "y_px": 4644.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 2.2455931953275457e-05,
+       "y_px": 4789.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 1.3102685893977588e-05,
+       "y_px": 4945.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      }
+     },
+     "0.0011": {
+      "4": {
+       "value": 0.00013621759893697554,
+       "y_px": 4267.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 0.00010121604045811468,
+       "y_px": 4353.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 7.265530689764993e-05,
+       "y_px": 4449.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 4.3731553030462616e-05,
+       "y_px": 4596.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 2.4480844578360427e-05,
+       "y_px": 4764.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      }
+     }
+    }
+   }
+  }
+ },
+ "fig12": {
+  "figure": "Fig. 12 (frontier_extrapolation_logic.png): non-adaptive TQRB, m = 6 random Cliffords + the inverse, error per Clifford 1 - (1 - p_L)^(1/7) (a) and rejection (b), forced-gap threshold gamma (nats)",
+  "panels": {
+   "a": {
+    "calibration": {
+     "x_1e-4": 835.5,
+     "x_1e-3": 3697.5,
+     "y_top_major": 686.5,
+     "top_decade": -4,
+     "px_per_decade_y": 701.6666666666666
+    },
+    "points": {
+     "0.0007": {
+      "0": {
+       "value": 4.962773625959159e-05,
+       "y_px": 900.0,
+       "x_px": 3255.0,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 3.693672893569576e-05,
+       "y_px": 990.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 2.6429579975273652e-05,
+       "y_px": 1092.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 1.6049561929538327e-05,
+       "y_px": 1244.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 1.0789880307794168e-05,
+       "y_px": 1365.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 7.065918861351442e-06,
+       "y_px": 1494.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     },
+     "0.0009": {
+      "0": {
+       "value": 0.00010309892970002657,
+       "y_px": 677.2,
+       "x_px": 3567.0,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 7.72900370422898e-05,
+       "y_px": 765.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 5.8285187079360374e-05,
+       "y_px": 851.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 3.75477850540912e-05,
+       "y_px": 985.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 2.410933731053452e-05,
+       "y_px": 1120.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 1.7594145169618352e-05,
+       "y_px": 1216.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     },
+     "0.0011": {
+      "0": {
+       "value": 0.00018601716118655699,
+       "y_px": 497.4,
+       "x_px": 3815.9,
+       "score": 1.0
+      },
+      "0.5": {
+       "value": 0.00014090652883236494,
+       "y_px": 582.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      },
+      "1": {
+       "value": 0.0001083719441745711,
+       "y_px": 662.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 6.602599647495098e-05,
+       "y_px": 813.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "3": {
+       "value": 4.497478761416681e-05,
+       "y_px": 930.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "4": {
+       "value": 2.897311894857301e-05,
+       "y_px": 1064.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      }
+     }
+    }
+   },
+   "b": {
+    "calibration": {
+     "x_1e-4": 835.5,
+     "x_1e-3": 3697.5,
+     "y_top_major": 4133.0,
+     "top_decade": -3,
+     "px_per_decade_y": 787.5
+    },
+    "points": {
+     "0.0007": {
+      "4": {
+       "value": 0.00017763306502017553,
+       "y_px": 4724.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 0.00013029286531953494,
+       "y_px": 4830.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 9.146813862076326e-05,
+       "y_px": 4951.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 5.232752076732313e-05,
+       "y_px": 5142.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 2.8567551295927813e-05,
+       "y_px": 5349.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 65
+      }
+     },
+     "0.0009": {
+      "4": {
+       "value": 0.0003788023794925951,
+       "y_px": 4465.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 0.00027461873275066095,
+       "y_px": 4575.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 0.00018943504150585147,
+       "y_px": 4702.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 0.00010555822128184964,
+       "y_px": 4902.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 5.6131461380354774e-05,
+       "y_px": 5118.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      }
+     },
+     "0.0011": {
+      "4": {
+       "value": 0.0006679776087651721,
+       "y_px": 4271.0,
+       "gamma_read": 3.98,
+       "colour_dist": 2.4,
+       "chord": 65
+      },
+      "3": {
+       "value": 0.0004758393104110028,
+       "y_px": 4387.0,
+       "gamma_read": 3.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "2": {
+       "value": 0.0003311311214825911,
+       "y_px": 4511.0,
+       "gamma_read": 2.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "1": {
+       "value": 0.00017711443915798485,
+       "y_px": 4725.0,
+       "gamma_read": 1.02,
+       "colour_dist": 0.0,
+       "chord": 65
+      },
+      "0.5": {
+       "value": 9.556909211270052e-05,
+       "y_px": 4936.0,
+       "gamma_read": 0.52,
+       "colour_dist": 0.0,
+       "chord": 63
+      }
+     }
+    }
+   }
+  }
+ },
+ "fig13": {
+  "figure": "arXiv:2609.03194 Fig. 13 (logic_sims.png)",
+  "legend_eps_C": {
+   "0.001": {
+    "adaptive": 0.00028,
+    "nonadaptive": 0.00042
+   },
+   "0.0005": {
+    "adaptive": 2.6e-05,
+    "nonadaptive": 4.7e-05
+   }
+  },
+  "fit": "p_L(m) = (eps0 - 1/2)(1 - 2 eps_C)^m + 1/2, eps0 shared by adaptive and non-adaptive",
+  "calibration": {
+   "x_m0": 690.1666666666666,
+   "px_per_m": 399.6666666666667,
+   "y_1e-3": 1334.5,
+   "px_per_decade_y": 1373.0
+  },
+  "points": {
+   "p0.001_a1_m3": {
+    "pL": 0.0014942922450977116,
+    "x_px": 1890.0,
+    "y_px": 1095.0,
+    "score": 0.806,
+    "ci95": [
+     0.001342215614938367,
+     0.0016635995654555767
+    ],
+    "bar_visible": [
+     false,
+     false
+    ]
+   },
+   "p0.001_a1_m5": {
+    "pL": 0.001827407474505524,
+    "x_px": 2689.0,
+    "y_px": 975.0,
+    "score": 1.0,
+    "ci95": [
+     0.0016414291482694644,
+     0.002034457644059362
+    ],
+    "bar_visible": [
+     false,
+     true
+    ]
+   },
+   "p0.001_a1_m7": {
+    "pL": 0.0025771724579570325,
+    "x_px": 3488.0,
+    "y_px": 770.0,
+    "score": 1.0,
+    "ci95": [
+     0.0022573829681605093,
+     0.0029472030026582597
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.001_a0_m3": {
+    "pL": 0.0017275724551874024,
+    "x_px": 1889.5,
+    "y_px": 1008.5,
+    "score": 1.0,
+    "ci95": [
+     0.0013856724973556201,
+     0.0019346334344364298
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.001_a0_m5": {
+    "pL": 0.002588000236751593,
+    "x_px": 2688.5,
+    "y_px": 767.5,
+    "score": 1.0,
+    "ci95": [
+     0.002322666681330755,
+     0.002878812642883327
+    ],
+    "bar_visible": [
+     false,
+     false
+    ]
+   },
+   "p0.001_a0_m7": {
+    "pL": 0.003607231970140972,
+    "x_px": 3487.5,
+    "y_px": 569.5,
+    "score": 1.0,
+    "ci95": [
+     0.003237402141583241,
+     0.004012574981248549
+    ],
+    "bar_visible": [
+     false,
+     false
+    ]
+   },
+   "p0.0005_a1_m3": {
+    "pL": 0.00020073448846833267,
+    "x_px": 1890.0,
+    "y_px": 2292.0,
+    "score": 0.882,
+    "ci95": [
+     0.0001550453869465274,
+     0.00022347824455585635
+    ],
+    "bar_visible": [
+     true,
+     false
+    ]
+   },
+   "p0.0005_a1_m5": {
+    "pL": 0.00024425128297298696,
+    "x_px": 2689.0,
+    "y_px": 2175.0,
+    "score": 1.0,
+    "ci95": [
+     0.00019216989839741843,
+     0.000310447628538433
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.0005_a1_m7": {
+    "pL": 0.0002797897210479917,
+    "x_px": 3488.0,
+    "y_px": 2094.0,
+    "score": 1.0,
+    "ci95": [
+     0.00021610688773289856,
+     0.00036284674691985886
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.0005_a0_m3": {
+    "pL": 0.00023878353098599813,
+    "x_px": 1889.5,
+    "y_px": 2188.5,
+    "score": 1.0,
+    "ci95": [
+     0.00018583123713518168,
+     0.000288364459664478
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.0005_a0_m5": {
+    "pL": 0.00036498279800170115,
+    "x_px": 2688.5,
+    "y_px": 1935.5,
+    "score": 1.0,
+    "ci95": [
+     0.00031201346971380565,
+     0.0004269445256941622
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   },
+   "p0.0005_a0_m7": {
+    "pL": 0.0004403982591600928,
+    "x_px": 3487.5,
+    "y_px": 1823.5,
+    "score": 1.0,
+    "ci95": [
+     0.0003809297268206743,
+     0.0005100052585594922
+    ],
+    "bar_visible": [
+     true,
+     true
+    ]
+   }
+  }
+ },
+ "fig14": {
+  "figure": "Fig. 14 (cnot_compare.png): two C4-Helix blocks, 6 transversal CNOTs interleaved with QEC cycles on both, logical error per CNOT ('C4-Helix transv.', points), and 6 chain-map CNOTs from the distance-5 surface code to C4-Helix's first logical qubit ('Surface-C4-Helix', points_surface), uniform noise",
+  "calibration": {
+   "x_1e-4": 846.5,
+   "x_1e-3": 3993.5,
+   "y_major": [
+    240.5,
+    1045.5,
+    1851.5,
+    2657.5,
+    3462.5
+   ],
+   "px_per_decade_y": 805.5
+  },
+  "points": {
+   "0.0007": {
+    "value": 7.449534098107589e-06,
+    "x_px": 3506.0,
+    "y_px": 1149.0,
+    "score": 0.981
+   },
+   "0.0009": {
+    "value": 1.6257323130918338e-05,
+    "x_px": 3850.0,
+    "y_px": 876.0,
+    "score": 0.979
+   },
+   "0.0011": {
+    "value": 3.0230611170608592e-05,
+    "x_px": 4124.0,
+    "y_px": 659.0,
+    "score": 0.978
+   }
+  },
+  "points_surface": {
+   "0.0007": {
+    "value": 1.817465476803662e-05,
+    "x_px": 3506.0,
+    "y_px": 837.0,
+    "score": 0.978
+   },
+   "0.0009": {
+    "value": 4.844942649549e-05,
+    "x_px": 3850.0,
+    "y_px": 494.0,
+    "score": 0.978
+   },
+   "0.0011": {
+    "value": 8.557367067073969e-05,
+    "x_px": 4124.0,
+    "y_px": 295.0,
+    "score": 0.978
+   }
+  }
+ }
+}

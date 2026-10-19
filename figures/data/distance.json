@@ -1,0 +1,1043 @@
+{
+ "ends": {
+  "k4cyc|R8_0|X": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999995405,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_0|Z": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999982547,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_1|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999998,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_1|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999870512,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_2|X": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999997806,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_2|Z": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.99999999999971,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_3|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999998,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_3|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.99999999999285,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_4|X": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999924668,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_4|Z": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.99999999999988,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_5|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999998916,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_5|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999368058,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_6|X": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999990612,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_6|Z": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.99999999999836,
+   "restricted_mechanisms": 227
+  },
+  "k4cyc|R8_7|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999977,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|R8_7|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.99999999976663,
+   "restricted_mechanisms": 228
+  },
+  "k4cyc|XZ|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999892,
+   "restricted_mechanisms": 488
+  },
+  "k4cyc|XZ|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999999939845,
+   "restricted_mechanisms": 422
+  },
+  "k4cyc|ZX|Z": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999286,
+   "restricted_mechanisms": 468
+  },
+  "k4cyc|quiet|X": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999998153,
+   "restricted_mechanisms": 1020
+  },
+  "k4cyc|quiet|Z": {
+   "min_weight": 12,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 11.999999996886382,
+   "restricted_mechanisms": 778
+  }
+ },
+ "designs": {
+  "k4cyc_e": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.99999999999828,
+   "restricted_mechanisms": 483
+  },
+  "k5pre": {
+   "min_weight": 10,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 9.999999999993186,
+   "restricted_mechanisms": 539
+  },
+  "k5pre_e": {
+   "min_weight": 10,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 9.999999999997652,
+   "restricted_mechanisms": 531
+  },
+  "k6": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999982,
+   "restricted_mechanisms": 536
+  },
+  "k6_e": {
+   "min_weight": 11,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 10.999999999999938,
+   "restricted_mechanisms": 531
+  },
+  "latin4": {
+   "min_weight": 9,
+   "all_optimal": true,
+   "combos": [
+    "0",
+    "01",
+    "1"
+   ],
+   "min_lower_bound": 8.999999999999993,
+   "restricted_mechanisms": 385
+  }
+ },
+ "whole": {
+  "XZ|X": {
+   "best": 12,
+   "lower_bound": 4.0,
+   "optimal": false,
+   "seconds": 40003.50061917305,
+   "mechanisms": 5601
+  },
+  "ZX|Z": {
+   "best": 11,
+   "lower_bound": 5.0,
+   "optimal": false,
+   "seconds": 40002.183599710464,
+   "mechanisms": 5513
+  }
+ },
+ "end_distance": 11,
+ "end_failure_faults": 6,
+ "end_cases_complete": 20,
+ "end_cases": 21,
+ "gadget_gain": {
+  "outer": {
+   "latin4_Z": {
+    "design": "latin4",
+    "kind": "Z",
+    "pauli": "Z",
+    "mechanisms": 40,
+    "two_qubit_gates": 22,
+    "ancillas": 4,
+    "layers": 10,
+    "gain": {
+     "1": 0,
+     "2": 2,
+     "3": 5,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "2": [
+      "('reset', 62)",
+      "('dep2', 23, 62)"
+     ],
+     "3": [
+      "('dep2', 61, 60)",
+      "('dep2', 46, 60)",
+      "('dep2', 23, 62)"
+     ],
+     "4": [
+      "('reset', 63)",
+      "('idle', 23)",
+      "('dep2', 0, 60)",
+      "('dep2', 63, 60)"
+     ],
+     "5": [
+      "('idle', 1)",
+      "('dep2', 27, 61)",
+      "('dep2', 37, 62)",
+      "('dep2', 1, 63)",
+      "('dep2', 33, 60)"
+     ],
+     "6": [
+      "('reset', 62)",
+      "('idle', 0)",
+      "('idle', 1)",
+      "('idle', 36)",
+      "('idle', 46)",
+      "('dep2', 23, 62)"
+     ],
+     "7": [
+      "('idle', 1)",
+      "('idle', 24)",
+      "('idle', 27)",
+      "('idle', 36)",
+      "('idle', 46)",
+      "('dep2', 24, 62)",
+      "('dep2', 23, 62)"
+     ]
+    }
+   },
+   "latin4_X": {
+    "design": "latin4",
+    "kind": "X",
+    "pauli": "X",
+    "mechanisms": 40,
+    "two_qubit_gates": 22,
+    "ancillas": 4,
+    "layers": 10,
+    "gain": {
+     "1": 0,
+     "2": 2,
+     "3": 5,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "2": [
+      "('reset', 62)",
+      "('dep2', 62, 22)"
+     ],
+     "3": [
+      "('dep2', 60, 61)",
+      "('dep2', 60, 47)",
+      "('dep2', 62, 22)"
+     ],
+     "4": [
+      "('reset', 63)",
+      "('idle', 22)",
+      "('dep2', 60, 0)",
+      "('dep2', 60, 63)"
+     ],
+     "5": [
+      "('idle', 3)",
+      "('dep2', 61, 27)",
+      "('dep2', 62, 39)",
+      "('dep2', 63, 3)",
+      "('dep2', 60, 33)"
+     ],
+     "6": [
+      "('reset', 62)",
+      "('idle', 0)",
+      "('idle', 3)",
+      "('idle', 36)",
+      "('idle', 47)",
+      "('dep2', 62, 22)"
+     ],
+     "7": [
+      "('idle', 3)",
+      "('idle', 25)",
+      "('idle', 27)",
+      "('idle', 36)",
+      "('idle', 47)",
+      "('dep2', 62, 25)",
+      "('dep2', 62, 22)"
+     ]
+    }
+   },
+   "k4cyc_Z": {
+    "design": "k4cyc",
+    "kind": "Z",
+    "pauli": "Z",
+    "mechanisms": 52,
+    "two_qubit_gates": 30,
+    "ancillas": 8,
+    "layers": 12,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('dep2', 66, 63)",
+      "('dep2', 67, 60)",
+      "('dep2', 63, 60)"
+     ],
+     "4": [
+      "('dep2', 64, 61)",
+      "('dep2', 65, 62)",
+      "('dep2', 66, 63)",
+      "('dep2', 67, 60)"
+     ],
+     "5": [
+      "('dep2', 61, 60)",
+      "('dep2', 1, 63)",
+      "('reset', 64)",
+      "('dep2', 66, 62)",
+      "('dep2', 63, 60)"
+     ],
+     "6": [
+      "('reset', 62)",
+      "('dep2', 1, 63)",
+      "('reset', 65)",
+      "('reset', 67)",
+      "('dep2', 67, 60)",
+      "('dep2', 10, 61)"
+     ],
+     "7": [
+      "('idle', 10)",
+      "('idle', 12)",
+      "('dep2', 12, 61)",
+      "('reset', 64)",
+      "('dep2', 66, 62)",
+      "('dep2', 66, 63)",
+      "('dep2', 33, 60)"
+     ]
+    }
+   },
+   "k4cyc_X": {
+    "design": "k4cyc",
+    "kind": "X",
+    "pauli": "X",
+    "mechanisms": 52,
+    "two_qubit_gates": 30,
+    "ancillas": 8,
+    "layers": 12,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('dep2', 63, 66)",
+      "('dep2', 60, 67)",
+      "('dep2', 60, 63)"
+     ],
+     "4": [
+      "('dep2', 61, 64)",
+      "('dep2', 62, 65)",
+      "('dep2', 63, 66)",
+      "('dep2', 60, 67)"
+     ],
+     "5": [
+      "('dep2', 60, 61)",
+      "('dep2', 63, 3)",
+      "('reset', 64)",
+      "('dep2', 62, 66)",
+      "('dep2', 60, 63)"
+     ],
+     "6": [
+      "('reset', 62)",
+      "('dep2', 63, 3)",
+      "('reset', 65)",
+      "('reset', 67)",
+      "('dep2', 60, 67)",
+      "('dep2', 61, 11)"
+     ],
+     "7": [
+      "('idle', 11)",
+      "('idle', 13)",
+      "('dep2', 61, 13)",
+      "('reset', 64)",
+      "('dep2', 62, 66)",
+      "('dep2', 63, 66)",
+      "('dep2', 60, 33)"
+     ]
+    }
+   },
+   "k5pre_Z": {
+    "design": "k5pre",
+    "kind": "Z",
+    "pauli": "Z",
+    "mechanisms": 58,
+    "two_qubit_gates": 34,
+    "ancillas": 9,
+    "layers": 15,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('dep2', 65, 60)",
+      "('dep2', 68, 63)",
+      "('dep2', 63, 60)"
+     ],
+     "4": [
+      "('dep2', 65, 60)",
+      "('dep2', 68, 63)",
+      "('dep2', 67, 61)",
+      "('dep2', 68, 62)"
+     ],
+     "5": [
+      "('idle', 27)",
+      "('dep2', 68, 63)",
+      "('dep2', 67, 61)",
+      "('dep2', 68, 62)",
+      "('dep2', 33, 60)"
+     ],
+     "6": [
+      "('dep2', 36, 63)",
+      "('reset', 66)",
+      "('reset', 67)",
+      "('dep2', 65, 62)",
+      "('dep2', 65, 60)",
+      "('dep2', 45, 61)"
+     ],
+     "7": [
+      "('idle', 0)",
+      "('idle', 21)",
+      "('idle', 24)",
+      "('idle', 27)",
+      "('dep2', 67, 61)",
+      "('dep2', 68, 62)",
+      "('dep2', 63, 60)"
+     ]
+    }
+   },
+   "k5pre_X": {
+    "design": "k5pre",
+    "kind": "X",
+    "pauli": "X",
+    "mechanisms": 58,
+    "two_qubit_gates": 34,
+    "ancillas": 9,
+    "layers": 15,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('dep2', 60, 65)",
+      "('dep2', 63, 68)",
+      "('dep2', 60, 63)"
+     ],
+     "4": [
+      "('dep2', 60, 65)",
+      "('dep2', 63, 68)",
+      "('dep2', 61, 67)",
+      "('dep2', 62, 68)"
+     ],
+     "5": [
+      "('idle', 27)",
+      "('dep2', 63, 68)",
+      "('dep2', 61, 67)",
+      "('dep2', 62, 68)",
+      "('dep2', 60, 33)"
+     ],
+     "6": [
+      "('dep2', 63, 36)",
+      "('reset', 66)",
+      "('reset', 67)",
+      "('dep2', 62, 65)",
+      "('dep2', 60, 65)",
+      "('dep2', 61, 46)"
+     ],
+     "7": [
+      "('idle', 0)",
+      "('idle', 21)",
+      "('idle', 25)",
+      "('idle', 27)",
+      "('dep2', 61, 67)",
+      "('dep2', 62, 68)",
+      "('dep2', 60, 63)"
+     ]
+    }
+   },
+   "k6_Z": {
+    "design": "k6",
+    "kind": "Z",
+    "pauli": "Z",
+    "mechanisms": 58,
+    "two_qubit_gates": 34,
+    "ancillas": 10,
+    "layers": 13,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('reset', 61)",
+      "('dep2', 27, 61)",
+      "('dep2', 1, 63)"
+     ],
+     "4": [
+      "('dep2', 65, 62)",
+      "('dep2', 66, 60)",
+      "('dep2', 68, 61)",
+      "('dep2', 69, 63)"
+     ],
+     "5": [
+      "('reset', 68)",
+      "('dep2', 64, 61)",
+      "('dep2', 65, 62)",
+      "('dep2', 66, 60)",
+      "('dep2', 69, 63)"
+     ],
+     "6": [
+      "('reset', 66)",
+      "('reset', 68)",
+      "('dep2', 64, 60)",
+      "('dep2', 64, 61)",
+      "('dep2', 67, 62)",
+      "('dep2', 69, 63)"
+     ],
+     "7": [
+      "('idle', 37)",
+      "('reset', 68)",
+      "('reset', 69)",
+      "('dep2', 66, 63)",
+      "('dep2', 65, 62)",
+      "('dep2', 68, 61)",
+      "('dep2', 33, 60)"
+     ]
+    }
+   },
+   "k6_X": {
+    "design": "k6",
+    "kind": "X",
+    "pauli": "X",
+    "mechanisms": 58,
+    "two_qubit_gates": 34,
+    "ancillas": 10,
+    "layers": 13,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 1,
+     "4": 4,
+     "5": 3,
+     "6": 2,
+     "7": 1,
+     "8": 0,
+     "9": -1
+    },
+    "witness": {
+     "3": [
+      "('reset', 61)",
+      "('dep2', 61, 27)",
+      "('dep2', 63, 3)"
+     ],
+     "4": [
+      "('dep2', 62, 65)",
+      "('dep2', 60, 66)",
+      "('dep2', 61, 68)",
+      "('dep2', 63, 69)"
+     ],
+     "5": [
+      "('reset', 68)",
+      "('dep2', 61, 64)",
+      "('dep2', 62, 65)",
+      "('dep2', 60, 66)",
+      "('dep2', 63, 69)"
+     ],
+     "6": [
+      "('reset', 66)",
+      "('reset', 68)",
+      "('dep2', 60, 64)",
+      "('dep2', 61, 64)",
+      "('dep2', 62, 67)",
+      "('dep2', 63, 69)"
+     ],
+     "7": [
+      "('idle', 39)",
+      "('reset', 68)",
+      "('reset', 69)",
+      "('dep2', 63, 66)",
+      "('dep2', 62, 65)",
+      "('dep2', 61, 68)",
+      "('dep2', 60, 33)"
+     ]
+    }
+   }
+  },
+  "blocks": {
+   "L1a_X": {
+    "part": "L1a",
+    "pauli": "X",
+    "mechanisms": 21,
+    "strict": false,
+    "gain": {
+     "1": 1,
+     "2": 2,
+     "3": 1,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    },
+    "witness": {
+     "1": [
+      "('dep2', 64, 8)"
+     ],
+     "2": [
+      "('dep2', 60, 0)",
+      "('dep2', 64, 8)"
+     ],
+     "3": [
+      "('idle', 0)",
+      "('dep2', 60, 1)",
+      "('dep2', 64, 8)"
+     ]
+    }
+   },
+   "L1a_X_strict": {
+    "part": "L1a",
+    "pauli": "X",
+    "mechanisms": 72,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L1a_Z": {
+    "part": "L1a",
+    "pauli": "Z",
+    "mechanisms": 21,
+    "strict": false,
+    "gain": {
+     "1": 1,
+     "2": 2,
+     "3": 1,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    },
+    "witness": {
+     "1": [
+      "('dep2', 5, 63)"
+     ],
+     "2": [
+      "('dep2', 5, 63)",
+      "('dep2', 9, 65)"
+     ],
+     "3": [
+      "('idle', 5)",
+      "('dep2', 4, 63)",
+      "('dep2', 1, 61)"
+     ]
+    }
+   },
+   "L1a_Z_strict": {
+    "part": "L1a",
+    "pauli": "Z",
+    "mechanisms": 72,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L1b_X": {
+    "part": "L1b",
+    "pauli": "X",
+    "mechanisms": 21,
+    "strict": false,
+    "gain": {
+     "1": 1,
+     "2": 2,
+     "3": 1,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    },
+    "witness": {
+     "1": [
+      "('dep2', 64, 10)"
+     ],
+     "2": [
+      "('dep2', 60, 2)",
+      "('dep2', 64, 10)"
+     ],
+     "3": [
+      "('dep2', 60, 3)",
+      "('dep2', 60, 2)",
+      "('dep2', 62, 6)"
+     ]
+    }
+   },
+   "L1b_X_strict": {
+    "part": "L1b",
+    "pauli": "X",
+    "mechanisms": 72,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L1b_Z": {
+    "part": "L1b",
+    "pauli": "Z",
+    "mechanisms": 21,
+    "strict": false,
+    "gain": {
+     "1": 1,
+     "2": 2,
+     "3": 1,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    },
+    "witness": {
+     "1": [
+      "('dep2', 11, 65)"
+     ],
+     "2": [
+      "('dep2', 3, 61)",
+      "('dep2', 11, 65)"
+     ],
+     "3": [
+      "('dep2', 6, 63)",
+      "('dep2', 3, 61)",
+      "('dep2', 7, 63)"
+     ]
+    }
+   },
+   "L1b_Z_strict": {
+    "part": "L1b",
+    "pauli": "Z",
+    "mechanisms": 72,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L2_X": {
+    "part": "L2",
+    "pauli": "X",
+    "mechanisms": 52,
+    "strict": false,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L2_X_strict": {
+    "part": "L2",
+    "pauli": "X",
+    "mechanisms": 136,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L2_Z": {
+    "part": "L2",
+    "pauli": "Z",
+    "mechanisms": 52,
+    "strict": false,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   },
+   "L2_Z_strict": {
+    "part": "L2",
+    "pauli": "Z",
+    "mechanisms": 180,
+    "strict": true,
+    "gain": {
+     "1": 0,
+     "2": 0,
+     "3": 0,
+     "4": 0,
+     "5": -1,
+     "6": -2
+    }
+   }
+  },
+  "commit": "ac806e6cbf4c314a89176771197e76047498fb34",
+  "provenance": {
+   "commit": "ac806e6cbf4c314a89176771197e76047498fb34",
+   "files": {
+    "analysis/gadget_gain.py": "5f9d1b496b900ffb952083edb51ea9ce98a0ab82",
+    "scripts/build_native.py": "d3edad676877c5087161c6fa046911e24e7659ab",
+    "src/hase/c4helix.py": "168c9916b532a2fa8ea0e7edad85d40e1a53910e",
+    "src/hase/carbonhelix.py": "c8fe1c55ea6a0c7dfdfa696ca922c46eeb1f9e01",
+    "src/hase/codes.py": "dc78708f2dded309f79bd1ecd727606ccc24024c",
+    "src/hase/engine.py": "be16f2c6058e124c10cd2e1c156162678cc324e6",
+    "src/hase/gf2.py": "96d8872f027423efb32033f6fab3d9fcd2a8c0ab",
+    "src/hase/ir.py": "e33696bb5a7d17f2885795a1c85dd5903610d49f",
+    "src/hase/memory.py": "ded165c1090ae2451b220dc6ae3e152ef0977c46",
+    "src/hase/version.py": "e0524b7adfbd0fe99c01a2a9aa931cff234e02ba",
+    "third_party/frontier/LICENSE": "7df059597099bb7dcf25d2a9aedfaf4465f72d8d",
+    "third_party/frontier/NOTICE": "831414684a9872bd5a439ac220254543625f644c",
+    "third_party/frontier/README.md": "6e524a5a90e49eda36a0ad7c567cdbbb3ca13cfb",
+    "third_party/frontier/_frontier_native.upstream.cpp": "e684f8af37b5276bf5778153f3141e35bc9a8d1a"
+   },
+   "packages": {
+    "frontier": "0.1.0",
+    "stim": "1.16.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "frontier_commit": "5d5a60968182eb17cdc12c5ac1949732ead0905b"
+   }
+  }
+ }
+}
