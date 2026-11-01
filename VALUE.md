@@ -1,5 +1,7 @@
 US$0.1 million to US$10 million
 
+*This is a very rough estimate produced by GPT 6 Astra (max) for reference.*
+
 My estimate of the additional value to the quantum-computing industry over the next ten years, in 2026 US dollars, is centred around **US$1 million**. This is a range for expected value; realised gains could be zero.
 
 The useful contribution is an implemented Carbon-Helix extraction circuit, adaptive measurement schedules and reusable evidence about their failure modes. At the principal simulated noise point, R8 reduces two-qubit gates from 560 to about 216 per round and modelled round time from 788 to 387 milliseconds, using 92 physical qubits for two logical qubits. Its central memory-error rate per second is similar to full extraction. The headline 24.4-fold advantage compares against C4-Helix; R8 improves on full Carbon's central rate by only about 4%. These figures support a possible saving in error-correction resources. [Repository results](RESULTS.md), [comparison data](figures/data/headline.csv).
