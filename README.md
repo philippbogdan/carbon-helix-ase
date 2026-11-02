@@ -1,20 +1,22 @@
 # Carbon-Helix adaptive extraction
 
-Carbon-Helix $`[[60,2,12]]`$ and C4-Helix $`[[20,2,6]]`$ are concatenated quantum error-correcting codes; adaptive extraction uses syndrome changes to decide which checks to run. This repository compares them using an adaptive Pauli-frame simulator checked against Stim, with Frontier decoding and a model of Quantinuum's Helios, a 98-qubit trapped-ion processor. **Carbon-Helix R8 gives an estimated 24.4x lower memory error per second than adaptive C4-Helix, using 92 qubits; Carbon's estimate is partly extrapolated.**
+Quantum error correction protects stored information by checking qubits for faults; adaptive extraction chooses checks from earlier results. This repository compares Carbon-Helix $`[[60,2,12]]`$ and C4-Helix $`[[20,2,6]]`$ using an adaptive Pauli-frame simulator checked against Stim, Frontier decoding and a noise and timing model of Quantinuum's Helios, a 98-qubit trapped-ion processor.
+
+**Against adaptive C4 at $`p=0.00079`$, the Carbon code gives an estimated 23.4x lower memory error per logical qubit per second with full extraction, or 24.4x lower with R8. R8 saves 61.5% of the two-qubit gates per round and 51.0% of modelled round time versus full Carbon, at comparable estimated error per second.** Carbon uses 92 qubits against C4's 52.
 
 [![Full Carbon extraction beside checks executed by real simulated R8 shots.](figures/r8_paths.gif)](figures/r8_paths.mp4)
 
 Full extraction beside selected simulated R8 paths, including a return to all outer checks. Ancilla positions follow part-local names, so their apparent proximity to a block and the playback speed have no physical meaning; [all paths](figures/data/r8_paths.json) are included.
 
-Full-extraction C4 [agrees with the authors' Fig. 11a](EVIDENCE.md#c4-helix-baseline) within conditional intervals under uniform noise; this does not validate adaptive C4 or the Helios-like model.
+Carbon's error estimates are partly extrapolated. Full-extraction C4 [agrees with the authors' Fig. 11a](EVIDENCE.md#c4-helix-baseline) within conditional intervals under uniform noise; this does not validate adaptive C4 or the Helios-like model.
 
 ## The gain
 
-At $`p=0.00079`$, the estimated error per logical qubit per second is **6.33e-6 for R8 against 1.55e-4 for adaptive C4**. R8 uses **61.5% fewer two-qubit gates and 51.0% less round time than full Carbon**, at comparable error per second.
+At $`p=0.00079`$, the estimated error per logical qubit per second is **6.61e-6 for full Carbon, 6.33e-6 for R8 and 1.55e-4 for adaptive C4**. R8's estimated **24.4x reduction** against adaptive C4 includes the Carbon code's advantage; its gain over full Carbon is the lower extraction cost.
 
 ![Estimated memory error per logical qubit per second, with conditional intervals.](figures/memory_rate.png)
 
-The large error reduction comes mainly from Carbon itself. Observed fault strata supply 41.4% of R8's estimate, 38.2% of full Carbon's and 99.1% of C4's; the 95% intervals are conditional on the fit.
+R8's rate interval almost entirely overlaps full Carbon's, so no rate improvement is established. Observed fault strata supply 41.4% of R8's estimate, 38.2% of full Carbon's and 99.1% of C4's; the 95% intervals are conditional on the fit.
 
 ![Full Carbon and R8 gate counts and modelled time per round.](figures/extraction_cost.png)
 
