@@ -1,9 +1,5 @@
-# Circuit and simulation code
+# Circuits, adaptive paths and decoding
 
-This code follows the actual syndrome-dependent extraction path. Full, escalating, periodic and rotating rules share the same Carbon-Helix data code.
+`protocols.make_protocol` builds a memory from the code, noise, basis, rule and round count, adding full preparation. `carbonhelix.py` defines checks and event triggers; `variants.py` adds R8's rotating outer checks. `codes.py` holds the stabilisers and logical operators.
 
-`protocols.make_protocol` builds an experiment from code, p, basis, memory rounds, rule and noise model. It adds one full preparation round. `carbonhelix.py` defines extraction parts and triggers; `variants.py` adds rotations such as R8.
-
-`engine.py` samples faults and exports fixed paths to Stim. `runner.py` groups shots by path and decodes each group with matching priors. `decoding.py` wraps Frontier; `native.py` builds the engine with adaptive prior updates.
-
-`helios.py` and `timing.py` hold the device-like noise and elapsed-time assumptions. Replace those with compiled timing and measured noise before using the comparison to choose a hardware schedule. [Usage](../../USE.md) gives the checked commands.
+`engine.py` samples the parts each shot actually needs and exports fixed paths to Stim. `runner.py` decodes with path-dependent priors; `decoding.py` wraps Frontier and `native.py` loads its prior-update extension. `helios.py` supplies component noise. `timing.py` uses each protocol's durations, including preparation, with default Helios timing for models without durations. The [block idle-noise approximation](../../RESULTS.md#device-assumptions) remains. [USE.md](../../USE.md) connects these modules to reusable circuits.

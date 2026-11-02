@@ -21,7 +21,7 @@ def main():
     if a.out.exists(): p.error(f'{a.out} already exists; choose a new output path.')
     env=os.environ.copy()
     env['PYTHONPATH']=os.pathsep.join([str(ROOT/'src'),str(ROOT/'third_party/frontier')])
-    cmd=[sys.executable,str(ROOT/'scripts/job_protocol.py'),'--proto','carbonhelix']
+    cmd=[sys.executable,str(ROOT/'scripts/sample_direct.py'),'--proto','carbonhelix']
     for key in ('rule','noise','p','rounds','shots','basis','seed','out'):
         cmd.extend(['--'+key,str(getattr(a,key))])
     subprocess.run(cmd,env=env,check=True)

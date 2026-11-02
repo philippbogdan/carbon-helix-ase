@@ -1,7 +1,7 @@
 """Code constructions: [[10,2,3]] twisted toric code, C4 and Carbon inner codes,
 and their concatenations C4-Helix [[20,2,6]] and Carbon-Helix [[60,2,12]].
 
-Conventions: a CSS code is given by X-type stabilizer rows ``hx`` (support of X
+Conventions: a CSS code is given by X-type stabiliser rows ``hx`` (support of X
 operators), Z-type rows ``hz``, and logical operators ``lx``/``lz`` (k rows each,
 paired so that lx[i] anticommutes with lz[i] only).
 """
@@ -84,7 +84,7 @@ def c4_code() -> CSSCode:
 
 
 def carbon_code() -> CSSCode:
-    """[[12,2,4]] Carbon code, stabilizers and logicals of Table IV of arXiv:2404.02280."""
+    """[[12,2,4]] Carbon code, stabilisers and logicals of Table IV of arXiv:2404.02280."""
     n = 12
     hx = _rows(n, [{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11},
                    {0, 1, 5, 7, 8, 11}, {0, 3, 4, 5, 9, 11}])

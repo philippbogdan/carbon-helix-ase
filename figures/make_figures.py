@@ -1,587 +1,798 @@
 #!/usr/bin/env python3
-"""Build the Carbon-Helix README figures from data/ (headline.csv,
-distance.json, interval.json, circuits.json). Nothing else is read.
+"""Render every figure in figures/ from the saved data in figures/data/.
 
-    python make_figures.py            # refuses to overwrite existing outputs
-    python make_figures.py --force    # rebuild in place
-
-Every image is a 10 in wide canvas meant to be shown full width in a GitHub
-README (about 1000 px; still legible at 700 px). PNGs are 2000 px wide
-(200 dpi) and SVGs draw text as paths so they look the same on any machine.
-Each image gets an .export.json provenance manifest from the
-scientific-visualization skill's exporter.
+Run from the repository root: ./run.sh figures
 """
 
 from __future__ import annotations
 
-import argparse
 import csv
 import json
 import math
+import shutil
+import subprocess
 import sys
 from pathlib import Path
+
+import numpy as np
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.collections import LineCollection  # noqa: E402
+from matplotlib.colors import to_rgb  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
-from matplotlib.patches import Patch  # noqa: E402
-from matplotlib.ticker import FixedLocator, NullFormatter, NullLocator  # noqa: E402
+from matplotlib.ticker import FixedLocator, FuncFormatter, LogLocator, NullFormatter  # noqa: E402
+from PIL import Image, ImageSequence  # noqa: E402
 
-HERE = Path(__file__).resolve().parent
-DATA = HERE / "data"
-sys.path.insert(0, str(HERE / "_export"))
-from figure_export import export_figure  # noqa: E402
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "figures" / "data"
+OUT = ROOT / "figures"
+FRAMES = ROOT / "build" / "r8_frames"
 
-W = 10.0   # canvas width in inches; README shows it at ~1000 px (~100 px/in)
-DPI = 200  # 2000 px wide PNGs: twice the display width, sharp on HiDPI
+DPI = 100
+PNG_SCALE = 2
+STATIC = ("memory_rate", "extraction_cost", "fault_order", "interval_cost")
+BYTE_LIMIT = 10_000_000
+P_HEADLINE = 0.00079
 
-# Same palette and roles as v1. Audited with the skill's palette_audit.py:
-# all >= 3:1 on white; vermillion and grey share lightness, so they never
-# encode competing series.
-C4_COL = "#000000"
-FULL_COL = "#004488"
-R8_COL = "#D55E00"
-GREY = "#808080"
-INK = "#222222"
-NOTE = "#555555"
-ZONE = "#EDEDED"
-
-# Scaled from the skill's presentation.mplstyle for a 10 in canvas.
-STYLE = {
-    "font.family": "sans-serif",
-    "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
-    "font.size": 14,
-    "axes.labelsize": 15,
-    "axes.titlesize": 15,
-    "xtick.labelsize": 13.5,
-    "ytick.labelsize": 13.5,
-    "legend.fontsize": 13.5,
-    "axes.linewidth": 1.2,
-    "axes.edgecolor": INK,
-    "axes.labelcolor": INK,
-    "xtick.color": INK,
-    "ytick.color": INK,
-    "text.color": INK,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
-    "xtick.major.width": 1.2,
-    "ytick.major.width": 1.2,
-    "xtick.minor.width": 0.9,
-    "ytick.minor.width": 0.9,
-    "xtick.major.size": 6,
-    "ytick.major.size": 6,
-    "xtick.minor.size": 3.5,
-    "ytick.minor.size": 3.5,
-    "xtick.major.pad": 5,
-    "ytick.major.pad": 5,
-    "legend.frameon": False,
-    "figure.facecolor": "white",
-    "savefig.facecolor": "white",
-    "pdf.fonttype": 42,
-    # Text as paths: a public README is viewed on machines without Arial,
-    # where font substitution would reflow labels into each other.
-    "svg.fonttype": "path",
-    "mathtext.default": "regular",
-}
-
-P_TODAY, P_FUTURE = 0.00079, 0.0003
-SCHEMES = [
-    # label in data, display name, colour, marker, linestyle, dodge factor
-    ("C4 adaptive", "C4-Helix, adaptive", C4_COL, "o", "-", 1 / 1.075),
-    ("Carbon full", "Carbon-Helix, full", FULL_COL, "s", "--", 1.0),
-    ("Carbon R8", "Carbon-Helix, R8 adaptive", R8_COL, "D", "--", 1.075),
-]
+BG = "#FAF7F0"
+INK = "#23211D"
+MUTED = "#6B665D"
+RULE = "#E2DBCE"
+GREY = "#8C877E"
+TEAL = "#0B8A8C"
+AMBER = "#C27C0E"
+VIOLET = "#6B4FBB"
+SLATE = "#3E5C76"
+DATA_EDGE = "#6F695F"
+ANCILLA_FILL = "#B4AC9E"
 
 
-def sci(v: float) -> str:
-    """7.9e-4 -> 7.9×10⁻⁴ in mathtext."""
-    exp = math.floor(math.log10(v))
-    man = f"{v / 10**exp:.1f}".rstrip("0").rstrip(".")
-    return rf"$10^{{{exp}}}$" if man == "1" else rf"${man}\times10^{{{exp}}}$"
+def style() -> None:
+    plt.rcParams.update(
+        {
+            "font.family": "DejaVu Sans",
+            "font.size": 12.5,
+            "text.color": INK,
+            "figure.facecolor": BG,
+            "axes.facecolor": BG,
+            "savefig.facecolor": BG,
+            "axes.edgecolor": MUTED,
+            "axes.linewidth": 0.9,
+            "axes.labelcolor": INK,
+            "axes.labelsize": 13,
+            "axes.labelpad": 8,
+            "axes.unicode_minus": True,
+            "xtick.color": MUTED,
+            "ytick.color": MUTED,
+            "xtick.labelcolor": INK,
+            "ytick.labelcolor": INK,
+            "xtick.labelsize": 12,
+            "ytick.labelsize": 12.5,
+            "xtick.major.size": 5,
+            "xtick.minor.size": 3,
+            "xtick.major.width": 0.9,
+            "xtick.minor.width": 0.7,
+            "legend.frameon": False,
+            "legend.fontsize": 12,
+            "legend.handletextpad": 0.5,
+            "svg.fonttype": "path",
+            "svg.hashsalt": "carbon-helix",
+            "path.simplify": False,
+        }
+    )
 
 
-def load_headline():
-    with open(DATA / "headline.csv", newline="") as fh:
-        rows = list(csv.DictReader(fh))
-    return {(r["label"], float(r["p"])): {
-        "eps": float(r["eps_LQ"]), "lo": float(r["ci_low"]),
-        "hi": float(r["ci_high"]), "status": r["status"],
-        "gates": float(r["twoq_per_round"]), "qubits": int(r["peak_qubits"]),
-    } for r in rows}
+def read_csv(name: str) -> list[dict[str, str]]:
+    with open(DATA / name, newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
-def load_json(name):
-    with open(DATA / name) as fh:
-        return json.load(fh)
+def rgb255(colour: str) -> np.ndarray:
+    return np.array(to_rgb(colour)) * 255.0
 
 
-def status_key(threshold):
-    handles = [Line2D([], [], color=INK, marker="o", ms=10, ls="none"),
-               Line2D([], [], color=INK, marker="o", ms=10, mfc="white",
-                      mew=2, ls="none"),
-               Line2D([], [], color=INK, marker="|", ms=18, mew=2,
-                      ls="none")]
-    labels = [f"measured (≥ {threshold}% from sampled failures)",
-              "extrapolated (fitted)", "95% interval"]
-    return handles, labels
+def px(value: float) -> float:
+    """Convert pixels at the export resolution to points."""
+    return value * 72.0 / DPI
 
 
-# ------------------------------------------------------- 1: logical error
-def fig_error(force):
-    H = load_headline()
-    fig, ax = plt.subplots(figsize=(W, 6.6), layout="constrained")
-
-    for lab, _, col, mk, ls, dodge in SCHEMES:
-        a, b = H[(lab, P_FUTURE)], H[(lab, P_TODAY)]
-        ax.plot([P_FUTURE * dodge, P_TODAY * dodge], [a["eps"], b["eps"]],
-                color=col, ls=ls, lw=2.2, zorder=2)
-        for p in (P_FUTURE, P_TODAY):
-            d = H[(lab, p)]
-            filled = d["status"] == "measured"
-            ax.errorbar(p * dodge, d["eps"],
-                        yerr=[[d["eps"] - d["lo"]], [d["hi"] - d["eps"]]],
-                        fmt="none", ecolor=col, elinewidth=2, capsize=6,
-                        capthick=2, zorder=3)
-            ax.plot(p * dodge, d["eps"], marker=mk, ms=12, mec=col, mew=2.2,
-                    mfc=col if filled else "white", ls="none", zorder=4)
-
-    ax.set_xscale("log")
-    ax.set_yscale("log")
-    ax.set_xlim(2.45e-4, 1.34e-3)
-    ax.set_ylim(1.5e-9, 2e-4)
-    assert all(1.5e-9 < d["lo"] and d["hi"] < 2e-4 for d in H.values())
-    ax.xaxis.set_major_locator(FixedLocator([P_FUTURE, P_TODAY]))
-    ax.xaxis.set_minor_locator(NullLocator())
-    ax.set_xticklabels([f"{sci(P_FUTURE)}\nfuture device",
-                        f"{sci(P_TODAY)}\nHelios today"])
-    ax.set_xlabel("physical two-qubit error rate $p$ (log scale)")
-    ax.set_ylabel("logical error per logical qubit per round\n(log scale)")
-    ax.grid(axis="y", which="major", color="#E6E6E6", lw=1, zorder=0)
-
-    for p in (P_FUTURE, P_TODAY):
-        top = H[("C4 adaptive", p)]["eps"]
-        bot = H[("Carbon R8", p)]["eps"]
-        fold = top / bot
-        label = (f"{round(fold, -1):.0f}×" if fold >= 100 else
-                 f"{fold:.0f}×" if fold >= 20 else f"{fold:.1f}×")
-        xb = p * 1.21
-        ax.annotate("", xy=(xb, bot), xytext=(xb, top),
-                    arrowprops=dict(arrowstyle="<->", color=INK, lw=1.6,
-                                    mutation_scale=20, shrinkA=0, shrinkB=0))
-        right = p == P_TODAY
-        ax.text(xb * (1.04 if right else 1 / 1.04), math.sqrt(top * bot),
-                label, fontsize=26, fontweight="bold", va="center",
-                ha="left" if right else "right", color=INK)
-
-    handles = [Line2D([], [], color=c, ls=ls, lw=2.2, marker=m, ms=11,
-                      mfc=c if lab == "C4 adaptive" else "white", mec=c,
-                      mew=2.2) for lab, _, c, m, ls, _ in SCHEMES]
-    leg = ax.legend(handles, [s[1] for s in SCHEMES], loc="upper left",
-                    handlelength=3.2, borderaxespad=0.3, labelspacing=0.6)
-    ax.add_artist(leg)
-    h, lab = status_key(90)
-    ax.legend(h, lab, loc="lower right", handletextpad=0.4,
-              borderaxespad=0.3, labelspacing=0.5)
-
-    export(fig, "fig1_error", force, {
-        "raw_data": ["data/headline.csv"],
-        "transformations": [
-            "none to plotted values; fold labels = C4 eps_LQ / Carbon R8 "
-            "eps_LQ, rounded to two significant figures",
-            "points nudged sideways by a factor 1.075 in p for legibility"],
-        "uncertainty": "95% interval from headline.csv ci_low/ci_high",
-        "measured_vs_extrapolated": "headline.csv status column",
-    })
+def new_figure(width: int, height: int):
+    return plt.figure(figsize=(width / DPI, height / DPI), dpi=DPI)
 
 
-# --------------------------------------------------- 2: cost and qubits
-def fig_cost(force):
-    H = load_headline()
-    circ = load_json("circuits.json")["carbonhelix"]
-    fig = plt.figure(figsize=(W, 6.8), layout="constrained")
-    fig.get_layout_engine().set(h_pad=0.12, hspace=0.08)
-    axg, axq = fig.subplots(2, 1, height_ratios=[2.1, 1.25])
-
-    order = ["C4 adaptive", "Carbon full", "Carbon R8"]
-    cols = {s[0]: s[2] for s in SCHEMES}
-    names = {s[0]: s[1] for s in SCHEMES}
-    h = 0.38
-    for i, lab in enumerate(order):
-        y = len(order) - 1 - i
-        t, f = H[(lab, P_TODAY)], H[(lab, P_FUTURE)]
-        axg.barh(y + h / 2, t["gates"], height=h, color=cols[lab], lw=0)
-        axg.barh(y - h / 2, f["gates"], height=h, color=cols[lab],
-                 alpha=0.38, lw=0)
-        for yy, v in ((y + h / 2, t["gates"]), (y - h / 2, f["gates"])):
-            axg.text(v + 7, yy, f"{v:.0f}", va="center", ha="left",
-                     fontsize=13.5)
-    y_full = len(order) - 1 - order.index("Carbon full") + h / 2
-    x0 = 0
-    for key_, nm in (("L1_a", "level 1"), ("L2_all", "level 2"),
-                     ("L3", "level 3 (outer)")):
-        w = circ[key_]["two_q"]
-        if x0:
-            axg.plot([x0, x0], [y_full - h / 2, y_full + h / 2],
-                     color="white", lw=2, zorder=3)
-        axg.text(x0 + w / 2, y_full, nm, color="white", fontsize=13,
-                 ha="center", va="center", fontweight="bold", zorder=4)
-        x0 += w
-    assert x0 == H[("Carbon full", P_TODAY)]["gates"]
-    axg.set_yticks(range(len(order)))
-    axg.set_yticklabels([names[k] for k in reversed(order)])
-    axg.tick_params(axis="y", length=0)
-    axg.set_xlim(0, 640)
-    axg.set_ylim(-0.62, len(order) - 0.38)
-    axg.set_xlabel("two-qubit gates per round")
-    axg.spines["left"].set_visible(False)
-    axg.legend([Patch(color=GREY), Patch(color=GREY, alpha=0.38)],
-               ["Helios today", "future device"], loc="lower right",
-               handlelength=1.6, handleheight=1.0, borderaxespad=0.1)
-
-    for i, lab in enumerate(order):
-        y = len(order) - 1 - i
-        q = H[(lab, P_TODAY)]["qubits"]
-        assert q == H[(lab, P_FUTURE)]["qubits"]
-        axq.barh(y, q, height=0.6, color=cols[lab], lw=0)
-        axq.text(q + 1.0, y, f"{q}", va="center", ha="left", fontsize=13.5)
-    axq.axvline(98, color=INK, lw=1.8, ls=(0, (3, 2)))
-    axq.text(96.8, len(order) - 0.42, "Helios: 98 qubits", ha="right",
-             va="bottom", fontsize=13.5)
-    axq.set_yticks(range(len(order)))
-    axq.set_yticklabels([names[k] for k in reversed(order)])
-    axq.tick_params(axis="y", length=0)
-    axq.set_xlim(0, 108)
-    axq.set_ylim(-0.5, len(order) - 0.02)
-    axq.set_xlabel("physical qubits used (peak)")
-    axq.spines["left"].set_visible(False)
-
-    export(fig, "fig2_cost", force, {
-        "raw_data": ["data/headline.csv", "data/circuits.json"],
-        "transformations": [
-            "none to plotted values",
-            "full-round split = circuits.json L1_a + L2_all + L3 two_q "
-            "(sums to the headline 560)"],
-        "uncertainty": "none in data for these counts",
-    })
+def axes_px(fig, left: float, bottom: float, width: float, height: float):
+    w, h = fig.get_size_inches() * DPI
+    return fig.add_axes((left / w, bottom / h, width / w, height / h))
 
 
-# ------------------------------------------------------- 3: distance
-def fig_distance(force):
-    """One bead per fault: a column of d beads is a case of fault distance d.
-    Filled beads are proven, open beads are found but not proven."""
-    dist = load_json("distance.json")
-    ends, designs, whole = dist["ends"], dist["designs"], dist["whole"]
-    cols, groups = [], []
-    x = 0.0
-    gap = 1.7
-
-    def group(title, items, extra=0.0):
-        nonlocal x
-        x += extra
-        start = x
-        for it in items:
-            it["x"] = x
-            cols.append(it)
-            x += 1
-        groups.append((title, start, x - 1))
-        x += gap
-
-    mk = {"X": "o", "Z": "s"}
-    r8 = []
-    for i in range(8):
-        for b in ("X", "Z"):
-            e = ends[f"k4cyc|R8_{i}|{b}"]
-            assert e["all_optimal"] and math.isclose(
-                e["min_lower_bound"], e["min_weight"], abs_tol=1e-6)
-            assert set(e["combos"]) == {"0", "01", "1"}
-            r8.append(dict(proven=e["min_weight"], total=e["min_weight"],
-                           colour=R8_COL, marker=mk[b]))
-    group("R8 adaptive rule:\n8 cases, each in X and Z", r8)
-    other = []
-    for k in ("XZ|X", "XZ|Z", "ZX|Z", "quiet|Z", "quiet|X"):
-        rule, b = k.split("|")
-        e = ends[f"k4cyc|{rule}|{b}"]
-        assert e["all_optimal"]
-        complete = set(e["combos"]) == {"0", "01", "1"}
-        other.append(dict(proven=e["min_weight"] if complete else 0,
-                          total=e["min_weight"], colour=INK, marker=mk[b]))
-    group("other\nadaptive\nrules", other)
-    des = []
-    for name in sorted(designs, key=lambda n: (designs[n]["min_weight"], n)):
-        e = designs[name]
-        assert e["all_optimal"]
-        des.append(dict(proven=e["min_weight"], total=e["min_weight"],
-                        colour=GREY, marker="o"))
-    group("alternative\nouter-check\ncircuits", des)
-    wh = []
-    for k in ("XZ|X", "ZX|Z"):
-        w = whole[k]
-        assert not w["optimal"]
-        wh.append(dict(proven=int(round(w["lower_bound"])), total=w["best"],
-                       colour=INK, marker=mk[k.split("|")[1]]))
-    hours = max(w["seconds"] for w in whole.values()) / 3600
-    group(f"whole circuit:\n{hours:.0f} h search,\nunfinished", wh, extra=0.6)
-    xmax = x - gap
-
-    fig, ax = plt.subplots(figsize=(W, 6.9), layout="constrained")
-    ax.axhspan(10.5, 12.5, color=ZONE, lw=0, zorder=0)
-    ax.text(-0.6, 13.05, "shaded: distance ≥ 11, so at least 6 faults are "
-            "needed for a logical error, which falls like $p^6$",
-            ha="left", va="bottom", fontsize=13.5)
-    for c in cols:
-        for k in range(1, int(c["total"]) + 1):
-            proven = k <= c["proven"]
-            ax.plot(c["x"], k, marker=c["marker"], ms=10.5, ls="none",
-                    mec=c["colour"], mew=1.8,
-                    mfc=c["colour"] if proven else "white", zorder=3)
-    for title, x0, x1 in groups:
-        ax.plot([x0 - 0.4, x1 + 0.4], [0.3, 0.3], color=INK, lw=1.2)
-        ax.text((x0 + x1) / 2, 0.05, title, ha="center", va="top",
-                fontsize=13.5, linespacing=1.15)
-    ax.set_xlim(-0.8, xmax + 0.8)
-    ax.set_ylim(-2.6, 13.9)
-    ax.set_yticks([1, 5, 9, 10, 11, 12])
-    ax.yaxis.set_minor_locator(FixedLocator(range(1, 13)))
-    ax.set_xticks([])
-    for sp in ("bottom", "top", "right"):
-        ax.spines[sp].set_visible(False)
-    ax.spines["left"].set_bounds(0.5, 12.5)
-    ax.set_ylabel("faults needed for an undetected logical failure\n"
-                  "(fault distance; one bead per fault)")
-    key = [Line2D([], [], color=INK, marker="o", ms=10, ls="none"),
-           Line2D([], [], color=INK, marker="s", ms=10, ls="none"),
-           Line2D([], [], color=INK, marker="o", ms=10, mfc="white", mew=1.8,
-                  ls="none")]
-    fig.legend(key, ["X basis", "Z basis", "found, not proven minimal"],
-               loc="outside upper center", ncol=3, handletextpad=0.3,
-               columnspacing=2.0)
-
-    export(fig, "fig3_distance", force, {
-        "raw_data": ["data/distance.json"],
-        "transformations": [
-            "ends and designs: min_weight beads, all filled (all_optimal "
-            "true, min_lower_bound equals min_weight)",
-            "quiet|X: combos lacks '01', so its 11 beads are drawn open",
-            "whole: filled to lower_bound, open from there to best "
-            "(optimal false)",
-            "designs sorted by min_weight then name"],
-        "uncertainty": "solver bounds, not statistical intervals",
-    })
-
-
-# ------------------------------------------------------- 4: escalation
-def fig_escalation(force):
-    iv = load_json("interval.json")
-    fig, ax = plt.subplots(figsize=(W, 6.0), layout="constrained")
-    styles = {"B": ("o", "-"), "C": ("^", "--")}
-    for fam, (m, ls) in styles.items():
-        s = iv[fam]["escalation_scan"]
-        p, f, n = s["p"], s["per_round"], s["shots"]
-        half = [1.96 * math.sqrt(v * (1 - v) / n) for v in f]
-        assert all(5e-3 < v - hh and v + hh < 1.4 for v, hh in zip(f, half))
-        ax.plot(p, f, color=INK, ls=ls, lw=2.2, zorder=2)
-        ax.errorbar(p, f, yerr=half, fmt="none", ecolor=INK, elinewidth=1.8,
-                    capsize=5, capthick=1.8, zorder=3)
-        ax.plot(p, f, marker=m, ms=11, mfc=INK, mec=INK, ls="none", zorder=4)
-        ax.text(p[-1] / 1.22, f[-1], f"rule {fam}", va="center", ha="right",
-                fontsize=15, fontweight="bold")
-    ax.axvline(P_TODAY, color=GREY, lw=1.6, ls=(0, (4, 3)), zorder=1)
-    ax.text(P_TODAY * 1.06, 0.0056, "Helios today", rotation=90, ha="left",
-            va="bottom", fontsize=13.5)
-    ax.set_xscale("log")
-    ax.set_yscale("log")
-    ax.set_xlim(4.2e-5, 8e-3)
-    ax.set_ylim(5e-3, 1.4)
-    ax.set_yticks([0.01, 0.03, 0.1, 0.3, 1])
-    ax.set_yticklabels(["1%", "3%", "10%", "30%", "100%"])
-    ax.yaxis.set_minor_formatter(NullFormatter())
-    ax.set_xlabel("physical error rate $p$ (log scale)")
-    ax.set_ylabel("rounds in which the rule calls for the\n"
-                  "full outer measurement (log scale)")
-    ax.legend([Line2D([], [], color=INK, marker="o", ms=10, ls="none"),
-               Line2D([], [], color=INK, marker="|", ms=18, mew=2,
-                      ls="none")],
-              ["measured by direct sampling, 8000 shots",
-               "95% interval (shots as units)"], loc="upper left",
-              handletextpad=0.4, labelspacing=0.5)
-
-    export(fig, "fig4_escalation", force, {
-        "raw_data": ["data/interval.json"],
-        "transformations": [
-            "escalation_scan.per_round for rules B and C",
-            "interval = per_round +- 1.96 sqrt(f(1-f)/shots), conservative "
-            "(each shot treated as one unit)"],
-        "uncertainty": "conservative normal 95%",
-    })
-
-
-# ------------------------------------------------------- 5: schedule
-def fig_schedule(force):
-    iv = load_json("interval.json")
-    rules = ["B", "C", "R", "P"]
-    slots_all = ["2", "4", "8", "16", "inf"]
-    ylo, yhi = 0.45, 2.75
-    fig, axs = plt.subplots(len(rules), 1, figsize=(W, 12.0), sharex=True,
-                            sharey=True, layout="constrained")
-    fig.get_layout_engine().set(h_pad=0.1, hspace=0.06)
-    for axf, fam in zip(axs, rules):
-        v = iv[fam]
-        ps = v["ps"]
-        k = len(ps)
-        offs = [(-0.4 + 0.8 * i / (k - 1)) for i in range(k)]
-        axf.axhline(1.0, color=FULL_COL, lw=2.2, zorder=1)
-        for j, t in enumerate(slots_all):
-            if j:
-                axf.axvline(j - 0.5, color="#E3E3E3", lw=1, zorder=0)
-            if t not in v["ratio"]:
-                axf.text(j, 1.6, "not run", ha="center", va="center",
-                         fontsize=13.5, color=NOTE)
-                continue
-            driven = set(v["ratio_driven"].get(t, []))
-            lo_hi = v["ratio_ci95"][t]
-            for i, p in enumerate(ps):
-                rv = v["ratio"][t][i]
-                lo, hi = lo_hi[0][i], lo_hi[1][i]
-                assert ylo < lo <= rv <= hi < yhi, (fam, t, p)
-                meas = p in driven
-                col = INK if meas else GREY
-                axf.plot([j + offs[i]] * 2, [lo, hi], color=col,
-                         lw=2.0 if meas else 1.3, zorder=2,
-                         solid_capstyle="butt")
-                axf.plot(j + offs[i], rv, marker="o", ms=8.5 if meas else 7.5,
-                         mfc=col if meas else "white", mec=col,
-                         mew=1.8 if meas else 1.5, ls="none", zorder=3)
-        axf.set_yscale("log")
-        axf.set_ylim(ylo, yhi)
-        axf.yaxis.set_major_locator(FixedLocator([0.5, 0.7, 1, 1.4, 2]))
-        axf.yaxis.set_minor_locator(NullLocator())
-        axf.set_yticklabels(["0.5", "0.7", "1", "1.4", "2"])
-        axf.text(0.008, 0.96, f"rule {fam}", transform=axf.transAxes,
-                 ha="left", va="top", fontsize=16, fontweight="bold")
-        axf.tick_params(axis="x", length=0, labelbottom=True)
-        axf.set_xticks(range(len(slots_all)))
-        axf.set_xticklabels(["∞" if t == "inf" else t for t in slots_all],
-                            fontsize=15)
-        axf.set_xlim(-0.55, len(slots_all) - 0.45)
-    fig.supylabel("logical error relative to full extraction every round "
-                  "(log scale)", fontsize=15)
-    fig.supxlabel("full outer measurement forced every T rounds "
-                  "(∞ = never forced)\n"
-                  f"within each T, $p$ falls left to right from {sci(5e-3)} "
-                  f"to {sci(5e-4)}", fontsize=15, linespacing=1.4)
-    h, lab = status_key(50)
-    h.append(Line2D([], [], color=FULL_COL, lw=2.2))
-    lab.append("equal to full extraction every round")
-    fig.legend(h, lab, loc="outside upper center", ncol=2,
-               handletextpad=0.4, columnspacing=2.0)
-
-    export(fig, "fig5_schedule", force, {
-        "raw_data": ["data/interval.json"],
-        "transformations": [
-            "ratio[T] and ratio_ci95[T] at every p, p falling left to right "
-            "within each T",
-            "filled where p is in ratio_driven[T] (gate: every compared "
-            "configuration >= 50% measured)",
-            "T values a rule was not run at are marked 'not run'"],
-        "uncertainty": "interval.json ratio_ci95",
-    })
-
-
-# ------------------------------------------------------- export helpers
-ALT = {
-    "fig1_error": (
-        "Logical error per round: Carbon-Helix against C4-Helix",
-        "Log-log plot of logical error per logical qubit per round against "
-        "physical error rate at Helios today (p = 7.9e-4) and a future "
-        "device (p = 3e-4). C4-Helix (measured) sits 6.7 times above "
-        "Carbon-Helix R8 today and about 120 times above it at p = 3e-4. "
-        "Carbon-Helix values, full and R8, are extrapolated; all points "
-        "carry 95% intervals."),
-    "fig2_cost": (
-        "Cost per round and qubits used",
-        "Bars of two-qubit gates per round at Helios today and a future "
-        "device: C4-Helix adaptive 54 and 45, Carbon-Helix full 560 (120 "
-        "level 1, 200 level 2, 240 level 3 outer), Carbon-Helix R8 216 and "
-        "170. Below, peak physical qubits: 52 for C4-Helix and 92 for "
-        "Carbon-Helix, under Helios's 98."),
-    "fig3_distance": (
-        "Fault distance of Carbon-Helix adaptive rules",
-        "Unit chart, one bead per fault. All 16 R8 cases are proven at "
-        "distance 11 or 12; four other rule cases are proven at 11 or 12 "
-        "and one (quiet, X) is 11 but incomplete. Alternative outer-check "
-        "circuits reach 9 to 11. The whole-circuit search proved only "
-        "lower bounds of 4 and 5 against best found 12 and 11. Distance 11 "
-        "or more means at least six faults per logical error."),
-    "fig4_escalation": (
-        "How often adaptive rules call for the full outer measurement",
-        "Log-log plot: the share of rounds in which rules B and C call for "
-        "the full outer measurement falls roughly in proportion to p, from "
-        "82% and 97% at p = 5e-3 to 0.9% and 3.6% at p = 1e-4; about 10% "
-        "and 30% at Helios today."),
-    "fig5_schedule": (
-        "Error when the full outer measurement is forced only every T rounds",
-        "Four stacked panels, rules B, C, R and P: logical error relative to "
-        "full extraction every round, at each p, with 95% intervals. Rule B "
-        "stays at about 1 for T = 2, 4, 8 and never; rule P sits at 0.64 to "
-        "0.82 up to T = 8 and 1.0 to 1.2 at T = 16; rules C and R are 1.1 "
-        "to 1.5."),
-}
-
-
-def export(fig, stem, force, provenance):
-    title, desc = ALT[stem]
-    export_figure(fig, HERE / stem, formats=["png", "svg"], dpi=DPI,
-                  overwrite=force, provenance=provenance, write_manifest=True,
-                  metadata={"Title": title, "Description": desc},
-                  font_mode="current")  # keep STYLE's svg.fonttype "path"
+def save_static(fig, stem: str, size: tuple[int, int]) -> None:
+    png, svg = OUT / f"{stem}.png", OUT / f"{stem}.svg"
+    fig.savefig(png, dpi=DPI * PNG_SCALE, facecolor=BG)
+    fig.savefig(svg, facecolor=BG, metadata={"Date": None, "Creator": None})
     plt.close(fig)
-    flatten_png(HERE / f"{stem}.png", HERE / f"{stem}.export.json")
-    print(stem)
+    with Image.open(png) as image:
+        rgb = image.convert("RGB")
+    rgb.save(png, optimize=True)
+    expected = (size[0] * PNG_SCALE, size[1] * PNG_SCALE)
+    if rgb.size != expected:
+        raise SystemExit(f"{png.name}: expected {expected}, got {rgb.size}")
 
 
-def flatten_png(png, manifest):
-    """Agg writes RGBA even on an opaque white page. Drop the alpha channel
-    only after checking that every pixel is fully opaque, keep the DPI and
-    text metadata, and record the step in the export manifest."""
-    from PIL import Image, PngImagePlugin
-
-    with Image.open(png) as im:
-        im.load()
-        assert im.mode == "RGBA"
-        assert im.getchannel("A").getextrema() == (255, 255), "not opaque"
-        info = PngImagePlugin.PngInfo()
-        for k, v in im.text.items():
-            info.add_text(k, v)
-        rgb = im.convert("RGB")
-        dpi = im.info.get("dpi", (DPI, DPI))
-    tmp = png.with_suffix(".tmp.png")
-    rgb.save(tmp, format="PNG", pnginfo=info, dpi=dpi, optimize=True)
-    tmp.replace(png)
-    m = json.loads(manifest.read_text())
-    for o in m["outputs"]:
-        if o["format"] == "png":
-            o["size_bytes"] = png.stat().st_size
-            o["post_processing"] = ("alpha channel dropped after checking "
-                                    "all pixels opaque; mode RGB")
-    manifest.write_text(json.dumps(m, indent=2, sort_keys=True) + "\n")
+def clean_row_axis(ax) -> None:
+    for side in ("left", "right", "top"):
+        ax.spines[side].set_visible(False)
+    ax.tick_params(axis="y", length=0, pad=10)
 
 
-FIGS = {"1": fig_error, "2": fig_cost, "3": fig_distance,
-        "4": fig_escalation, "5": fig_schedule}
+# Memory error comparison
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--force", action="store_true",
-                    help="overwrite existing outputs")
-    ap.add_argument("--only", choices=sorted(FIGS), help="one image")
-    a = ap.parse_args()
-    with plt.rc_context(STYLE):
-        for n, fn in FIGS.items():
-            if a.only in (None, n):
-                fn(a.force)
+def memory_rate() -> None:
+    rows = {r["label"]: r for r in read_csv("headline.csv") if float(r["p"]) == P_HEADLINE}
+    order = ["C4 adaptive", "Carbon full", "Carbon R8"]
+    colour = {"C4 adaptive": GREY, "Carbon full": VIOLET, "Carbon R8": TEAL}
+    expected = {"C4 adaptive": "measured", "Carbon full": "extrapolated", "Carbon R8": "extrapolated"}
+    for label in order:
+        row = rows[label]
+        share = float(row["measured_share"])
+        if row["status"] != expected[label]:
+            raise SystemExit(f"headline.csv: unexpected status for {label}: {row['status']}")
+        if (row["status"] == "measured") != (share >= 0.5):
+            raise SystemExit(f"headline.csv: status and measured_share disagree for {label}")
+        lo, mid, hi = float(row["rate_low"]), float(row["rate"]), float(row["rate_high"])
+        if not lo <= mid <= hi:
+            raise SystemExit(f"headline.csv: rate outside its interval for {label}")
+
+    fig = new_figure(1000, 420)
+    ax = axes_px(fig, 140, 82, 830, 286)
+    ys = {label: float(len(order) - 1 - i) for i, label in enumerate(order)}
+    lows, highs = [], []
+    for label in order:
+        row, y, c = rows[label], ys[label], colour[label]
+        lo, mid, hi = float(row["rate_low"]), float(row["rate"]), float(row["rate_high"])
+        lows.append(lo)
+        highs.append(hi)
+        ax.hlines(y, lo, hi, color=c, lw=2.4, zorder=2, capstyle="butt")
+        ax.vlines([lo, hi], y - 0.11, y + 0.11, color=c, lw=2.0, zorder=2)
+        filled = row["status"] == "measured"
+        ax.plot(
+            mid, y, "o", ms=11, mew=2.4, mec=c, mfc=c if filled else BG, zorder=3,
+        )
+
+    pad = 0.13
+    lo_all, hi_all = math.log10(min(lows)), math.log10(max(highs))
+    ax.set_xscale("log")
+    ax.set_xlim(10 ** (lo_all - pad), 10 ** (hi_all + pad))
+    ax.set_ylim(-0.55, len(order) - 0.45)
+    ax.xaxis.set_major_locator(LogLocator(base=10))
+    ax.xaxis.set_minor_locator(LogLocator(base=10, subs=np.arange(2, 10)))
+    minor_labels = {2, 5}
+
+    def minor_format(value: float, _pos: int) -> str:
+        exponent = math.floor(math.log10(value) + 1e-9)
+        mantissa = round(value / 10**exponent)
+        if mantissa in minor_labels:
+            return rf"${mantissa}{{\times}}10^{{{exponent}}}$"
+        return ""
+
+    ax.xaxis.set_minor_formatter(FuncFormatter(minor_format))
+    ax.tick_params(axis="x", which="minor", labelsize=11, labelcolor=MUTED)
+    ax.grid(axis="x", which="major", color=RULE, lw=0.9, zorder=0)
+    ax.set_axisbelow(True)
+    ax.set_yticks([ys[label] for label in order], order)
+    clean_row_axis(ax)
+    ax.set_xlabel("Estimated memory error (logical qubit⁻¹ s⁻¹)")
+    handles = [
+        Line2D([], [], ls="none", marker="o", ms=10, mew=2.0, mec=INK, mfc=INK),
+        Line2D([], [], ls="none", marker="o", ms=10, mew=2.0, mec=INK, mfc=BG),
+    ]
+    ax.legend(
+        handles,
+        ["Observed-stratum dominated", "Partly extrapolated"],
+        loc="lower right",
+        bbox_to_anchor=(1.0, 1.0),
+        ncol=2,
+        borderaxespad=0.3,
+        columnspacing=1.6,
+    )
+    save_static(fig, "memory_rate", (1000, 420))
+
+
+# Extraction cost
+
+
+def extraction_cost() -> None:
+    rows = {r["label"]: r for r in read_csv("headline.csv") if float(r["p"]) == P_HEADLINE}
+    full, r8 = rows["Carbon full"], rows["Carbon R8"]
+    panels = [
+        ("twoq_per_round", "Two-qubit gates per round (count)", 100.0),
+        ("time_ms_per_round", "Modelled round time (ms)", 200.0),
+    ]
+    fig = new_figure(1000, 560)
+    bottoms = [352, 84]
+    for (field, xlabel, step), bottom in zip(panels, bottoms):
+        ax = axes_px(fig, 140, bottom, 830, 176)
+        values = [float(full[field]), float(r8[field])]
+        ax.barh([1, 0], values, height=0.56, color=[VIOLET, TEAL], zorder=2)
+        top = values[0] * 1.04
+        ax.set_xlim(0, top)
+        ax.set_ylim(-0.6, 1.6)
+        ax.xaxis.set_major_locator(FixedLocator(np.arange(0, top + 1e-9, step)))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _p: f"{v:g}"))
+        ax.grid(axis="x", color=RULE, lw=0.9, zorder=0)
+        ax.set_axisbelow(True)
+        ax.set_yticks([1, 0], ["Carbon full", "Carbon R8"])
+        clean_row_axis(ax)
+        ax.set_xlabel(xlabel)
+    save_static(fig, "extraction_cost", (1000, 560))
+
+
+# Free-order fits
+
+
+def fault_order() -> None:
+    rows = read_csv("exponents.csv")
+    rules = ["full", "C", "B4", "R4", "R8", "R8F"]
+    names = ["Full", "Any event", "Ambiguous, T=4", "R4", "R8", "R8F"]
+    noises = [("uniform", "o", SLATE, 9.5, 0.16), ("helios", "D", AMBER, 8.5, -0.16)]
+    by_key = {(r["rule"], r["noise"]): r for r in rows}
+    if len(by_key) != len(rows) or set(by_key) != {(r, n[0]) for r in rules for n in noises}:
+        raise SystemExit("exponents.csv: expected one row per rule and noise")
+    for rule, name in zip(rules, names):
+        for noise, *_ in noises:
+            if by_key[(rule, noise)]["label"] != name:
+                raise SystemExit(f"exponents.csv: unexpected label for {rule}")
+
+    fig = new_figure(1000, 620)
+    ax = axes_px(fig, 168, 84, 802, 476)
+    ends = []
+    for i, rule in enumerate(rules):
+        y = float(len(rules) - 1 - i)
+        for noise, marker, c, size, dy in noises:
+            row = by_key[(rule, noise)]
+            lo, mid, hi = float(row["low"]), float(row["exponent"]), float(row["high"])
+            ends += [lo, hi]
+            ax.hlines(y + dy, lo, hi, color=c, lw=2.0, zorder=2, capstyle="butt")
+            ax.vlines([lo, hi], y + dy - 0.07, y + dy + 0.07, color=c, lw=1.6, zorder=2)
+            ax.plot(mid, y + dy, marker=marker, ms=size, color=c, mec=c, zorder=3)
+    ax.axvline(6.0, color=GREY, lw=1.0, zorder=1)
+    span = max(ends) - min(ends)
+    ax.set_xlim(min(ends) - 0.06 * span, max(ends) + 0.06 * span)
+    ax.set_ylim(-0.6, len(rules) - 0.4)
+    ticks = [t for t in np.arange(5.0, 7.51, 0.5) if ax.get_xlim()[0] <= t <= ax.get_xlim()[1]]
+    ax.xaxis.set_major_locator(FixedLocator(ticks))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _p: f"{v:g}"))
+    ax.set_yticks(range(len(rules) - 1, -1, -1), names)
+    clean_row_axis(ax)
+    ax.set_xlabel("Local error exponent (dimensionless)")
+    handles = [
+        Line2D([], [], color=SLATE, lw=2.0, marker="o", ms=9.5),
+        Line2D([], [], color=AMBER, lw=2.0, marker="D", ms=8.5),
+    ]
+    ax.legend(
+        handles,
+        ["Uniform noise", "Helios-like noise"],
+        loc="lower right",
+        bbox_to_anchor=(1.0, 1.0),
+        ncol=2,
+        borderaxespad=0.3,
+        columnspacing=1.6,
+        handlelength=2.2,
+    )
+    save_static(fig, "fault_order", (1000, 620))
+
+
+# Periodic interval cost
+
+
+def interval_cost() -> None:
+    selected_p = ["0.004", "0.003", "0.0025"]
+    rows = [r for r in read_csv("intervals.csv") if r["p"] in selected_p]
+    for r in rows:
+        if r["data_driven"] != "True" or float(r["sampled_share_min"]) < 0.5:
+            raise SystemExit(f"intervals.csv: row T={r['T']}, p={r['p']} is not observation supported")
+    styles = {"0.004": (VIOLET, "o", 9.0, -0.07), "0.003": (AMBER, "s", 8.0, 0.0), "0.0025": (TEAL, "^", 9.5, 0.07)}
+    fig = new_figure(1000, 460)
+    ax = axes_px(fig, 104, 82, 866, 358)
+    ends = []
+    t_values = sorted({int(r["T"]) for r in rows})
+    if t_values != [2, 4, 8, 16]:
+        raise SystemExit(f"intervals.csv: unexpected T values {t_values}")
+    for p in selected_p:
+        c, marker, size, offset = styles[p]
+        series = sorted((r for r in rows if r["p"] == p), key=lambda r: int(r["T"]))
+        if [int(r["T"]) for r in series] != t_values:
+            raise SystemExit(f"intervals.csv: missing T values for p={p}")
+        xs = np.array([int(r["T"]) * 2.0**offset for r in series])
+        mid = np.array([float(r["ratio"]) for r in series])
+        lo = np.array([float(r["low"]) for r in series])
+        hi = np.array([float(r["high"]) for r in series])
+        ends += list(lo) + list(hi)
+        ax.plot(xs, mid, color=c, lw=1.5, alpha=0.75, zorder=2)
+        ax.vlines(xs, lo, hi, color=c, lw=1.8, zorder=2)
+        cap = 2.0**0.022
+        ax.hlines(np.r_[lo, hi], np.r_[xs, xs] / cap, np.r_[xs, xs] * cap, color=c, lw=1.6, zorder=2)
+        ax.plot(xs, mid, ls="none", marker=marker, ms=size, color=c, mec=c, zorder=3, label=f"$p$ = {p}")
+    ax.axhline(1.0, color=GREY, lw=1.0, zorder=1)
+    ax.set_xscale("log", base=2)
+    ax.set_xlim(2 / 2**0.32, 16 * 2**0.32)
+    ax.xaxis.set_major_locator(FixedLocator(t_values))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _p: f"{v:g}"))
+    ax.xaxis.set_minor_locator(FixedLocator([]))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    span = max(ends) - min(ends)
+    ax.set_ylim(min(ends) - 0.08 * span, max(ends) + 0.08 * span)
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _p: f"{v:.1f}"))
+    ax.grid(axis="y", color=RULE, lw=0.9, zorder=0)
+    ax.set_axisbelow(True)
+    for side in ("right", "top"):
+        ax.spines[side].set_visible(False)
+    ax.set_xlabel("Full-measurement interval T (rounds)")
+    ax.set_ylabel("Error per round / full extraction (ratio)")
+    ax.legend(loc="upper left", borderaxespad=0.3, labelspacing=0.6)
+    save_static(fig, "interval_cost", (1000, 460))
+
+
+# Hero animation
+
+HERO_W, HERO_H = 1000, 640
+FPS = 20
+CLEAR_S = 0.30
+PHASE_S = 0.55
+HOLD_S = 0.30
+PULSE_S = 0.125
+CENTRES = np.array([[250.0, 326.0], [750.0, 326.0]])
+R_DATA = 222.0
+PHASE_COLOURS = (TEAL, AMBER, VIOLET)
+PHASE_OF_PART = {"L1": 0, "L2": 1, "W2": 1, "L3": 2}
+
+# Edge states: (alpha, width in px) for pulse, phase trace and round trace.
+EDGE_STATES = np.array([[1.0, 2.1], [0.40, 1.05], [0.16, 0.95]])
+
+
+def part_phase(name: str) -> int:
+    phase = PHASE_OF_PART.get(name[:2])
+    if phase is None:
+        raise SystemExit(f"r8_paths.json: unknown part {name}")
+    return phase
+
+
+def qubit_layout(data: dict) -> dict[str, np.ndarray]:
+    """Virtual data slots around a polar ancilla grid, in pixels.
+
+    Ancilla names are local to each part. Their position near a data block does
+    not assign hardware ancillas to that block, even for single-block checks.
+    """
+    blocks, pool = data["blocks"], data["ancilla_pool"]
+    if len(blocks) != 5 or any(len(b) != 12 for b in blocks) or pool != 32:
+        raise SystemExit("r8_paths.json: expected five blocks of twelve and a pool of 32")
+    if sorted(q for b in blocks for q in b) != list(range(data["data_qubits"])):
+        raise SystemExit("r8_paths.json: blocks do not cover the data qubits")
+    step, gap = 4.0, 7.0
+    offsets, angle = [], 0.0
+    for i in range(12):
+        offsets.append(angle)
+        angle += gap if i in (3, 7) else step
+    span = offsets[-1]
+    pos: dict[str, np.ndarray] = {}
+    for b, members in enumerate(blocks):
+        centre = 90.0 - 72.0 * b
+        for i, q in enumerate(members):
+            a = math.radians(centre + span / 2 - offsets[i])
+            pos[f"d{q}"] = R_DATA * np.array([math.cos(a), math.sin(a)])
+    r_out, r_in, r_mid = 0.37 * R_DATA, 0.20 * R_DATA, 0.068 * R_DATA
+    sector = [(r_out, 27.0), (r_out, 9.0), (r_in, 18.0), (r_in, -18.0), (r_out, -9.0), (r_out, -27.0)]
+    for n in range(pool):
+        if n < 30:
+            b, j = divmod(n, 6)
+            radius, offset = sector[j]
+            a = math.radians(90.0 - 72.0 * b + offset)
+            pos[f"a{n}"] = radius * np.array([math.cos(a), math.sin(a)])
+        else:
+            pos[f"a{n}"] = np.array([(-1.0 if n == 30 else 1.0) * r_mid, 0.0])
+    return pos
+
+
+def bezier(p: np.ndarray, q: np.ndarray, bend: float, n: int = 20) -> np.ndarray:
+    d = q - p
+    control = (p + q) / 2.0 + bend * np.array([-d[1], d[0]])
+    t = np.linspace(0.0, 1.0, n)[:, None]
+    return (1 - t) ** 2 * p + 2 * (1 - t) * t * control + t**2 * q
+
+
+def check_paths(data: dict) -> tuple[int, int]:
+    parts = data["parts"]
+    names = {f"d{q}" for q in range(data["data_qubits"])} | {f"a{n}" for n in range(data["ancilla_pool"])}
+    for name, part in parts.items():
+        layers = part["gate_layers"]
+        if sum(len(layer) for layer in layers) != part["two_qubit_gates"]:
+            raise SystemExit(f"r8_paths.json: {name} gate layers do not sum to two_qubit_gates")
+        if name.startswith("W2_") and layers:
+            raise SystemExit(f"r8_paths.json: {name} unexpectedly records gates")
+        for layer in layers:
+            for pair in layer:
+                if len(pair) != 2 or not set(pair) <= names or pair[0] == pair[1]:
+                    raise SystemExit(f"r8_paths.json: {name} has an unresolved pair {pair}")
+                if pair[0][0] == "d" and pair[1][0] == "d":
+                    raise SystemExit(f"r8_paths.json: {name} has a data-data pair {pair}")
+    paths = data["paths"]
+    rounds = data["rounds_after_preparation"] + 1
+    if len(paths) != data["shots"] or any(len(p) != rounds for p in paths):
+        raise SystemExit("r8_paths.json: paths do not match shots and rounds")
+    for path in paths:
+        for parts_in_round in path:
+            phases = [part_phase(p) for p in parts_in_round]
+            if phases != sorted(phases) or any(p not in parts for p in parts_in_round):
+                raise SystemExit("r8_paths.json: a round lists unknown or unordered parts")
+
+    def gates(parts_in_round: list[str]) -> int:
+        return sum(parts[p]["two_qubit_gates"] for p in parts_in_round)
+
+    full_round = data["full_round_parts"]
+    if gates(full_round) != data["full_round_two_qubit_gates"] or data["full_round_two_qubit_gates"] != 560:
+        raise SystemExit("r8_paths.json: the full reference round does not contain 560 gates")
+    memory = [r for p in paths for r in p[1:]]
+    mean = sum(gates(r) for r in memory) / len(memory)
+    escalated = sum("L3" in r for r in memory) / len(memory)
+    if not math.isclose(mean, data["mean_two_qubit_gates_per_round"], rel_tol=1e-12):
+        raise SystemExit("r8_paths.json: path gate counts disagree with the stored mean")
+    if not math.isclose(escalated, data["escalated_round_fraction"], rel_tol=1e-12):
+        raise SystemExit("r8_paths.json: path escalations disagree with the stored fraction")
+    first = next(i for i, p in enumerate(paths) if all("L3" not in r for r in p[1:]))
+    second = next(
+        i for i, p in enumerate(paths) if "L3" not in p[1] and any("L3" in r for r in p[2:])
+    )
+    if (first, second) != (0, 13):
+        raise SystemExit(f"r8_paths.json: selected shots {first} and {second}, expected 0 and 13")
+    for shot in (first, second):
+        path = paths[shot]
+        if path[0] != ["L1_a", "L2_all", "L3"] or gates(path[0]) != 560:
+            raise SystemExit(f"r8_paths.json: shot {shot} does not start with full preparation")
+        if "L3r_1" not in path[1]:
+            raise SystemExit(f"r8_paths.json: shot {shot} does not begin memory with L3r_1")
+    return first, second
+
+
+def full_reference_round(data: dict, r: int) -> list[str]:
+    l1 = "L1_a" if r % 2 == 0 else "L1_b"
+    parts = [l1 if p.startswith("L1") else p for p in data["full_round_parts"]]
+    if sum(data["parts"][p]["two_qubit_gates"] for p in parts) != 560:
+        raise SystemExit("r8_paths.json: a full reference round does not contain 560 gates")
+    return parts
+
+
+def build_schedule(data: dict, shots: tuple[int, int]):
+    """Edge records with display windows for both sides and both episodes."""
+    pos = qubit_layout(data)
+    rounds = data["rounds_after_preparation"] + 1
+    round_s = 3 * PHASE_S + HOLD_S
+    episode_s = CLEAR_S + rounds * round_s
+    curves: dict[tuple[str, str], np.ndarray] = {}
+    vertex_id = {}
+    for side in range(2):
+        for q in range(data["data_qubits"]):
+            vertex_id[(side, f"d{q}")] = side * 92 + q
+        for n in range(data["ancilla_pool"]):
+            vertex_id[(side, f"a{n}")] = side * 92 + 60 + n
+    rec = {k: [] for k in ("poly", "phase", "start", "pend", "rend", "n0", "n1")}
+    labels = []
+    for e, shot in enumerate(shots):
+        t_episode = e * episode_s
+        labels.append((t_episode, t_episode + CLEAR_S, "Preparation"))
+        for r in range(rounds):
+            t_round = t_episode + CLEAR_S + r * round_s
+            labels.append((t_round, t_round + round_s, "Preparation" if r == 0 else f"Round {r}"))
+            side_parts = [
+                data["paths"][shot][0] if r == 0 else full_reference_round(data, r),
+                data["paths"][shot][r],
+            ]
+            for side, parts in enumerate(side_parts):
+                drawn = len(rec["start"])
+                for phase in range(3):
+                    layers = [
+                        layer
+                        for p in parts
+                        if part_phase(p) == phase
+                        for layer in data["parts"][p]["gate_layers"]
+                        if layer
+                    ]
+                    t_phase = t_round + phase * PHASE_S
+                    for j, layer in enumerate(layers):
+                        start = t_phase + j * PHASE_S / len(layers)
+                        for a, b in layer:
+                            if a[0] == "a" and b[0] == "d":
+                                a, b = b, a
+                            if a[0] == "a" and b[0] == "a" and int(a[1:]) > int(b[1:]):
+                                a, b = b, a
+                            key = (a, b)
+                            if key not in curves:
+                                bend = 0.30 if a[0] == "a" else 0.13
+                                curves[key] = bezier(pos[a], pos[b], bend)
+                            rec["poly"].append(curves[key] + CENTRES[side])
+                            rec["phase"].append(phase)
+                            rec["start"].append(start)
+                            rec["pend"].append(t_phase + PHASE_S)
+                            rec["rend"].append(t_round + round_s)
+                            rec["n0"].append(vertex_id[(side, a)])
+                            rec["n1"].append(vertex_id[(side, b)])
+                drawn = len(rec["start"]) - drawn
+                if drawn != sum(data["parts"][p]["two_qubit_gates"] for p in parts) or (side == 0 and drawn != 560):
+                    raise SystemExit(f"r8_paths.json: shot {shot} round {r} draws {drawn} edges on side {side}")
+    arrays = {k: np.asarray(v) for k, v in rec.items()}
+    total_s = len(shots) * episode_s
+    return pos, arrays, labels, total_s
+
+
+def place_legend(ax, renderer, y: float, data_style: dict, anc_style: dict) -> None:
+    items = [("line", c, name) for c, name in zip(PHASE_COLOURS, ("Inner checks", "Block checks", "Outer checks"))]
+    items += [("data", None, "Data"), ("anc", None, "Ancilla")]
+    sample_w, text_gap, item_gap = 24.0, 8.0, 30.0
+    texts = [ax.text(0, y, name, fontsize=12.5, color=INK, va="center", ha="left") for *_, name in items]
+    widths = [t.get_window_extent(renderer).width for t in texts]
+    total = sum(sample_w + text_gap + w for w in widths) + item_gap * (len(items) - 1)
+    x = (HERO_W - total) / 2.0
+    for (kind, c, _), text, w in zip(items, texts, widths):
+        if kind == "line":
+            ax.plot([x, x + sample_w], [y, y], color=c, lw=px(2.6), solid_capstyle="round")
+        elif kind == "data":
+            ax.scatter([x + sample_w / 2], [y], marker="o", **data_style)
+        else:
+            ax.scatter([x + sample_w / 2], [y], marker="s", **anc_style)
+        text.set_x(x + sample_w + text_gap)
+        x += sample_w + text_gap + w + item_gap
+
+
+def hero_canvas(data: dict, shots: tuple[int, int]):
+    """Return a function drawing the animation at time t as an RGB array, the loop length and the figure."""
+    pos, rec, labels, total_s = build_schedule(data, shots)
+    phase_rgb = np.array([to_rgb(c) for c in PHASE_COLOURS])
+
+    fig = new_figure(HERO_W, HERO_H)
+    ax = fig.add_axes((0, 0, 1, 1))
+    ax.set_xlim(0, HERO_W)
+    ax.set_ylim(0, HERO_H)
+    ax.axis("off")
+    lines = LineCollection([], capstyle="round", zorder=2)
+    ax.add_collection(lines)
+
+    vertex_xy = np.zeros((184, 2))
+    for side in range(2):
+        for q in range(data["data_qubits"]):
+            vertex_xy[side * 92 + q] = pos[f"d{q}"] + CENTRES[side]
+        for n in range(data["ancilla_pool"]):
+            vertex_xy[side * 92 + 60 + n] = pos[f"a{n}"] + CENTRES[side]
+    is_data = np.zeros(184, bool)
+    is_data[np.r_[0:60, 92:152]] = True
+    base_face = np.where(is_data[:, None], np.array(to_rgb(BG)), np.array(to_rgb(ANCILLA_FILL)))
+    data_style = dict(s=px(10.5) ** 2, facecolors=BG, edgecolors=DATA_EDGE, linewidths=px(1.2), zorder=3)
+    anc_style = dict(s=px(7.5) ** 2, facecolors=ANCILLA_FILL, edgecolors="none", linewidths=0, zorder=3)
+    data_vertices = ax.scatter(vertex_xy[is_data, 0], vertex_xy[is_data, 1], marker="o", **data_style)
+    anc_vertices = ax.scatter(vertex_xy[~is_data, 0], vertex_xy[~is_data, 1], marker="s", **anc_style)
+
+    for side, name in enumerate(("Full Carbon", "R8")):
+        ax.text(CENTRES[side, 0], 606, name, fontsize=16, color=INK, ha="center", va="center")
+    state_label = ax.text(500, 606, "", fontsize=13.5, color=MUTED, ha="center", va="center")
+    fig.canvas.draw()
+    place_legend(ax, fig.canvas.get_renderer(), 30.0, data_style, anc_style)
+
+    def draw(t: float) -> np.ndarray:
+        state_label.set_text(next((text for a, b, text in labels if a <= t < b), labels[-1][2]))
+        idx = np.nonzero((rec["start"] <= t) & (t < rec["rend"]))[0]
+        lit = t < rec["start"][idx] + PULSE_S
+        in_phase = t < rec["pend"][idx]
+        state = np.where(lit & in_phase, 0, np.where(in_phase, 1, 2))
+        order = np.argsort(-state, kind="stable")
+        idx, state, in_phase = idx[order], state[order], in_phase[order]
+        colour_of = phase_rgb[rec["phase"][idx]]
+        lines.set_segments(rec["poly"][idx])
+        lines.set_color(np.column_stack([colour_of, EDGE_STATES[state, 0]]))
+        lines.set_linewidth(px(1.0) * EDGE_STATES[state, 1])
+
+        tint = np.zeros(184)
+        active = idx[in_phase]
+        colour = phase_rgb[0]
+        if active.size:
+            level = np.where(state[in_phase] == 0, 0.85, 0.22)
+            np.maximum.at(tint, rec["n0"][active], level)
+            np.maximum.at(tint, rec["n1"][active], level)
+            colour = phase_rgb[rec["phase"][active[0]]]
+        face = base_face * (1 - tint[:, None]) + colour * tint[:, None]
+        data_vertices.set_facecolors(face[is_data])
+        anc_vertices.set_facecolors(face[~is_data])
+        fig.canvas.draw()
+        return np.asarray(fig.canvas.buffer_rgba())[..., :3].copy()
+
+    return draw, total_s, fig
+
+
+def render_frames(data: dict, shots: tuple[int, int]) -> int:
+    draw, total_s, fig = hero_canvas(data, shots)
+    n_frames = int(round(total_s * FPS))
+    FRAMES.mkdir(parents=True, exist_ok=True)
+    for old in FRAMES.glob("*.png"):
+        old.unlink()
+    for i in range(n_frames):
+        Image.fromarray(draw(i / FPS)).save(FRAMES / f"{i:04d}.png", compress_level=1)
+    plt.close(fig)
+    return n_frames
+
+
+def frame_paths() -> list[Path]:
+    return sorted(FRAMES.glob("*.png"))
+
+
+GIF_COLOURS = 255  # one index stays free to mark unchanged pixels between frames
+
+
+def gif_palette(paths: list[Path]) -> np.ndarray:
+    """One palette for every frame: explicit ramps for the drawn colours, filled by sampled residuals."""
+    bg = rgb255(BG)
+    explicit = []
+    hue_levels = np.r_[np.linspace(0.03, 0.30, 16), np.linspace(0.34, 1.0, 20)]
+    for c in PHASE_COLOURS:
+        explicit += [bg + (rgb255(c) - bg) * a for a in hue_levels]
+    for c, n in ((INK, 28), (DATA_EDGE, 10), (ANCILLA_FILL, 8), (MUTED, 10)):
+        explicit += [bg + (rgb255(c) - bg) * a for a in np.linspace(0.0, 1.0, n)]
+    explicit = np.unique(np.round(np.array(explicit)).astype(np.int64), axis=0)
+    samples = [np.asarray(Image.open(p).convert("RGB")).reshape(-1, 3) for p in paths[:: max(1, len(paths) // 40)]]
+    pixels = np.concatenate(samples).astype(np.int64)
+    packed = (pixels[:, 0] << 16) | (pixels[:, 1] << 8) | pixels[:, 2]
+    colours, counts = np.unique(packed, return_counts=True)
+    rgb = np.column_stack([(colours >> 16) & 255, (colours >> 8) & 255, colours & 255])
+    nearest = np.full(len(rgb), np.inf)
+    for chunk in range(0, len(explicit), 32):
+        d = ((rgb[:, None, :] - explicit[None, chunk : chunk + 32, :]) ** 2).sum(-1)
+        nearest = np.minimum(nearest, d.min(1))
+    residual = nearest > 9.0
+    free = GIF_COLOURS - len(explicit)
+    extra = np.zeros((0, 3), np.int64)
+    if residual.any() and free > 0:
+        reps = np.minimum(counts[residual], 400)
+        res_pixels = np.repeat(rgb[residual], reps, axis=0).astype(np.uint8)
+        side = int(math.ceil(math.sqrt(len(res_pixels))))
+        canvas = np.zeros((side * side, 3), np.uint8)
+        canvas[: len(res_pixels)] = res_pixels
+        canvas[len(res_pixels) :] = res_pixels[0]
+        quant = Image.fromarray(canvas.reshape(side, side, 3)).quantize(colors=free, method=Image.Quantize.MEDIANCUT)
+        extra = np.array(quant.getpalette()[: 3 * free], np.int64).reshape(-1, 3)
+    return np.unique(np.concatenate([explicit, extra]), axis=0)[:GIF_COLOURS].astype(np.uint8)
+
+
+def nearest_index(colours: np.ndarray, palette: np.ndarray) -> np.ndarray:
+    pal = palette.astype(np.int32)[None, :, :]
+    best = np.empty(len(colours), np.int16)
+    for start in range(0, len(colours), 4096):
+        chunk = colours[start : start + 4096].astype(np.int32)[:, None, :]
+        best[start : start + 4096] = ((chunk - pal) ** 2).sum(-1).argmin(1)
+    return best
+
+
+def write_gif(paths: list[Path], target: Path) -> list[Image.Image]:
+    """Quantise frames without dithering and encode unchanged pixels compactly.
+
+    The GIF may use transparent differences between frames. check_gif verifies
+    opaque decoded frames against the palette-mapped images, not the original RGB.
+    """
+    palette = gif_palette(paths)
+    flat = palette.reshape(-1).tolist()
+    lookup = np.full(1 << 24, -1, np.int16)
+    frames = []
+    for path in paths:
+        rgb = np.asarray(Image.open(path).convert("RGB")).reshape(-1, 3).astype(np.int64)
+        packed = (rgb[:, 0] << 16) | (rgb[:, 1] << 8) | rgb[:, 2]
+        colours, inverse = np.unique(packed, return_inverse=True)
+        todo = colours[lookup[colours] < 0]
+        if todo.size:
+            lookup[todo] = nearest_index(np.column_stack([todo >> 16, (todo >> 8) & 255, todo & 255]), palette)
+        frame = Image.new("P", (HERO_W, HERO_H))
+        frame.frombytes(lookup[colours][inverse].astype(np.uint8).tobytes())
+        frame.putpalette(flat)
+        frames.append(frame)
+    frames[0].save(
+        target,
+        save_all=True,
+        append_images=frames[1:],
+        duration=int(round(1000 / FPS)),
+        loop=0,
+        optimize=True,
+        disposal=1,
+    )
+    return frames
+
+
+def check_gif(target: Path, frames: list[Image.Image]) -> None:
+    expected = [np.asarray(frames[0].convert("RGB"))]
+    for frame in frames[1:]:
+        current = np.asarray(frame.convert("RGB"))
+        if not np.array_equal(current, expected[-1]):
+            expected.append(current)
+    with Image.open(target) as gif:
+        if gif.size != (HERO_W, HERO_H) or gif.info.get("loop") != 0:
+            raise SystemExit("r8_paths.gif: wrong size or not looping")
+        decoded = 0
+        for frame, want in zip(ImageSequence.Iterator(gif), expected):
+            if frame.mode == "RGBA" and np.asarray(frame.getchannel("A")).min() < 255:
+                raise SystemExit(f"r8_paths.gif: decoded frame {decoded} is not opaque")
+            if not np.array_equal(np.asarray(frame.convert("RGB")), want):
+                raise SystemExit(f"r8_paths.gif: decoded frame {decoded} differs from its source")
+            decoded += 1
+        if decoded != len(expected) or gif.n_frames != len(expected):
+            raise SystemExit("r8_paths.gif: decoded frame count differs from the source")
+
+
+def write_mp4(ffmpeg: str, target: Path) -> None:
+    command = [
+        ffmpeg, "-y", "-v", "error",
+        "-framerate", str(FPS), "-i", str(FRAMES / "%04d.png"),
+        "-vf", "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
+        "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-tune", "animation",
+        "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+        "-movflags", "+faststart", "-an", str(target),
+    ]
+    subprocess.run(command, check=True)
+
+
+def check_mp4(ffmpeg: str, target: Path) -> None:
+    probe = subprocess.run([ffmpeg, "-hide_banner", "-i", str(target)], capture_output=True, text=True)
+    streams = [line for line in probe.stderr.splitlines() if "Stream #" in line]
+    video = [s for s in streams if "Video:" in s]
+    if len(streams) != 1 or not video or "Video: h264" not in video[0] or "yuv420p" not in video[0]:
+        raise SystemExit("r8_paths.mp4: expected one H.264 yuv420p video stream and no audio")
+    if f"{HERO_W}x{HERO_H}" not in video[0]:
+        raise SystemExit("r8_paths.mp4: wrong frame size")
+    atoms, raw = [], target.read_bytes()
+    offset = 0
+    while offset + 8 <= len(raw):
+        size = int.from_bytes(raw[offset : offset + 4], "big")
+        atoms.append(raw[offset + 4 : offset + 8].decode("latin-1"))
+        if size == 1:
+            size = int.from_bytes(raw[offset + 8 : offset + 16], "big")
+        if size < 8:
+            break
+        offset += size
+    if "moov" not in atoms or "mdat" not in atoms or atoms.index("moov") > atoms.index("mdat"):
+        raise SystemExit("r8_paths.mp4: missing fast-start metadata")
+
+
+def hero(ffmpeg: str) -> None:
+    with open(DATA / "r8_paths.json") as handle:
+        data = json.load(handle)
+    shots = check_paths(data)
+    if not any("L3" in r for r in data["paths"][shots[1]][2:]):
+        raise SystemExit("r8_paths.json: the later selected shot does not escalate")
+    mp4, gif = OUT / "r8_paths.mp4", OUT / "r8_paths.gif"
+    try:
+        render_frames(data, shots)
+        paths = frame_paths()
+        write_mp4(ffmpeg, mp4)
+        check_mp4(ffmpeg, mp4)
+        frames = write_gif(paths, gif)
+        check_gif(gif, frames)
+    finally:
+        shutil.rmtree(FRAMES, ignore_errors=True)
+    for target in (mp4, gif):
+        if target.stat().st_size >= BYTE_LIMIT:
+            raise SystemExit(f"{target.name}: {target.stat().st_size} bytes exceeds the limit")
+
+
+def main() -> None:
+    ffmpeg = shutil.which("ffmpeg")
+    if ffmpeg is None:
+        raise SystemExit("make_figures.py: ffmpeg is required to write figures/r8_paths.mp4; install it and rerun.")
+    style()
+    memory_rate()
+    extraction_cost()
+    fault_order()
+    interval_cost()
+    hero(ffmpeg)
+    outputs = [f"{stem}.{ext}" for stem in STATIC for ext in ("png", "svg")] + ["r8_paths.gif", "r8_paths.mp4"]
+    for name in outputs:
+        if not (OUT / name).is_file():
+            raise SystemExit(f"figures/{name} was not written")
+        print(f"figures/{name}: {(OUT / name).stat().st_size:,} bytes")
 
 
 if __name__ == "__main__":

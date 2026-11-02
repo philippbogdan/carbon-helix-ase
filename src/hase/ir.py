@@ -30,9 +30,9 @@ class Op:
 class NoiseModel:
     """Circuit-level Pauli noise.
 
-    p2: two-qubit depolarizing after 2q gates; p1: one-qubit depolarizing after 1q gates;
+    p2: two-qubit depolarising after 2q gates; p1: one-qubit depolarising after 1q gates;
     pm: measurement flip; pr: reset flip; pidle: idle error per idle layer for live qubits,
-    of type idle_kind ('Z' = dephasing, 'DEP' = depolarizing).
+    of type idle_kind ('Z' = dephasing, 'DEP' = depolarising).
     """
     p2: float = 0.0
     p1: float = 0.0
@@ -45,7 +45,7 @@ class NoiseModel:
     @staticmethod
     def uniform(p: float, idle_kind: str = "Z") -> "NoiseModel":
         """C4-Helix paper (arXiv:2609.03194, App. C) model: reset p, measure p,
-        1q depolarizing p/10, 2q depolarizing p, idle dephasing p/10."""
+        1q depolarising p/10, 2q depolarising p, idle dephasing p/10."""
         return NoiseModel(p2=p, p1=p / 10, pm=p, pr=p, pidle=p / 10, idle_kind=idle_kind,
                           name=f"uniform(p={p:g})")
 

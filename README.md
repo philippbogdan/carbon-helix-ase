@@ -1,63 +1,36 @@
 # Carbon-Helix adaptive extraction
 
-**24.4x lower modelled memory error per second than adaptive C4-Helix.** Carbon-Helix R8 fits in 92 qubits and uses 61% fewer two-qubit gates than full Carbon extraction, at a similar estimated error rate per second.
+Carbon-Helix $`[[60,2,12]]`$ and C4-Helix $`[[20,2,6]]`$ are concatenated quantum error-correcting codes; adaptive extraction uses syndrome changes to decide which checks to run. This repository compares them using an adaptive Pauli-frame simulator checked against Stim, with Frontier decoding and a model of Quantinuum's Helios, a 98-qubit trapped-ion processor. **Carbon-Helix R8 gives an estimated 24.4x lower memory error per second than adaptive C4-Helix, using 92 qubits; Carbon's estimate is partly extrapolated.**
 
-Per round, the advantage over C4 is 6.7x at Helios-like noise. Carbon estimates include extrapolation. These are circuit simulations with modelled times, not hardware results.
+[![Full Carbon extraction beside checks executed by real simulated R8 shots.](figures/r8_paths.gif)](figures/r8_paths.mp4)
 
-<a href="figures/fig1_error.svg"><img src="figures/fig1_error.png" width="100%" alt="Logical error per qubit per round at two noise levels. Carbon estimates are open markers; C4 estimates are filled. All have 95% intervals."></a>
+Full extraction beside selected simulated R8 paths, including a return to all outer checks. Ancilla positions follow part-local names, so their apparent proximity to a block and the playback speed have no physical meaning; [all paths](figures/data/r8_paths.json) are included.
 
-## Does the extraction circuit fit on Helios?
+Full-extraction C4 [agrees with the authors' Fig. 11a](EVIDENCE.md#c4-helix-baseline) within conditional intervals under uniform noise; this does not validate adaptive C4 or the Helios-like model.
 
-**Yes: 60 data qubits and 32 reused ancillas, leaving six of the 98 qubits spare.** Full extraction uses 560 two-qubit gates per round. R8 averages 216 at the Helios-like noise point. Hardware compilation and execution remain to be tested.
+## The gain
 
-<a href="figures/fig2_cost.svg"><img src="figures/fig2_cost.png" width="100%" alt="Gates per round by extraction level and noise, followed by peak qubits against the 98-qubit capacity."></a>
+At $`p=0.00079`$, the estimated error per logical qubit per second is **6.33e-6 for R8 against 1.55e-4 for adaptive C4**. R8 uses **61.5% fewer two-qubit gates and 51.0% less round time than full Carbon**, at comparable error per second.
 
-Use the [circuits and qubit maps](circuits/) to [port the extraction](USE.md).
+![Estimated memory error per logical qubit per second, with conditional intervals.](figures/memory_rate.png)
 
-## Does adaptive extraction keep O(p^6) logical error?
+The large error reduction comes mainly from Carbon itself. Observed fault strata supply 41.4% of R8's estimate, 38.2% of full Carbon's and 99.1% of C4's; the 95% intervals are conditional on the fit.
 
-**The tested full, escalating and periodic schedules support six-fault suppression. R8 has supporting fits and restricted checks, but no whole-circuit bound.** Distance at least 11 requires six faults to fail under ideal minimum-fault decoding. Frontier's approximate decoding is checked separately.
+![Full Carbon and R8 gate counts and modelled time per round.](figures/extraction_cost.png)
 
-<a href="figures/fig3_distance.svg"><img src="figures/fig3_distance.png" width="100%" alt="Fault distances for restricted end-gadget checks and alternative gadgets, alongside unfinished whole-circuit searches. Filled beads show proved bounds; open beads show unproved minima."></a>
+R8 averages 215.8 rather than 560 two-qubit gates, and 386.5 rather than 788.4 ms per round. These costs exclude preparation; the error-per-second comparison includes it.
 
-The R8 columns cover restricted end-gadget cases. [Whole-circuit decomposition, free-order fits and decoder limits](EVIDENCE.md) give the full scope. The low-noise estimates assume order six and cannot prove it.
+R8 measures inner checks every round, adds weight-6 checks where they detect changes, and measures all outer checks on ambiguity or flags. Otherwise it rotates one outer check. [Results and definitions](RESULTS.md) give the numbers; [the circuits](circuits/) and [porting guide](USE.md) make the schedule reusable.
 
-## How often must the full code be measured?
+## Assumptions made
 
-**Keep a fixed maximum interval as p falls to stay within a fixed factor of full extraction. An interval proportional to 1/p^4 is not supported.** Two three-fault events can fail within one window, at the same p^6 order as the code's error floor. This does not fix a universal best interval.
-
-Under uniform noise, event triggers call the full measurement less often as p falls:
-
-<a href="figures/fig4_escalation.svg"><img src="figures/fig4_escalation.png" width="100%" alt="Directly sampled full-measurement frequency falls roughly in proportion to p for ambiguity-triggered rule B and any-event rule C."></a>
-
-Forced intervals have different effects for each rule. B escalates on ambiguity, C on any event, R rotates outer checks, and P uses periodic full checks without escalation. For R, T is the rotation period, rather than a forced full-measurement interval. This study uses uniform noise.
-
-<a href="figures/fig5_schedule.svg"><img src="figures/fig5_schedule.png" width="100%" alt="Error relative to full extraction for rules B, C, R and P at every tested interval and noise level. Open markers rely on extrapolation; untested intervals are marked."></a>
-
-[Window failures and interval evidence](EVIDENCE.md#why-a-fixed-full-measurement-interval) explain why the short-run B results do not establish that the forced cap can be removed.
+- These are short X-basis memories: one preparation round plus four rounds, encoding two logical qubits. They do not measure logical computation throughput.
+- Helios's memory error during a compiled round is unpublished. Doubling the assumed idle-error rate leaves about a 5x advantage for full Carbon and R4; R8 was not tested in that [sensitivity comparison](RESULTS.md#device-assumptions).
+- Helios noise and timing are modelled. Compilation, transport and leakage remain untested; block timing also omits some idle noise.
+- Sparse Carbon strata assume six-fault scaling. R8 has supporting fits and restricted checks, but no whole-circuit distance bound. [Distance and interval evidence](EVIDENCE.md) also rules out assuming a full-check interval growing as $`1/p^4`$.
 
 ## How to use it
 
-Load the complete extraction circuit into your own Stim simulations. From the repository root, run `./run.sh` to install the pinned packages and check the circuits (Python 3.12 or newer and a C++17 compiler are needed). Use `.venv/bin/python` for this example:
+Load `circuits/memory_X.stim` or `memory_Z.stim` with `stim.Circuit.from_file`. Run `./run.sh headline` to check the headline, or follow [REPRODUCE.md](REPRODUCE.md) to sample adaptive memories. [USE.md](USE.md) explains how to connect the parts and replace the device model.
 
-```python
-import stim
-
-circuit = stim.Circuit.from_file("circuits/memory_X.stim")
-detectors, observables = circuit.compile_detector_sampler(seed=7).sample(
-    1000, separate_observables=True
-)
-model = circuit.detector_error_model()
-```
-
-Use `memory_Z.stim` for Z memory. For R8, run the simulator below. It chooses which checks to execute from each round's measurements and decodes the path it actually ran:
-
-```sh
-.venv/bin/python scripts/simulate.py --shots 128 --out build/r8.json
-```
-
-Choose a new output path for each run. To port the extraction into your own stack, start with the [circuit parts and qubit maps](circuits/). [USE.md](USE.md) covers noise settings, adaptive rules, measurement order and feedback.
-
-Anyone may use my code, data, figures and text for anything, including commercial work, with no attribution or other conditions required under the [CC0 1.0 public domain dedication](LICENSE). The bundled Frontier decoder is separate and keeps its [Apache-2.0 licence](third_party/frontier/LICENSE) and [notice](third_party/frontier/NOTICE).
-
-[Reproduction commands and plotted data](figures/README.md#reproduce-the-results) cover the saved results and their limits.
+Our code, data, figures and text are free to use under [CC0 1.0](LICENSE). The bundled [Frontier decoder](third_party/frontier/) retains its Apache-2.0 licence and notice.

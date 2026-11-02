@@ -1,6 +1,6 @@
 """General detector error models for paths containing logical gates.
 
-Detectors and observables are found by tracking, for every stabilizer generator and
+Detectors and observables are found by tracking, for every stabiliser generator and
 logical operator of the code, an affine reference: the set of earlier measurement outcomes
 (and unknown random bits from the projective preparation) whose parity equals the
 operator's value in the noiseless reference execution. A logical gate U maps references
@@ -119,7 +119,7 @@ def invert_ops(ops):
 class GeneralDEM:
     """DEM of a path of part instances (all executed) with reference-tracked detectors.
 
-    proto: needs .parts (CompiledPart), .n_data, .basis, .code (stabilizer generators hx,hz
+    proto: needs .parts (CompiledPart), .n_data, .basis, .code (stabiliser generators hx,hz
            and logicals), .check_vec(name) -> symplectic vector of a named check,
            .gate_ops(ptype) -> data Clifford of a gate part (None for extraction parts).
     path: list of (r, ptype).
@@ -192,7 +192,7 @@ class GeneralDEM:
                 finals.append((nm, set(M) ^ {fin[int(s)] for s in supp}, set(V)))
         self.obs_logicals = [[nm] for nm, _, V in finals if not V]
         if any(V for _, _, V in finals):
-            # entangled logicals (e.g. a GHZ state): the observables are a basis of the
+            # For entangled logicals, the observables are a basis of the
             # products of final logicals whose unknown bits cancel
             vars_ = sorted(set().union(*(V for _, _, V in finals)))
             A = np.array([[1 if v in V else 0 for v in vars_] for _, _, V in finals], dtype=np.uint8)

@@ -4,7 +4,7 @@ In-round failures of non-adaptive extraction sit in one or two consecutive round
 is detected at the latest one round later); window failures of adaptive rules can spread
 over the rounds between two outer measurements (docs/interval_theory.md). Counted: confirmed
 six-fault cores whose faults lie at least two rounds apart, and cores that only the
-campaign decoder fails (exact decoding corrects them). Reads results/minimal/*.json."""
+campaign decoder fails (the returned ILP solution corrects them). Reads results/minimal/*.json."""
 import ast
 import glob
 import json

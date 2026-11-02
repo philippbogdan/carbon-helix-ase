@@ -1,14 +1,11 @@
-"""Carbon-Helix extraction variants beyond the main campaign's rules (frontier pushes).
+"""Carbon-Helix extraction with rotating outer checks and optional faster block checks.
 
-CarbonHelixRotating: no periodic full measurement. Every round after the preparation
-measures the inner checks (L1), the weight-6 checks of blocks with an L1 event (L2), and a
-rotating share of the outer checks: in round r the group r mod `period` of the eight
-weight-16 checks (period 4: one X and one Z check per round; period 8: one check per round;
-each outer check every `period` rounds). A full outer measurement (L3) happens only on escalation (ambiguous-event rule),
-replacing that round's rotating share. Rationale (docs/interval_theory.md): a silent inner
-logical error anticommutes with several outer checks, so the rotation detects it within a
-round or two - what a forced full measurement every T rounds achieves only after up to T
-rounds, at a quarter of the outer checks' cost per round.
+R8 measures inner checks every round and weight-6 checks on blocks with inner events.
+An ambiguous change or a flag triggers full outer extraction, replacing the rotating
+check. Otherwise round r executes group r mod period: one X/Z pair for period 4, or
+one check for period 8, in the order X0, Z0, X1, Z1, X2, Z2, X3, Z3. Preparation is full.
+This rotation has no whole-circuit distance bound in the supplied evidence; its finite
+memory results do not establish protection at arbitrary storage lengths.
 """
 from __future__ import annotations
 
@@ -68,8 +65,7 @@ class CarbonHelixRotating(CarbonHelixProtocol):
 
     def __init__(self, n_rounds, basis, noise, period=4, escalate="ambiguous", l2="on_event",
                  schedule="edge", fast_l2=False, outer=None, l2_type=False, T2=None, T3=None, rotate=True):
-        # rotate=False: no rotating outer checks (the periodic rule with parallel weight-6
-        # checks: outer checks only every T3 rounds, weight-6 checks every T2 and on events)
+        # rotate=False leaves outer measurements to the base protocol's trigger and T3.
         self.period = period
         self.fast_l2 = fast_l2
         # l2_type: a block whose inner events are all of one type (X-type C4 checks fired: a Z

@@ -1,5 +1,4 @@
-"""Decoder settings benchmark behind the choice of the Carbon-Helix campaign decoder (a
-frontier push on decoding cost and accuracy): the same fixed sample of shots (non-adaptive
+"""Compare decoder cost and decisions on the same fixed sample of shots (non-adaptive
 Carbon-Helix, uniform noise, 4 rounds, odds scales 2 and 3) decoded with primary beams
 K = 256 (Delta 10) and K = 512 (Delta 12), both forward + backward with the staged
 re-decoding (1024/16, then 4096/24). Records seconds per shot, how many shots needed each

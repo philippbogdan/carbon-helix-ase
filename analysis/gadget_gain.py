@@ -97,7 +97,7 @@ def effects(part, supp, pauli, noise, n_data=60, strict=False):
 
 
 def max_gain(A, B, k, w, time_limit=300, stabs=None):
-    """max over |F| = k of the weight of the data error up to stabilizers, flags all zero:
+    """max over |F| = k of the weight of the data error up to stabilisers, flags all zero:
     stabs = list of 0/1 vectors over the support (the error's weight is the minimum over
     E + S); default {0, all-ones} (one check of weight w = len(support))."""
     nq, J = A.shape
@@ -159,7 +159,7 @@ def profile(design_name, kind="Z", pauli=None, kmax=9, noise=None):
 
 def block_profile(level, pauli, kmax=6, variant="a", noise=None, strict=False):
     """Gain of level-1/level-2 parts, the weight counted up to the Carbon block's
-    stabilizers; strict: the part's check outcomes must stay unflipped too."""
+    stabilisers; strict: the part's check outcomes must stay unflipped too."""
     part, supp = block_part(level, variant)
     noise = noise or NoiseModel(p2=1e-3, p1=1e-4, pm=1e-3, pr=1e-3, pidle=1e-4, idle_kind="DEP",
                                 name="all-Pauli")
@@ -169,7 +169,7 @@ def block_profile(level, pauli, kmax=6, variant="a", noise=None, strict=False):
     from hase.codes import carbon_code
     from itertools import product
     cb = carbon_code()
-    H = cb.hx if pauli == "X" else cb.hz      # an X error is reduced by X-type stabilizers
+    H = cb.hx if pauli == "X" else cb.hz      # an X error is reduced by X-type stabilisers
     gens = [np.array(r, dtype=int) % 2 for r in H]
     stabs = []
     for bits in product((0, 1), repeat=len(gens)):
@@ -188,8 +188,8 @@ def block_profile(level, pauli, kmax=6, variant="a", noise=None, strict=False):
 
 def write_all(path):
     """Every profile reported: outer-check designs (both check types) and the level-1/2
-    parts of a block; stamped with the code commit."""
-    from hase.version import commit, provenance
+    parts of a block, with dependency versions."""
+    from hase.version import versions
     out = {"outer": {}, "blocks": {}}
     for nm in ("latin4", "k4cyc", "k5pre", "k6"):
         for kind in ("Z", "X"):
@@ -199,8 +199,7 @@ def write_all(path):
             for strict in (False, True):
                 r = block_profile(level, pauli, variant=var, strict=strict)
                 out["blocks"][f"{r['part']}_{pauli}" + ("_strict" if strict else "")] = r
-    out["commit"] = commit()
-    out["provenance"] = provenance()
+    out["versions"] = versions()
     with open(path, "w") as fh:
         json.dump(out, fh, indent=1)
 

@@ -54,7 +54,7 @@ def conj_pauli(v: np.ndarray, ops, n: int) -> np.ndarray:
 
 
 def code_paulis(code):
-    """Symplectic vectors of stabilizer generators and logical operators (order:
+    """Symplectic vectors of stabiliser generators and logical operators (order:
     X0, X1, Z0, Z1)."""
     n = code.n
     stabs = []
@@ -80,7 +80,7 @@ def decompose(v, stabs, logs):
 
 
 def logical_action(code, ops):
-    """4x4 GF(2) matrix M with U L_i U^dag = sum_j M[i, j] L_j (mod stabilizers), for
+    """4x4 GF(2) matrix M with U L_i U^dag = sum_j M[i, j] L_j (mod stabilisers), for
     logical basis (X0, X1, Z0, Z1); raises if U does not preserve the code."""
     stabs, logs = code_paulis(code)
     n = code.n

@@ -58,8 +58,8 @@ def main(campaign, tag, basis, limit=100000, K=2048, Delta=20.0, out_path=None):
                       for w, c in sorted(cnt.items())})
     tot = np.array(list(cnt.values())).sum(axis=0) if cnt else np.zeros(4)
     out["totals"] = dict(fail=int(tot[0]), genuine=int(tot[1]), ok_sampled=int(tot[2]), ok_strong_fail=int(tot[3]))
-    from hase.version import commit, provenance
-    out["commit"], out["provenance"] = commit(), provenance()
+    from hase.version import versions
+    out["versions"] = versions()
     os.makedirs(os.path.join(ROOT, "results", "redecode"), exist_ok=True)
     path = out_path or os.path.join(ROOT, "results", "redecode", f"{campaign}__{tag}__{basis}.json")
     json.dump(out, open(path, "w"), indent=1)
@@ -70,7 +70,7 @@ def main(campaign, tag, basis, limit=100000, K=2048, Delta=20.0, out_path=None):
 if __name__ == "__main__":
     a = list(sys.argv)
     op = None
-    if "--out" in a:                       # output override (regression runs)
+    if "--out" in a:                       # Explicit output destination.
         op = a[a.index("--out") + 1]
         del a[a.index("--out"):a.index("--out") + 2]
     main(a[1], a[2], a[3], limit=int(a[4]) if len(a) > 4 else 100000, out_path=op)

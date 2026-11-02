@@ -1,4 +1,4 @@
-"""Carbon-Helix [[60,2,12]] extraction circuits (designed here; none was published).
+"""Carbon-Helix [[60,2,12]] hierarchical extraction circuits.
 
 Three levels of checks, matching the code's concatenation C4 -> C6 (= Carbon) -> Helix:
   level 1: the 15 C4 sub-blocks {0-3},{4-7},{8-11} of each Carbon block; XXXX and ZZZZ
@@ -11,8 +11,8 @@ Three levels of checks, matching the code's concatenation C4 -> C6 (= Carbon) ->
            4-qubit cat as in Fig. 8(c) but with four data CNOTs per cat qubit arranged as a
            Latin square, so every cat qubit touches each Carbon block exactly once, and the
            cat's parities read halfway through the data CNOTs (OUTER_DESIGNS['k4cyc']: four
-           parity ancillas on the cycle s-f1-f2-f3-s, 30 CNOTs per check; the first design
-           without them, 'latin4', has circuit fault distance 9). Data order: each half of a
+           parity ancillas on the cycle s-f1-f2-f3-s, 30 CNOTs per check; the design
+           without them, 'latin4', admits a restricted 9-fault logical error). Data order: each half of a
            check's four qubits in a block holds one qubit of each C4 sub-block
            (scheduled_layers_halves).
 """
@@ -348,10 +348,10 @@ class CarbonHelixProtocol(Protocol):
         single-qubit error, or a flag fired) | 'never'
     T2, T3: forced intervals (all blocks' level 2 / level 3 every T2 / T3 rounds;
             None = never forced). Round 0 (projective preparation) is always full.
-    Per-block level-2 parts run in parallel under depth-based (untimed) noise: a block that
-    is not measured idles for the level-2 duration (part W2_b) if any block is measured.
-    Under timed (Helios-like) noise, gate batches serialise and per-block parts are
-    sequential, each with memory noise on every data qubit.
+    Each per-block level-2 part applies idle noise only within its block. A block not
+    measured uses W2_b when another block is measured. Elapsed-time accounting combines
+    the selected blocks' schedules, but their noise uses the individual-block duration;
+    results/timing_consistency.json estimates the omitted idle exposure.
     """
 
     def __init__(self, n_rounds, basis, noise, l2="always", l3="always", T2=None, T3=None,

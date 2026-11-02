@@ -1,50 +1,50 @@
-# Results you can check
+# What the comparison measures
 
-R8 removes 61.46% of full Carbon's two-qubit gates per round and 50.97% of its modelled round time at p = 0.00079. Its effective memory error rate is 24.39x lower than adaptive C4's central estimate. Full Carbon already supplies nearly all that rate advantage: R8 improves its central rate by only 4.3%.
+Carbon-Helix R8 gives an estimated 24.4x reduction in memory error per second relative to adaptive C4 at $`p=0.00079`$. Its own advantage over full Carbon is extraction cost: 61.5% fewer two-qubit gates and 51.0% shorter rounds. Carbon's error estimates are partly extrapolated.
 
-## Find the evidence
+All rows are X-basis memories with one full preparation round, four subsequent rounds and two logical qubits, under the Helios-like model in [helios.py](src/hase/helios.py).
 
-| Claim | Saved evidence | Recompute |
-| --- | --- | --- |
-| All table and figure values | `figures/data/headline.csv`, six rows | `./run.sh figures` |
-| Source chain for all five figures | `figures/data/DATA.md`, `figures/data/provenance.json` | `scripts/figure_data.py --check` |
-| Error fits and gate/time averages | `results/final/c4_strat_helios/` and `results/final/ch_helios/` | `./run.sh reproduce` |
-| Sampling and decoding work | Fresh `build/check.json` and `build/samples_*.npz` | `./run.sh` |
-| Supplied circuits rebuild exactly | `circuits/` | `./run.sh` |
-| Halfway parity reads expose the cancelling fault pair | `build/check.json`, `halfway_parities` | `./run.sh` |
+| Quantity | C4 adaptive | Carbon full | Carbon R8 |
+| --- | ---: | ---: | ---: |
+| Estimated error per logical qubit per second | 1.55e-4 | 6.61e-6 | 6.33e-6 |
+| Conditional 95% interval, per second | 1.33e-4 to 1.73e-4 | 4.83e-6 to 1.01e-5 | 4.40e-6 to 1.05e-5 |
+| Estimated error per logical qubit per round | 2.49e-5 | 6.51e-6 | 3.70e-6 |
+| Two-qubit gates per round | 54.1 | 560 | 215.8 |
+| Modelled round time, ms | 100.6 | 788.4 | 386.5 |
+| Modelled preparation time, ms | 241.2 | 788.4 | 788.4 |
+| Peak qubits | 52 | 92 | 92 |
+| Share from observed fault strata | 99.1% | 38.2% | 41.4% |
+| Stratified shots | 480,000 | 64,000 | 64,000 |
+| Failures across sampled strata | 163 | 153 | 80 |
 
-Every plotted row has a key such as `Carbon-Helix|l2=on_event,l3=ambiguous,rot=8|r4`. Look it up under `value`, then `helios|0.00079` or `helios|0.0003`, then `rows` in `results/summary.json`.
+[headline.csv](figures/data/headline.csv) holds unrounded values. The failure totals are from biased fault-count sampling, so failures divided by shots are not the displayed error probabilities. Carbon uses 60 data qubits and 32 reused ancillas. R8's central error rate is 4.2% below full Carbon's, with almost entirely overlapping intervals; this does not establish a rate improvement.
 
-`./run.sh reproduce` pools the raw samples, refits the estimator, repeats the 50 bootstrap fits and resamples 4,000 executed paths per configuration and noise point. It compares the results with the saved values and fails on disagreement. It writes the fresh values to `build/reproduction.json`. It does not rerun the original rare-event simulation campaigns.
+## Definitions
 
-## What was estimated
+A block failure means either logical prediction is wrong. The reported per-logical-qubit error $`e`$ is half the effective block error per round, rather than a separately measured marginal error of each logical qubit. For $`r=4`$ rounds, preparation time $`t_0`$ and round time $`t`$ in seconds:
 
-All displayed memories encode two logical qubits. Each has one full preparation round followed by four memory rounds in the X basis. Error per logical qubit per round is half the block error per round. A block failure means at least one logical prediction is wrong.
-
-The samples are stratified by total fault count W. For each stratum, the analysis estimates P(fail | W), then weights it by P(W) at the requested noise. It uses the observed failure fraction where at least three failures were seen. Elsewhere it uses a polynomial fit. C4 assumes a lowest order of three faults, Carbon six. A saved estimate is labelled measured when at least 90% of its value comes from the observed fractions. This does not mean every shot was sampled directly at the plotted p.
-
-At p = 0.00079, the sampled shares are 99.1% for adaptive C4, 38.2% for full Carbon and 41.4% for R8. Their source campaigns contain 480,000, 64,000 and 64,000 shots respectively, with 163, 153 and 80 failures across the sampled fault counts. Those totals are not direct failure frequencies at the plotted noise.
-
-The 95% intervals come from a smoothed parametric bootstrap with refitting. They are conditional on the chosen fit and do not include model or device uncertainty. In particular, low-noise fits do not independently demonstrate six-fault scaling for R8. Whole-circuit decomposition bounds for periodic and escalating rules do not cover rotations. Restricted end-gadget checks for R8 are shown separately in the distance figure. The bundled distance and decoder audits retain the evidence and known limits of the original run.
-
-## Error per second
-
-For per-logical-qubit error e, r memory rounds, preparation time t0 and round time t, the comparison CSV uses:
-
-```text
-rate = -r * log(1 - 2e) / (2 * (t0 + r*t))
+```math
+\lambda = \frac{-r\log(1-2e)}{2(t_0+rt)}.
 ```
 
-Times are in seconds. Preparation takes 241.2 ms for C4 and 788.4 ms for Carbon. The headline exporter computes those times from the protocol rather than storing another input constant. Interval endpoints use the same transformation, holding time fixed. Round times and gate counts exclude preparation; the rate includes it.
+The rate includes preparation; gate and round-time averages exclude it. Interval endpoints use the same conversion with time fixed. The ratio is 6.7x per round, rather than 24.4x per second, because the experiments last different lengths. Neither quantity establishes a long-time lifetime or a logical-gate speedup.
 
-A longer round stores the state for longer, so comparing memory rates by elapsed time is useful. These short experiments have different durations. This calculation is not a measured lifetime or a forecast of logical computation throughput.
+The [estimator](analysis/strat.py) weights failure probabilities conditioned on fault count by the model's fault-count distribution. It uses observed fractions for strata with at least three failures, a polynomial elsewhere, and minimum orders of six for Carbon and three for C4. A "measured" label requires at least 90% observed-stratum contribution. The 95% intervals use smoothed bootstrap refits and exclude fit misspecification and device uncertainty. [Methods](docs/methods.md) explain the conditioning approximation.
 
-## Porting changes the result
+At $`p=0.0003`$, full Carbon and R8 have only 0.8% and 1.7% observed-stratum contribution. These almost entirely extrapolated rows scale every noise component together; they are a model sweep, not a device forecast.
 
-Helios-like timing and noise are in `src/hase/helios.py`. Idle errors, transport, leakage and measurement timing include approximations. Memory error during a compiled extraction round is an important unmeasured input. At p = 0.0003 every noise component is reduced together, which is a model sweep rather than a prediction for a device upgrade.
+## Device assumptions
 
-The result worth testing on another stack is the extraction saving at an acceptable logical error rate. Run both full and adaptive extraction with your compiled timing and noise. These memory estimates do not establish a logical-gate speedup.
+Helios's memory error during a compiled extraction round is unpublished. This assumption changes the estimated error-per-second ratio most:
 
-## Circuit order and full-measurement spacing
+| Model variation | C4 / Carbon full, estimated | C4 / Carbon R4, estimated |
+| --- | ---: | ---: |
+| Double idle-error rate | 4.8x | 5.1x |
+| Halve idle-error rate | 63.1x, heavily extrapolated | 330.1x, heavily extrapolated |
+| Measurement/reset batches: 4 ms instead of 2 ms | 30.6x | 24.1x |
 
-The free-order fits support slopes near six at the fault densities sampled. These differ from the imposed order-six extrapolation used by the headline estimator. The circuit decomposition covers full, escalating and periodic schedules at the lengths listed in [the evidence guide](EVIDENCE.md), but does not prove a bound for R8. The same guide gives the six-fault window construction and the periodic ratios. `./run.sh verify` refits those results from raw counts and replays the constructions.
+These are [saved estimates](figures/data/sensitivity.json) comparing adaptive C4 with full Carbon and R4; R8 was not tested. At half idle error, only about 1% of either Carbon estimate comes from observed strata. Every ratio includes preparation and uses its variant's [timing model](src/hase/timing.py). With longer measurement/reset batches, rounds take 828.4 ms for full Carbon, 528.9 ms for R4, 253.2 ms for full C4 and 105.5 ms for adaptive C4; preparation uses the corresponding full-extraction time.
+
+There is a separate timing/noise approximation: simultaneously needed block checks take longer than the individual-block noise schedules. The [timing audit](results/timing_consistency.json) estimates 7.90 ms of missing idle exposure per R8 round at the headline noise. This is an exposure estimate, not a correction or bound on logical error.
+
+Transport and leakage are approximated by Pauli noise; compilation, leakage dynamics and hardware execution remain untested. The [evidence guide](EVIDENCE.md) separates circuit bounds, decoder errors and statistical checks. [REPRODUCE.md](REPRODUCE.md) maps each calculation to its command.

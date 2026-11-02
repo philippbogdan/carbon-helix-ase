@@ -46,7 +46,7 @@ def make_protocol(name: str, p: float, basis: str, rounds: int, rule: str = "ful
                                    fast_l2=r.get("l2fast", "0") == "1", outer=r.get("g3"),
                                    l2_type=r.get("l2type", "0") == "1")
     if name == "carbonhelix" and r.get("l2fast", "0") == "1":
-        # parallel weight-6 checks without rotating outer checks (e.g. the periodic rule)
+        # Select faster block checks while leaving outer checks to the base trigger.
         from .variants import CarbonHelixRotating
         return CarbonHelixRotating(rounds + 1, basis, nz, period=8, escalate=r.get("l3", "always"),
                                    l2=r.get("l2", "on_event"), fast_l2=True, outer=r.get("g3"),
@@ -60,7 +60,4 @@ def make_protocol(name: str, p: float, basis: str, rounds: int, rule: str = "ful
                                    T2=int(r["T2"]) if "T2" in r else None,
                                    T3=int(r["T3"]) if "T3" in r else None, outer=r.get("g3"),
                                    outer_order=r.get("g3order", "XZ"))
-    if name == "toric10":
-        from .toric10 import ToricProtocol
-        return ToricProtocol(rounds + 1, basis, nz)
     raise ValueError(name)

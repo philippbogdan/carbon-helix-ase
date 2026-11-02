@@ -5,7 +5,7 @@ Data: stratified results of the `interval` campaign (results/final/ch_interval/<
 ambiguous events), C_T<T> / C_Tinf (escalation on any event), R4 / R8 (one outer check pair
 or one outer check per round: every outer check once per 4 or 8 rounds).
 
-Estimator: the hybrid estimate of FINDINGS section 3 with its smoothed parametric bootstrap
+Estimator: the hybrid estimate in docs/methods.md with its smoothed parametric bootstrap
 (strat.hybrid_boot). A point p counts as data-driven for a comparison when at least half of
 every compared configuration's value comes from measured strata (>= 3 failures); where the
 order-6 model dominates, ratios between configurations are p-independent by construction,

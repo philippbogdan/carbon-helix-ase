@@ -1,4 +1,4 @@
-"""Describe an undetectable logical error found by scripts/job_distance.py: for each mechanism
+"""Describe an undetectable logical error found by scripts/path_distance.py: for each mechanism
 (merged column of the path's detector error model) the part instances (round, part) and
 data-flip sites whose faults have that effect, and its detectors.
 

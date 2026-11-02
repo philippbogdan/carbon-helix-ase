@@ -54,7 +54,7 @@ def check_bounds(s):
                 assert all(c['optimal'] and c['weight'] >= 4 for c in result['classes'].values())
             paths += len(d['paths'])
     assert paths == 276
-    # Check the actual 11-fault witness against this copy's detector model.
+    # Check the 11-fault witness against the rebuilt detector model.
     from hase.protocols import make_protocol
     from hase.engine import PathDEM
     d = json.loads((ROOT/'results/distance/whole__k4cyc__ZX__Z__c1.json').read_text())
@@ -98,7 +98,8 @@ def write_csv(path, rows):
 
 
 def draw(s):
-    out = ROOT/'figures'
+    out = ROOT/'figures/data'
+    out.mkdir(parents=True, exist_ok=True)
     orders, intervals = data_rows(s)
     write_csv(out/'exponents.csv', orders)
     write_csv(out/'intervals.csv', intervals)
@@ -120,7 +121,7 @@ def refit(s):
             count += 1
             print(f'Refit free exponent: {noise} {tag}', flush=True)
     assert count == 12
-    # Preserve the original all-family seed allocation for the periodic bootstrap.
+    # Use all interval families to preserve the bootstrap's configuration-indexed seeds.
     from interval import models, boot_all
     m = {k: v for k, v in models().items() if k[2] == 'X'}
     boot = boot_all(m, s['interval']['P']['ps'], nboot=100, seed=0)
@@ -158,7 +159,7 @@ def refit(s):
 
 def windows(s):
     import window_failures
-    # The research function writes relative to ROOT. Redirect it to build, keeping the archive intact.
+    # Redirect constructed outputs to build so the supplied evidence stays unchanged.
     window_failures.ROOT = str(ROOT/'build/window-replay')
     with (ROOT/'build/window-replay.log').open('w') as log, redirect_stdout(log):
         actual = window_failures.main()

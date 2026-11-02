@@ -1,4 +1,4 @@
-"""Cluster job: exact lower bound on the circuit fault distance of a Carbon-Helix path by
+"""Exact lower bound on the circuit fault distance of a Carbon-Helix path by
 decomposition (src/hase/relaxed_distance.py). Each task searches its share of the subsets of
 active outer-check instances (at most four; five or more cost at least 11 by the counting
 bound); together the tasks decide whether an undetected logical of at most W faults exists
@@ -8,11 +8,11 @@ distance from below.
 Kinds: full<R>  (rounds 0..R, every round L1, L2_all, L3: non-adaptive extraction);
        P<T>x<n> (n windows of T rounds: L1, L2_all, L3 at multiples of T, in between L1 every
                  round, each block's own level-2 part optional, the idle parts included);
-       any<R>   (rounds 0..R, the superset of every rule's paths: level-2 parts optional and the
-                 outer-check part present in every round after the first).
+       any<R>   (rounds 0..R, level-2 parts optional and a full outer-check part possible
+                 every round; individual rotating outer checks are not covered).
 
 Usage: python scripts/relaxed_distance.py --basis X --order XZ --kind full8 \
-           --out results/relaxed_distance/X_XZ_full8/task{task}.json     (XPU_TASK / XPU_NTASKS)
+           --task 0 --ntasks 1 --out build/full8.json
        python scripts/relaxed_distance.py --basis Z --order ZX --kind full1 --W 11 --only 0 --out ...
        python scripts/relaxed_distance.py --validate results/distance/whole__k4cyc__ZX__Z__c1.json --out ...
            (a known undetected logical of the full detector model, mapped into the decomposition:
@@ -31,7 +31,7 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB
 
 import numpy as np  # noqa: E402
 
-from hase.version import commit, provenance  # noqa: E402
+from hase.version import versions  # noqa: E402
 from hase.relaxed_distance import LongPath, items_of, subsets, full_items  # noqa: E402
 
 
@@ -84,11 +84,11 @@ def validate(path_json, W=12):
             n_gadget += 1
         else:
             n_block += 1
-    # the gadget clusters' effects and costs
+    # Effects and costs of each gadget's combined faults.
     inst_of = {k: i for i, k in enumerate(D.l3_instances)}
     per_inst = defaultdict(lambda: [0, 0, 0])   # instance -> [cost, syndrome key, invariant]
     for (k, g), (fl, R) in gad.items():
-        assert fl == 0, "flags of a gadget cluster must cancel"
+        assert fl == 0, "flags of a gadget fault group must cancel"
         blocks, tab = D.gadget_table(k, g)
         supp = D.gadget_supp[g]
         eff = []
@@ -136,10 +136,10 @@ def main():
     ap.add_argument("--ntasks", type=int, default=None)
     ap.add_argument("--validate", default=None)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--task-offset", type=int, default=0, help="ignored (queue tooling)")
+    ap.add_argument("--task", type=int, default=0)
     a = ap.parse_args()
-    task = int(os.environ.get("XPU_TASK", os.environ.get("GPURUN_TASK", "0")))
-    ntasks = a.ntasks or int(os.environ.get("XPU_NTASKS", "1"))
+    task = a.task
+    ntasks = a.ntasks or 1
     path = a.out.replace("{task}", str(task))
     if os.path.exists(path) and not os.environ.get("HASE_OVERWRITE"):
         print("result exists:", path)
@@ -165,7 +165,7 @@ def main():
             out["results"][str(list(subs[i]))] = dict(min=res, candidates=nc, seconds=round(time.time() - t, 1))
             print(subs[i], res, nc, round(time.time() - t, 1), "s", flush=True)
     out["seconds"] = time.time() - t0
-    out["commit"], out["provenance"] = commit(), provenance()
+    out["versions"] = versions()
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     json.dump(out, open(path, "w"), indent=1)
 

@@ -1,7 +1,8 @@
 """Reduce saved failing fault configurations to locally minimal failing subsets and
-classify each by exact most-likely-error decoding (integer program on the shot's own
-path DEM) and by a strong Frontier setting. The smallest size among genuine minimal
-sets is the minimal failing weight, i.e. the asymptotic exponent of the logical error.
+classify each by most-likely-error search (integer programme on the shot's own
+path DEM) and by a strong Frontier setting. A locally minimal failing
+set gives an upper bound on the smallest failing weight; it need not attain that minimum.
+The ILP classifier accepts a returned solution without requiring proven optimality.
 
 Usage: python analysis/minimal_fails.py <glob of *_fails.pkl> <proto> <rule> <basis>
        <rounds> [limit] [out.json] [noise] [p_dec]
@@ -34,8 +35,8 @@ def classify(proto, fl):
 
 def failing_items(paths, order="file"):
     """Stored failing shots of the given files, in file order or by increasing number of
-    faults (W; ties by file and position) - the fewest-fault failures reduce to the smallest
-    cores, which set the asymptotic order."""
+    faults (W; ties by file and position) - starting with fewer faults can expose smaller
+    cores, but greedy reduction does not prove the minimum failing weight."""
     items = []
     for fi, fpath in enumerate(sorted(paths)):
         for ii, item in enumerate(pickle.load(open(fpath, "rb"))):
@@ -70,8 +71,7 @@ def main(pattern, proto_name, rule, basis, rounds, limit=200, out=None, noise="u
             if best is None or k_ < best[1]:
                 best = (fl_, k_)
         fl, k = best
-        # exact most-likely-error classification (integer program) only for the small
-        # cores that set the asymptotic order
+        # Classify small cores with an integer programme and a wider decoder beam.
         mle_fails, strong_fails = classify(proto, fl) if (classify_exact and k <= classify_max) \
             else (None, None)
         print(json.dumps(dict(W=item["W"], size=k, mle_fails=mle_fails, strong_fails=strong_fails)),
@@ -84,7 +84,7 @@ def main(pattern, proto_name, rule, basis, rounds, limit=200, out=None, noise="u
     sizes_genuine = Counter(r["size"] for r in rows if r["mle_fails"] or r["strong_fails"])
     for r in rows:
         # a core counts as a failure of the decoder used for the estimates in any case; it
-        # is 'genuine' when exact most-likely-error decoding (or a much wider beam) fails too
+        # is 'genuine' when the ILP's returned solution or a much wider beam fails too
         r["counted"] = True
     res = dict(campaign=campaign, proto=proto_name, rule=rule, basis=basis, rounds=rounds, noise=noise,
                p_dec=p_dec, n=len(rows), rows=rows, selection=order, part=part, nparts=nparts,
@@ -92,9 +92,9 @@ def main(pattern, proto_name, rule, basis, rounds, limit=200, out=None, noise="u
                sizes_genuine=dict(sorted(sizes_genuine.items())),
                min_genuine=min(sizes_genuine) if sizes_genuine else None,
                examples=[r for r in rows if r["size"] == (min(sizes_genuine) if sizes_genuine else -1)][:10])
-    from hase.version import commit, provenance
-    res["commit"], res["provenance"] = commit(), provenance()
-    print(json.dumps({k: v for k, v in res.items() if k not in ("examples", "rows", "provenance")}))
+    from hase.version import versions
+    res["versions"] = versions()
+    print(json.dumps({k: v for k, v in res.items() if k not in ("examples", "rows", "versions")}))
     if out:
         os.makedirs(os.path.dirname(out), exist_ok=True)
         json.dump(res, open(out, "w"), indent=1)
@@ -104,7 +104,7 @@ def main(pattern, proto_name, rule, basis, rounds, limit=200, out=None, noise="u
 def campaign_main(campaign, tag, basis, limit=150, part=None, nparts=None, out_path=None):
     """Minimal failing sets of one campaign configuration -> results/minimal/: the stored
     failures with the fewest faults first. With part/nparts they are dealt round-robin so that
-    several jobs share the work; each writes <campaign>__<tag>__<basis>__p<part>of<nparts>.json
+    several invocations share the work; each writes <campaign>__<tag>__<basis>__p<part>of<nparts>.json
     and the analyses merge the parts."""
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     files = sorted(glob.glob(os.path.join(root, f"results/final/{campaign}/{tag}/{basis}/*/*_faults.pkl")))
@@ -116,7 +116,7 @@ def campaign_main(campaign, tag, basis, limit=150, part=None, nparts=None, out_p
     if part is not None:
         name += f"__p{part}of{nparts}"
     out = out_path or os.path.join(root, "results", "minimal", f"{name}.json")
-    # the failures with the fewest faults first (the smallest cores come from them), dealt
+    # Start with the fewest-fault failures to seek smaller cores, dealt
     # round-robin to the parts
     return main(files, meta["proto"], meta["rule"], basis, meta["rounds"], limit=limit, out=out,
                 noise=meta["noise"], p_dec=meta["p_dec"], campaign=campaign,
@@ -127,7 +127,7 @@ def campaign_main(campaign, tag, basis, limit=150, part=None, nparts=None, out_p
 if __name__ == "__main__":
     a = list(sys.argv)
     op = None
-    if "--out" in a:                        # output override (regression runs)
+    if "--out" in a:                        # Explicit output destination.
         op = a[a.index("--out") + 1]
         del a[a.index("--out"):a.index("--out") + 2]
     if len(a) > 1 and a[1] == "--campaign":

@@ -6,7 +6,7 @@ import sysconfig
 import subprocess
 
 root = os.path.join(os.path.dirname(__file__), "..")
-src = open(os.path.join(root, "third_party", "frontier", "_frontier_native.upstream.cpp")).read()
+src = open(os.path.join(root, "third_party", "frontier", "_frontier_native.cpp")).read()
 
 FUNC = r'''
 void refresh_local_pattern_table(Column& column) {

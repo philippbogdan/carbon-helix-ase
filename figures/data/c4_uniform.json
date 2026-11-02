@@ -1,0 +1,241 @@
+{
+ "rounds": 12,
+ "points": {
+  "0.0007": {
+   "eps_X": 1.3575790254437629e-05,
+   "eps_Z": 3.0194472791013724e-06,
+   "eps_avg": 8.2976187667695e-06,
+   "measured_share_X": 0.732030879248239,
+   "measured_share_Z": 0.6242204933952784,
+   "ci95": [
+    6.96289143185843e-06,
+    1.1198294696756722e-05
+   ],
+   "model_range": [
+    6.437643457717109e-06,
+    9.656126697795654e-06
+   ],
+   "data_only_upper95": 4.7208573827441875e-05,
+   "paper": 7.53e-06,
+   "ratio": 1.1019414032894423,
+   "paper_inside_ci": true,
+   "paper_below_data_only_upper": true
+  },
+  "0.0009": {
+   "eps_X": 2.9378335101576407e-05,
+   "eps_Z": 7.0531070385362165e-06,
+   "eps_avg": 1.8215721070056313e-05,
+   "measured_share_X": 0.8402287690227145,
+   "measured_share_Z": 0.7089615182686676,
+   "ci95": [
+    1.5791934619336698e-05,
+    2.320749927829236e-05
+   ],
+   "model_range": [
+    1.5753528084880254e-05,
+    2.0147892643190927e-05
+   ],
+   "data_only_upper95": 4.121960432157852e-05,
+   "paper": 1.7e-05,
+   "ratio": 1.0715130041209595,
+   "paper_inside_ci": true,
+   "paper_below_data_only_upper": true
+  },
+  "0.0011": {
+   "eps_X": 5.476802585745646e-05,
+   "eps_Z": 1.4073502449359529e-05,
+   "eps_avg": 3.4420764153407996e-05,
+   "measured_share_X": 0.9077644341299451,
+   "measured_share_Z": 0.7844747990630654,
+   "ci95": [
+    3.067823309456927e-05,
+    4.141023656718706e-05
+   ],
+   "model_range": [
+    3.166959330419027e-05,
+    3.6758566387115095e-05
+   ],
+   "data_only_upper95": 5.016952529672013e-05,
+   "paper": 3.46e-05,
+   "ratio": 0.9948197732198842,
+   "paper_inside_ci": true,
+   "paper_below_data_only_upper": true
+  }
+ },
+ "estimator": "hybrid (order-3 model where a stratum has < 3 failures), smoothed parametric bootstrap",
+ "shots": {
+  "Z": 100000,
+  "X": 100000
+ },
+ "fails": {
+  "Z": 113,
+  "X": 392
+ },
+ "heldout": {
+  "X": {
+   "cut": 9,
+   "cut_rule": "strata below the 75% quantile of sampled W held out",
+   "predicted": 121.96426426577227,
+   "predicted_95": [
+    91.63437536236506,
+    138.45664578234715
+   ],
+   "observed": 95,
+   "p_value": 0.16019900497512438,
+   "informative": true,
+   "calibration_95": [
+    0.6707015869245212,
+    1.0
+   ],
+   "direction": "over-predicts",
+   "status": "not rejected",
+   "heldout_shots": 79513,
+   "fit_failures": 297.0
+  },
+  "Z": {
+   "cut": 9,
+   "cut_rule": "strata below the 75% quantile of sampled W held out",
+   "predicted": 39.59260791808658,
+   "predicted_95": [
+    24.58036698779534,
+    47.44292918281836
+   ],
+   "observed": 21,
+   "p_value": 0.0626865671641791,
+   "informative": true,
+   "calibration_95": [
+    0.33339237912842906,
+    1.0
+   ],
+   "direction": "over-predicts",
+   "status": "not rejected",
+   "heldout_shots": 79513,
+   "fit_failures": 92.0
+  }
+ },
+ "fault_order": {
+  "X": {
+   "all": {
+    "k": 3.2768398448119447,
+    "ci95": [
+     3.05884280790524,
+     3.495820351891703
+    ],
+    "cut": 400,
+    "strata": [
+     0,
+     22
+    ],
+    "failures": 392.0,
+    "shots": 100000,
+    "w_mean_failures": 10.484693877558907,
+    "p_star": 0.0030564056312851126,
+    "slope_at_p_star": 3.276836509628671,
+    "slope_ci95": [
+     3.0588413772970835,
+     3.495816909220153
+    ],
+    "p_equiv": [
+     0.000874533582089681,
+     0.005538712686567979
+    ],
+    "p_equiv_note": "mean-count mapping: the p whose expected number of faults equals the stratum's"
+   },
+   "low": {
+    "k": 2.9277830562252003,
+    "ci95": [
+     2.3631330859086996,
+     3.4559113915312194
+    ],
+    "cut": 9,
+    "strata": [
+     0,
+     8
+    ],
+    "failures": 95.0,
+    "shots": 79513,
+    "w_mean_failures": 6.810526315605983,
+    "p_star": 0.0019853446582343125,
+    "slope_at_p_star": 2.927769865906358,
+    "slope_ci95": [
+     2.3629894016384245,
+     3.455780659595513
+    ],
+    "p_equiv": [
+     0.000874533582089681,
+     0.0023320895522391492
+    ],
+    "p_equiv_note": "mean-count mapping: the p whose expected number of faults equals the stratum's"
+   }
+  },
+  "Z": {
+   "all": {
+    "k": 3.6374686944130605,
+    "ci95": [
+     3.214850726831608,
+     4.058567207176555
+    ],
+    "cut": 400,
+    "strata": [
+     0,
+     22
+    ],
+    "failures": 113.0,
+    "shots": 100000,
+    "w_mean_failures": 10.787610619381626,
+    "p_star": 0.0031447092523854982,
+    "slope_at_p_star": 3.637467465229154,
+    "slope_ci95": [
+     3.214848384470823,
+     4.0585660979868265
+    ],
+    "p_equiv": [
+     0.0014575559701494683,
+     0.005247201492538086
+    ],
+    "p_equiv_note": "mean-count mapping: the p whose expected number of faults equals the stratum's"
+   },
+   "low": {
+    "k": 4.076458616846618,
+    "ci95": [
+     2.792681055145781,
+     5.147590485430872
+    ],
+    "cut": 9,
+    "strata": [
+     0,
+     8
+    ],
+    "failures": 21.0,
+    "shots": 79513,
+    "w_mean_failures": 7.285714284394558,
+    "p_star": 0.0021238672704045098,
+    "slope_at_p_star": 4.07641488755651,
+    "slope_ci95": [
+     2.792655046214234,
+     5.146194694432822
+    ],
+    "p_equiv": [
+     0.0014575559701494683,
+     0.0023320895522391492
+    ],
+    "p_equiv_note": "mean-count mapping: the p whose expected number of faults equals the stratum's"
+   }
+  }
+ },
+ "slope_ours": 3.146871911787941,
+ "slope_ours_ci95": [
+  2.799693519902372,
+  3.283321187137342
+ ],
+ "slope_replicas_used": [
+  200,
+  200
+ ],
+ "slope_paper": 3.3683843696968,
+ "reference_values": {
+  "0.0007": 7.53e-06,
+  "0.0009": 1.7e-05,
+  "0.0011": 3.46e-05
+ }
+}

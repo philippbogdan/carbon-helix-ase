@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
     os.environ.setdefault(_v, "1")
 
-from hase.version import commit, provenance  # noqa: E402
+from hase.version import versions  # noqa: E402
 from hase.ir import NoiseModel  # noqa: E402
 from hase.carbonhelix import CarbonBlockProtocol  # noqa: E402
 from hase.engine import PathDEM  # noqa: E402
@@ -138,10 +138,10 @@ def main():
         return
     if a.structure:
         res = structure()
-        res["commit"], res["provenance"] = commit(), provenance()
+        res["versions"] = versions()
         os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
         json.dump(res, open(a.out, "w"), indent=1)
-        print({k: v for k, v in res.items() if k not in ("provenance", "path")})
+        print({k: v for k, v in res.items() if k not in ("versions", "path")})
         return
     proto = CarbonBlockProtocol(a.T + 1, a.basis, NoiseModel.uniform(1e-3))
     inner = list(range(1, a.T))
@@ -165,7 +165,7 @@ def main():
     ds = [v["distance"] for v in res["paths"].values()]
     res["min_distance"] = min(ds)
     res["all_optimal"] = all(v["all_optimal"] for v in res["paths"].values())
-    res["commit"], res["provenance"] = commit(), provenance()
+    res["versions"] = versions()
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     json.dump(res, open(a.out, "w"), indent=1)
 

@@ -1,4 +1,4 @@
-"""Aggregate job_protocol.py outputs: per (proto, rule, noise, p, basis, rounds)."""
+"""Aggregate sample_direct.py outputs: per (proto, rule, noise, p, basis, rounds)."""
 import glob, json, sys
 from collections import defaultdict
 import numpy as np

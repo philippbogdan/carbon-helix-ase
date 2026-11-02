@@ -1,4 +1,4 @@
-"""Stratified (fault-count) analysis of job_strat.py outputs.
+"""Stratified (fault-count) analysis of sample_strata.py outputs.
 
 For one protocol configuration, the failure probability conditioned on the number W of
 fired fault sites in the protocol's superset, f_w = P(fail | W = w), does not depend on p
@@ -119,7 +119,7 @@ class StratModel:
     def time_per_round(self, p):
         """Expected Helios-timed duration (ms) per round after the preparation round,
         conditional on the sampled strata (coverage: twoq_per_round); the reported resources
-        come from direct path sampling (scripts/job_resources.py)."""
+        come from direct path sampling (path_resources in this module)."""
         if self.t is None or not np.any(self.tn):
             return None
         from hase.timing import path_time_ms
@@ -208,7 +208,7 @@ class PolyModel:
         self.G = G
 
     def fw_all(self, L=400):
-        """f_w for w = 0..L-1 (vectorized; cached)."""
+        """f_w for w = 0..L-1 (vectorised; cached)."""
         c = self.__dict__.get("_fw_all")
         if c is None or len(c) < L:
             ws = np.arange(L)

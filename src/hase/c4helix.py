@@ -1,5 +1,5 @@
 """C4-Helix [[20,2,6]] syndrome-extraction circuits as drawn in arXiv:2609.03194
-(Fig. 8 = new_se_circuit.png):
+(Fig. 8):
 
 (a)/(b) inner [[4,2,2]] circuit: two fresh ancillas (|+>, |0>) measure XXXX and ZZZZ of a
     block with 8 CNOTs; the last CNOT of each ancilla is reversed and the ancilla is

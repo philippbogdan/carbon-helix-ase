@@ -1,73 +1,69 @@
-# Circuit, scaling and interval evidence
+# What supports the result
 
-The extraction fits 92 qubits. Six-fault suppression has circuit bounds for the schedules below and free-order fits near six. Silent errors in two blocks give a reason to cap the full-measurement interval even at lower noise. The saved proof outputs, samples and failure constructions are included here.
+Circuit bounds, free-order fits, direct sampling and stronger decoding check different parts of the result. The C4 baseline also has a published reference comparison. None supplies a whole-circuit distance bound for R8.
 
-## What the circuit bounds cover
+## C4-Helix baseline
 
-The decomposition retains flags and inner detectors and relaxes the outer detector constraints. Any undetected logical error of the full circuit must survive this relaxation. It tabulates cheapest block histories and flag-silent outer-gadget effects, then searches their combinations. Optional weight-6 checks are minimised over run and skip, so each computation covers every such schedule.
+Our full-extraction C4-Helix simulation agrees with three points from the authors' [Fig. 11a](https://arxiv.org/abs/2609.03194), under uniform circuit noise at forced-gap threshold $`\gamma=0`$ (no postselection). The compared quantity is block error per round, averaged over X and Z memories. Convert each basis's block failure probability $`p_L`$ over 12 memory rounds to $`1-(1-p_L)^{1/12}`$, then average:
 
-All 12 saved cases exclude undetected logical errors of at most ten faults in every nontrivial logical class:
+```text
+X block failure -> per-round error \
+                                    > mean -> Fig. 11a
+Z block failure -> per-round error /
+```
 
-| Case | Preparation plus memory rounds | Basis | Outer-check order |
-| --- | --- | --- | --- |
-| `X_XZ_full1`, `Z_XZ_full1` | 1 + 1 | X, Z | X then Z |
-| `Z_ZX_full1` | 1 + 1 | Z | Z then X |
-| `X_XZ_full8`, `Z_XZ_full8` | 1 + 8 | X, Z | X then Z |
-| `X_XZ_any4`, `Z_XZ_any4` | 1 + 4 | X, Z | X then Z |
-| `X_XZ_any8` | 1 + 8 | X | X then Z |
-| `X_XZ_P2x4` | 1 + 8, four windows of 2 | X | X then Z |
-| `X_XZ_P4x2` | 1 + 8, two windows of 4 | X | X then Z |
-| `X_XZ_P8x1` | 1 + 8, one window of 8 | X | X then Z |
-| `X_XZ_P16x1` | 1 + 16, one window of 16 | X | X then Z |
+| $`p`$ | Our estimate | Our conditional 95% interval | Fig. 11a | Ours / reference |
+| --- | ---: | --- | ---: | ---: |
+| 0.0007 | 8.30e-6 | 6.96e-6 to 1.12e-5 | 7.53e-6 | 1.102 |
+| 0.0009 | 1.82e-5 | 1.58e-5 to 2.32e-5 | 1.70e-5 | 1.072 |
+| 0.0011 | 3.44e-5 | 3.07e-5 to 4.14e-5 | 3.46e-5 | 0.995 |
 
-`any` includes each block's weight-6 checks as optional and a possible full outer-check part in every round. It bounds escalating and periodic paths. It does not bound rotating individual outer checks (R4, R8, R8F), arbitrary experiment lengths or logical gates.
+All three reference values lie inside our intervals. These are the C4-Helix authors' results; our [reference CSV](results/reference/) reads them from the published figure by gridline calibration and marker-centre matching, with estimated 3% relative reading uncertainty. That uncertainty is separate from our intervals.
 
-Raw tasks are in `results/relaxed_distance/`. Their subset coverage, all three logical classes and the no-gadget cases are checked by `scripts/evidence.py`. That script also verifies an 11-fault witness from `results/distance/whole__k4cyc__ZX__Z__c1.json` directly against the rebuilt detector matrix: zero syndrome and a nonzero logical flip. The bound and witness establish distance exactly 11 for that two-round Z memory with X checks last. Distance at least 11 means an ideal minimum-fault decoder can correct up to five faults. A finite-beam probabilistic decoder can make extra errors; this distance statement alone does not certify Frontier's error order.
+The [samples](results/final/c4_repro/) contain 100,000 stratified shots per basis, with 392 X and 113 Z failures across sampled strata. Decoder priors stay at $`p=0.0009`$ for all three evaluations. Observed strata supply 62% to 91% of each basis's estimate; the rest is fitted. Intervals use 200 smoothed parametric bootstrap refits per basis, conditional on the minimum-order-three fit.
 
-Outside outer-check gadgets, faults act within one Carbon block. Exact integer programmes give inner fault distance four on all 276 weight-6 schedules for windows T = 2, 4, 8, in both bases. No logical operator is supported on two blocks or fewer, so block-only faults need at least 12 for an undetected outer logical. The whole-circuit decomposition accounts for the outer gadget faults that can reduce this to 11. `results/inner_window/` contains all paths and the structural check. Those finite-window checks support the argument; they are not a proof for every T.
+This validates our C4 circuits, uniform noise model, decoder and estimator for full extraction. The headline uses the same code, decoder family and estimator, but this check does not validate its adaptive C4 rule (`mode=ase`) or Helios-like model. [The saved comparison](figures/data/c4_uniform.json) is refitted and checked by `./run.sh baseline`; see [REPRODUCE.md](REPRODUCE.md).
 
-## What the exponent fits show
+## Circuit bounds
 
-`figures/exponents.csv` records all six rules under both noise models. The fit uses binomial likelihood on the sampled fault-count strata with a free real order k in a falling-factorial model. It reports the implied slope d ln(error)/d ln(p) at p*, where the expected number of faults equals the observed failures' mean count. Profile-likelihood 95% intervals describe that fit. This does not impose six as a minimum order. It is still a model of the observed strata, not a direct measurement of asymptotic low-p behaviour.
+All 12 saved decomposition cases exclude undetected logical errors with at most ten faults. Under ideal minimum-fault decoding, distance at least 11 permits correction of up to five faults. The bounds cover these finite memories:
 
-The input is `results/final/ch_main/` for uniform noise and `results/final/ch_helios/` for Helios-like noise. Each four-round X configuration has 64,000 stratified shots. The main value estimator uses orders 6 to 9 in sparse strata. Slopes derived from that extrapolation cannot test the six-fault premise.
+| Saved case names in `results/relaxed_distance/` | Memory rounds after preparation | Basis; outer-check order |
+| --- | ---: | --- |
+| `X_XZ_full1`, `Z_XZ_full1`, `Z_ZX_full1` | 1 | X or Z; order in name |
+| `X_XZ_full8`, `Z_XZ_full8` | 8 | X or Z; X then Z |
+| `X_XZ_any4`, `Z_XZ_any4`, `X_XZ_any8` | 4 or 8 | As named; X then Z |
+| `X_XZ_P2x4`, `X_XZ_P4x2`, `X_XZ_P8x1` | 8 | X; X then Z |
+| `X_XZ_P16x1` | 16 | X; X then Z |
 
-Six preparation faults on half the support of a weight-12 logical share their syndrome with faults on the complementary half. At least one member must fail under a deterministic decoder. The construction in `analysis/window_failures.py` checks 20 such pairs: every pair has a failure. It also checks 20 five-fault subsets with no failures. That small five-fault sample is not a lower-bound proof.
+`full` measures everything; `P` allows optional block checks between fixed full measurements; `any` bounds paths with optional block checks and full-outer escalation. These bounds do not cover rotating individual outer checks, arbitrary experiment lengths or logical computation. [The decomposition](docs/methods.md#circuit-distance-by-decomposition) relaxes detector constraints, so its lower bound also applies to the full detector model within that scope.
 
-Frontier's stronger-decoder audit removes 20/146 full, 22/169 any-event, 18/123 B4 and 25/155 R8 failures under uniform noise. Under Helios-like noise it removes 13/153 full and 6/80 R8 failures. The campaign estimates count those failures. `results/redecode/`, `analysis/redecode.py` and `analysis/decoder_audit.py` retain the audit. Cores confirmed by exact or stronger decoding reach six faults for full, C, B4 and R4; the smallest confirmed sampled cores for R8 and R8F have seven faults. The general six-fault tie construction does not replace a whole-circuit lower bound for those rotations.
+The [11-fault witness](results/distance/whole__k4cyc__ZX__Z__c1.json), together with `Z_ZX_full1`, establishes distance exactly 11 for that case. [Inner-window checks](results/inner_window/) give distance four on all 276 schedules tested at $`T=2,4,8`$ in both bases. These are finite-window results. Restricted `end__k4cyc__R8_*` searches in [distance/](results/distance/) test only end-of-circuit mechanisms; they cannot prove R8's whole-circuit distance.
+
+## Scaling and decoding
+
+![Free-order error exponents for the six extraction rules under uniform and Helios-like noise.](figures/fault_order.png)
+
+The [free-order fits](figures/data/exponents.csv) support local slopes near six at the sampled fault densities. Their profile-likelihood 95% intervals describe that fit, not asymptotic low-noise behaviour or the imposed order of the headline estimator.
+
+The [constructed preparation errors](results/minimal/constructed.json) contain 20 complementary six-fault pairs; every pair has at least one failure. All 20 selected five-fault subsets are corrected, which is not an exhaustive lower-bound test. [Reduced failure sets](results/minimal/) label six-fault R8 cores as confirmed under Helios-like noise; the smallest such uniform-noise R8 core has seven faults. These labels combine stronger approximate decoding and ILP classifications whose wrapper does not require proven optimality. They are not exact-decoder certificates. Finding a core gives an upper bound on the smallest failing set, not a lower bound.
+
+Stronger Frontier decoding corrects 13 of 153 full-Carbon failures and 6 of 80 R8 failures under Helios-like noise. Under uniform noise the corresponding counts are 20/146 full, 22/169 any-event, 18/123 B4 and 25/155 R8. The headline counts these decoder errors. [The audit](results/redecode/) also tests sampled successes for changes in the opposite direction; stronger approximate decoding is not an exact oracle.
+
+## Independent checks
+
+For full Carbon under uniform noise, [direct sampling](figures/data/direct.json) gives estimated per-logical-qubit errors per round of 7.0e-4 at $`p=0.003`$ and 4.2e-5 at $`p=0.002`$, from 67/12,000 and 8/24,000 failures/shots. Stratified estimates are higher at both points, 1.0e-3 and 8.6e-5, with overlapping intervals. This is a limited check of the estimator, not a validation at the headline noise.
+
+The [basis check](results/summary.json) records 26 Z-memory failures under Helios-like noise against about 104 expected from X fits on the same strata. X is the worse tested basis. The [engine/Stim comparison](results/checks.json) matches all detector/observable signatures on the tested full paths, but its largest relative probability difference is about 0.000467. The detector error models are not numerically identical.
 
 ## Why a fixed full-measurement interval
 
-An inner weight-four logical restricted to three of its qubits has the syndrome of the remaining single error. A decoder may correct that single error confidently and leave an inner logical. Two such three-fault events in different blocks can fail inside one outer-measurement window. `results/minimal/constructed.json` records the exact placements and outer-measurement paths: full corrects all eight; B4 fails four, B8 six, C two and R4 six. The B8 construction forces both L2 and L3 every eighth round; B4 forces L3 every fourth. Do not treat this selected set as an empirical probability or claim every same-window placement fails.
+Two three-fault events in different blocks can defeat error correction within one outer-measurement window. In the [selected constructions](results/minimal/constructed.json), full extraction corrects all eight placements; B4 fails four, B8 six, any-event C two and R4 six. These selected failures demonstrate a mechanism, not its probability, and do not test R8.
 
-For fixed T in the analysed setting, both the in-round floor and the window failures start at p^6. A fault-counting expansion has the form
+The window contribution appears at the same $`p^6`$ order as the error floor. Keeping a fixed factor relative to full extraction therefore requires a bounded maximum interval as noise falls; a cap growing as $`1/p^4`$ is unsupported. This is a finite-circuit fault-counting argument, not a universal optimum. [The interval argument](docs/interval_theory.md) states its limits and distinguishes full measurements from rotating checks.
 
-```text
-error(p,T) = p^6 [B' + C1(T-1) + C2(T-1)^2 + ...] + higher orders.
-```
+![Periodic error relative to full extraction at noise points supported mainly by sampled strata.](figures/interval_cost.png)
 
-Two events have more placements as the window grows. Their contribution per round has a nonzero window-length penalty at the same order as the floor. Holding their ratio to the full-extraction error fixed therefore requires a bounded T as p falls. The 1/p^4 suggestion would let that penalty grow; it does not retain a constant-factor comparison. This is an asymptotic fault-counting argument supported by finite circuits and explicit failures. The expansion is not justified uniformly for windows growing without limit. It cannot assign an exact exponent to a 1/p^4 rule, or a best T on hardware.
+Longer windows lose much of the error-per-round saving, with central ratios below 1.5 through $`T=16`$ at these uniform-noise points. The 95% bootstrap intervals are conditional on the fit; $`T=16`$ uses sixteen memory rounds, while the other points and shared full-extraction baseline use eight.
 
-The periodic study isolates window length by never escalating on events: L1 runs every round, L2 on events and at window ends, and L3 only at the ends. It uses eight memory rounds for T = 2, 4, 8 and sixteen for T = 16. Ratios compare per-round error with full extraction. `figures/intervals.csv` keeps all ten saved p values, the 95% bootstrap intervals, sampled shares and campaign counts. At p = 0.004, 0.003, 0.0025, at least half of every compared periodic value comes from sampled strata with at least three failures. The schedule figure also shows all lower-share points as open markers, and includes the B, C and R families. This threshold is weaker than the 90% rule used to label the headline estimates measured. Uncertainty is conditional on the order-six hybrid model, with 100 smoothed parametric bootstrap fits.
-
-The central periodic ratios through T = 16 are below 1.5 at those three p. Their confidence intervals do not establish a universal optimal interval. Below the sampled region the fitted ratios cannot independently show that the interval is constant. Escalating rules also obscure the window penalty at the sampled p because they often measure the full syndrome before T. Direct path sampling without forcing gives ambiguous-event escalation in about 12% of rounds at p = 0.001 and 0.92% at p = 0.0001. This explains why a forced cap matters more at lower p, rather than establishing a long-time memory lifetime.
-
-## Reproduce and inspect
-
-Run these from the root:
-
-```sh
-./run.sh figures
-./run.sh verify
-```
-
-`figures` checks the data pack against the saved summary, checks circuit costs and saved distance aggregation, regenerates all five plots, checks complete saved bound coverage and verifies the 11-fault witness. The construction replay decodes eight-round circuits with stronger decoding and can take more than 15 minutes. `verify` refits all 12 free exponents from raw counts and the ratios, intervals and sampled-share classifications for all four schedule families at all ten p with the original 100-fit bootstrap seed allocation. It also repeats the two 8000-shot escalation scans and reruns all constructed failures. Fresh checks go to `build/evidence-check.json` and `build/window-replay/`; saved results remain unchanged. Neither command reruns the expensive distance searches or original sampling campaigns.
-
-The distance algorithms and their local drivers are included. A small fresh solver case and a witness description are:
-
-```sh
-.venv/bin/python scripts/inner_window_distance.py --T 2 --basis X --out build/inner-T2-X.json
-.venv/bin/python analysis/distance_witness.py results/distance/whole__k4cyc__ZX__Z__c1.json
-```
-
-The full decomposition can take hours. `.venv/bin/python scripts/relaxed_distance.py --help` lists its options. Kind `P8x1` searches one eight-round periodic window. The driver defaults to one local task. `scripts/job_distance.py` and `scripts/distance_suite.py` retain the earlier unrestricted and end-gadget searches. `scripts/campaigns.py` retains the original seeds and job arguments as a research registry; its cluster submission interface is not needed by these local commands.
+[intervals.csv](figures/data/intervals.csv) includes all noise points and sampled shares. Without a forced cap, ambiguous-event escalation falls from about 12% of rounds at $`p=0.001`$ to 0.92% at $`p=0.0001`$ in [direct path sampling](figures/data/interval.json). The short-memory results do not establish a long-time lifetime. [REPRODUCE.md](REPRODUCE.md) gives the checks and rerun commands; [references](docs/references.md) credit the code constructions, device inputs and decoder.

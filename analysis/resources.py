@@ -1,5 +1,8 @@
-"""Resource accounting per part and per round: two-qubit gates, layers, modelled Helios
-wall-clock time, and peak simultaneously live qubits (data + ancillas)."""
+"""Per-part resources: two-qubit gates, layers, compiled duration and peak live qubits.
+
+Compiled durations follow the noise model; path_time_ms in hase.timing separately
+accounts for parallel block checks and supplies default timing for uniform noise.
+"""
 import os
 import sys
 
@@ -34,8 +37,7 @@ def part_table(proto_name, noise, p, rule="full", basis="X"):
 
 
 if __name__ == "__main__":
-    for name, rule in (("c4helix", "mode=ase"), ("carbonhelix", "l2=on_event,l3=ambiguous,T3=4"),
-                       ("toric10", "full")):
+    for name, rule in (("c4helix", "mode=ase"), ("carbonhelix", "l2=on_event,l3=ambiguous,T3=4")):
         for noise, p in (("uniform", 1e-3), ("helios", 7.9e-4)):
             t = part_table(name, noise, p, rule)
             print(name, noise)

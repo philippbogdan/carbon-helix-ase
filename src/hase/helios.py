@@ -6,15 +6,15 @@ Helios data sheet v1.2):
     arXiv Table A4): {IX,IY,ZX,ZY} 4.5; {XI,YI,XZ,YZ} 5.8; {XX,XY,YX,YY} 0.06; IZ 19;
     ZI 19; ZZ 5.9; leakage 1.14e-4 per gate (CB). We convert the channel to the CNOT frame
     (CNOT = (I x H) . CZ . (I x H), CZ = RZZ(pi/2) up to S^dag x S^dag).
-  * 1Q gate: average infidelity 2.5e-5 (incl. leakage) -> depolarizing 3.75e-5.
+  * 1Q gate: average infidelity 2.5e-5 (incl. leakage) -> depolarising 3.75e-5.
   * SPAM: average 3.3e-4 (Nature); attributed to preparation as in Quantinuum's Helios
     emulator defaults (p_init 5e-4, p_meas 1e-6 on an older SPAM figure).
   * MCMR crosstalk: 1.3e-5 infidelity per MCMR per spectator (Nature SI Eq. 10, Table
-    VI, mostly leakage) -> depolarizing 2e-5 per spectator per MCMR.
+    VI, mostly leakage) -> depolarising 2e-5 per spectator per MCMR.
   * Memory: 6e-4 per qubit per depth-1 layer of a 98-qubit dense circuit (data sheet,
     typical), which takes 55 ms (paper Fig. 4); of the linear part, 4e-4 per layer is
     transport-induced leakage. Memory per ms: 1.1e-5, split into leakage-like
-    (depolarizing after repump, 7.3e-6/ms) and dephasing (3.6e-6/ms).
+    (depolarising after repump, 7.3e-6/ms) and dephasing (3.6e-6/ms).
   * Timing (paper Fig. 4b fit, labelled an inference): a layer of 2Q gates costs
     3.9 ms + 7.6 ms per batch of 8 gates (16 qubits). Measurement/reset batch durations
     are not published; we assume `t_mcmr` ms per batch of 16 (default 2.0 ms) and report
@@ -60,10 +60,10 @@ def cnot_pauli_channel(scale=1.0):
 @dataclass
 class HeliosNoise(NoiseModel):
     pauli2: dict = None
-    leak2: float = 0.0          # per 2Q gate -> depolarizing (1/4 each of I,X,Y,Z) on one qubit
+    leak2: float = 0.0          # per 2Q gate -> depolarising (1/4 each of I,X,Y,Z) on one qubit
     mem_dep_per_ms: float = 0.0
     mem_z_per_ms: float = 0.0
-    xtalk_dep: float = 0.0      # depolarizing on each spectator per MCMR in the layer
+    xtalk_dep: float = 0.0      # depolarising on each spectator per MCMR in the layer
     t_layer: float = 3.9        # ms overhead per layer with 2Q gates
     t_batch: float = 7.6        # ms per batch of up to 8 2Q gates (16 qubits)
     t_mcmr: float = 2.0         # ms per batch of up to 16 measurements/resets (assumed)

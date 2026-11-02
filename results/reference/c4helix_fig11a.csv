@@ -1,0 +1,4 @@
+p,error_per_round,relative_reading_uncertainty,source
+0.0007,7.53e-06,0.03,arXiv:2609.03194 Fig. 11a (gamma = 0)
+0.0009,1.70e-05,0.03,arXiv:2609.03194 Fig. 11a (gamma = 0)
+0.0011,3.46e-05,0.03,arXiv:2609.03194 Fig. 11a (gamma = 0)

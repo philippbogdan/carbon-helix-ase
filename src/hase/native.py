@@ -1,7 +1,7 @@
 """Load the patched Frontier native engine (see third_party/frontier/README.md).
 
-Tries the module built into the package; if it cannot be imported on this machine (e.g. a
-heterogeneous cluster node), compiles it into a machine-local directory and loads it."""
+Try the package extension, then build/adaptive_native/. If neither can be imported,
+compile the extension there for the current Python interpreter and load it."""
 import importlib
 import os
 import socket

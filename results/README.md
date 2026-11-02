@@ -1,19 +1,9 @@
-# Samples and saved evidence
+# Saved samples and evidence
 
-The headline comparison uses 480,000 adaptive C4 shots, 64,000 full Carbon shots and 64,000 Carbon R8 shots. These sample different fault counts. Their failure totals cannot be divided by shots to obtain the plotted low-noise error rates.
+The headline uses 480,000 adaptive C4 shots and 64,000 shots for each Carbon configuration. These are stratified by fault count; their failure totals cannot be read as direct low-noise failure frequencies.
 
-`summary.json` is the saved numerical record from research commit `ac806e6cbf4c314a89176771197e76047498fb34`. Its generated prose is historical source text. The repository explanations are written separately.
+`summary.json` gathers the numerical results. [final/](final/) contains the sample histograms; [distance/](distance/), [relaxed_distance/](relaxed_distance/) and [inner_window/](inner_window/) contain solver evidence. [minimal/](minimal/) holds failure constructions and reduced fault sets; [redecode/](redecode/) holds stronger-decoder checks. [reference/](reference/) credits the authors' Fig. 11a values used in the `c4_uniform` baseline comparison.
 
-| Input | What it supports |
-| --- | --- |
-| `final/c4_strat_helios/`, `final/ch_helios/` | Six headline estimates and their cost averages |
-| `final/ch_interval/` | All four schedule families and deterministic escalation replay |
-| `distance/` | Restricted searches, alternative gadgets and unfinished whole-circuit searches |
-| `relaxed_distance/`, `inner_window/` | Decomposition proofs and finite-window checks |
-| `minimal/`, `redecode/` | Failure constructions, cores and stronger-decoder checks |
-| `circuits/` | Historical exports and research variants |
-| `timing_consistency.json`, `time_budget.json` | Timing checks and resource costs |
+`analysis/aggregate.py` rebuilds the summary without a previous summary, using the samples, saved audits and reference CSV; `--check` compares against an existing summary and `--only` updates named sections. `./run.sh baseline` refits and checks `c4_uniform`. Sensitivity round times use each variant's model. [The per-second comparison](../RESULTS.md#device-assumptions) also includes preparation.
 
-Use `final/` for the analysed samples. `raw/` overlaps it and includes older batches; pooling both would double-count data. Original provenance stamps remain in the JSON files.
-
-[Figure provenance](../figures/data/DATA.md) traces each plotted point to these inputs. [Methods](../RESULTS.md) give the estimator. [Evidence](../EVIDENCE.md) states the bound coverage and the limits of the selected failure constructions.
+`checks.json` records code parameters and detector-model comparisons. `timing_consistency.json` estimates omitted idle exposure. `decoder_benchmark.json` compares decoder settings; `gadget_gain.json` bounds fault propagation. [EVIDENCE.md](../EVIDENCE.md) states the scope; [REPRODUCE.md](../REPRODUCE.md) distinguishes checking these outputs from rerunning their calculations.

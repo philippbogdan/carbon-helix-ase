@@ -1,6 +1,7 @@
-"""Audit decoder approximation on saved failing shots: re-decode each with stronger Frontier
-settings and with an exact most-likely-error ILP on the shot's own path DEM; classify each
-failure as genuine (exact MLE also fails) or decoder-induced."""
+"""Re-decode saved failures with stronger Frontier settings and a most-likely-error ILP.
+
+The ILP uses each shot's own path model. Its current wrapper accepts a returned incumbent
+without requiring proven optimality, so mle_fails is not an exact-decoding certificate."""
 import glob, pickle, sys, os, json
 import numpy as np
 import scipy.sparse as sp
@@ -31,6 +32,11 @@ def shot_from_faults(proto, fl):
 
 
 def exact_mle(pd, D, time_limit=120):
+    """Return the logical class of the best returned ILP solution, or None if absent.
+
+    The objective selects a most-likely error configuration, not a sum over logical
+    classes. A returned solution is accepted even if the time limit prevents a proof.
+    """
     H = pd.H.tocsr().astype(np.int64)
     w = np.log((1 - pd.priors) / pd.priors)
     m, ncol = H.shape

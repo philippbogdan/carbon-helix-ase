@@ -278,7 +278,7 @@ class PriorSwapFrontier:
         a = np.abs(1 - 2 * pinc)
         zero = a < 1e-300
         f = np.log(np.clip(a, 1e-300, None))
-        # reverse cumulative sums within row segments (vectorized)
+        # reverse cumulative sums within row segments (vectorised)
         starts, counts = m["starts"], m["counts"]
         seg_id = np.repeat(np.arange(len(starts)), counts)
         csum = np.cumsum(f[::-1])[::-1]

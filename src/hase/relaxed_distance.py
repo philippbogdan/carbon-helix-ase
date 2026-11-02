@@ -7,7 +7,7 @@ the memory basis only the sum of its detector chain (its final syndrome); drop t
 
 In the relaxed problem a silent history has every memory-basis outcome unflipped, so the
 state of a Carbon block between parts is its residual error modulo the block's invisible
-stabilizers: 5 syndrome bits and 2 class bits (128 states). Faults are grouped as
+stabilisers: 5 syndrome bits and 2 class bits (128 states). Faults are grouped as
   * block terms: residual on one block, flipping only that block's checks and level-2 flags;
   * gadget terms: in an outer-check part, flipping that gadget's flags, or unflagged with a
     residual on several blocks.
@@ -99,18 +99,18 @@ def bfs_table(gens, nbits, max_depth):
     dist = np.full(1 << nbits, INF, dtype=np.uint8)
     gens = np.unique(np.array([g for g in gens if g], dtype=np.int64))
     dist[0] = 0
-    frontier = np.array([0], dtype=np.int64)
+    pending = np.array([0], dtype=np.int64)
     for d in range(1, max_depth + 1):
-        if len(frontier) == 0 or len(gens) == 0:
+        if len(pending) == 0 or len(gens) == 0:
             break
         nxt = []
         for g in gens:
-            cand = frontier ^ g
+            cand = pending ^ g
             cand = cand[dist[cand] == INF]
             if len(cand):
                 dist[cand] = d
                 nxt.append(cand)
-        frontier = np.unique(np.concatenate(nxt)) if nxt else np.array([], dtype=np.int64)
+        pending = np.unique(np.concatenate(nxt)) if nxt else np.array([], dtype=np.int64)
     return dist
 
 
@@ -867,10 +867,11 @@ class LongPath:
 
 
 def any_items(rounds):
-    """Superset of every path of the rules with inner checks every round: round 0 full; in
+    """Superset of paths using inner checks and full outer-check parts: round 0 full; in
     rounds 1..R the level-2 parts (all blocks, or each block's own) optional, the idle parts
     and the outer-check part always included (in the relaxed problem an outer-check part only
-    adds faults, so including it bounds every escalation pattern from below)."""
+    adds faults, so including it bounds every escalation pattern from below).
+    This construction does not cover individual rotating outer checks."""
     items = [(0, "L1_a", False), (0, "L2_all", False), (0, "L3", False)]
     for r in range(1, rounds + 1):
         items += [(r, "L1_a" if r % 2 == 0 else "L1_b", False), (r, "L2_all", True)]

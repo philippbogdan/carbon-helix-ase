@@ -9,11 +9,11 @@ For each configuration (rule, noise, basis, rounds):
     'extrapolated'; the model-free (Jeffreys) one-sided 95 % upper bound; the model range (fits with
     only the sixth- and only the seventh-order term);
   * local exponent d ln eps / d ln p between neighbouring grid points (bootstrap);
-  * held-out validation: the model fitted on the strata above the median sampled W
+  * held-out validation: the model fitted on the strata above the 75% quantile of sampled W
     predicts the failures observed below it (cut fixed by the sample sizes);
   * resources per round from direct path sampling at each p (strat.path_resources);
-  * asymptotic exponent: the smallest minimal failing set (core) found, with its genuineness
-    (exact most-likely-error decoding also fails).
+  * failure witnesses: the smallest locally minimal set (core) found, with its genuineness
+    (the ILP's returned solution or stronger approximate decoding also fails).
 """
 import glob
 import json
@@ -47,11 +47,12 @@ def minimal_records(campaign, key):
 def model_factory(cores=None, k0_default=6):
     """Extrapolation model f_w = sum_{k=k0}^{k0+3} a_k [w]_k/[N]_k fitted to the stratified
     failure counts alone (binomial likelihood). Lowest order k0 = 6 for Carbon-Helix:
-    six-fault failures exist (constructed, and a genuine six-fault minimal failing set was
-    found) and no smaller one was found; 3 for C4-Helix (distance 6). The sizes of minimal
+    six-fault failures exist in constructions and reduced sets, and no smaller one was
+    found; reduced-set audit labels do not certify ILP optimality. The C4-Helix order is
+    3 (distance 6). The sizes of minimal
     failing sets are not used in the fit: greedy reduction stops at locally minimal sets,
-    often larger than the smallest failing subset, so their sizes are biased upward (a fit
-    using them failed its held-out check). make(sm, x0=None)."""
+    often larger than the smallest failing subset, so their sizes are biased upward.
+    Using them as an unbiased sample would distort the fit. make(sm, x0=None)."""
     def make(sm, x0=None):
         return PolyModel(sm, k0=k0_default, J=3, x0=x0)
     return make
@@ -65,7 +66,7 @@ def audit_for(campaign, key):
 
 TAG_OF = {"full": "full", "l2=on_event,l3=any": "C", "l2=on_event,l3=ambiguous,T3=4": "B4",
           "l2=on_event,l3=ambiguous,rot=4": "R4", "l2=on_event,l3=ambiguous,rot=8": "R8",
-          "l2=on_event,l3=ambiguous,rot=8,l2fast=1": "R8F", "l2=on_event,l3=ambiguous,rot=16,l2fast=1": "R16F"}
+          "l2=on_event,l3=ambiguous,rot=8,l2fast=1": "R8F"}
 
 
 def strong_corrected(sm, audit):
@@ -157,8 +158,7 @@ def analyse(campaign, key, d, nboot=100, seed=0, decoder="campaign", resources=T
             status="measured" if min(est[i][1], est[i + 1][1]) >= 0.9 else "extrapolated")
     # model systematics: the strata do not yet separate the leading order when few failures
     # have few faults; bracket the extrapolation by fits with only the sixth-order term and
-    # with only the seventh-order term (six-fault failures exist, so the physical answer
-    # lies at or above the 'only 6' side asymptotically)
+    # with only the seventh-order term. These fits probe model sensitivity, not rigorous bounds.
     alt = {}
     for k0, J in ((6, 0), (7, 0)):
         try:
